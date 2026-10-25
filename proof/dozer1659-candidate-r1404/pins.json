@@ -1,0 +1,104 @@
+{
+  "repository": "pythonyx135793/dozer",
+  "branch": "codex/dozer1659-candidate-proof-r1404",
+  "base": "f09a89de3b1a9c965ccff070a4e1ec73cf2e3ee0",
+  "tree": "9b4eafbff71f49d4837703c7ddb05cce979c2942",
+  "proof_paths": [
+    ".github/workflows/dozer-dynamic-in-candidate-r1404.yml",
+    "proof/dozer1659-candidate-r1404/candidate.py",
+    "proof/dozer1659-candidate-r1404/pins.json",
+    "proof/dozer1659-candidate-r1404/source.json",
+    "proof/dozer1659-candidate-r1404/original-source.json",
+    "proof/dozer1659-candidate-r1404/audited-sources.json",
+    "proof/dozer1659-candidate-r1404/guard.py",
+    "proof/dozer1659-candidate-r1404/record-demo.py",
+    "proof/dozer1659-candidate-r1404/log_export.py"
+  ],
+  "checkout_action": "11d5960a326750d5838078e36cf38b85af677262",
+  "rust_version": "1.77.2",
+  "target": "x86_64-unknown-linux-gnu",
+  "rust_manifest_url": "https://static.rust-lang.org/dist/channel-rust-1.77.2.toml",
+  "rust_manifest_sha256": "ed07e41edcba852ae034cd1fb29c9c62445c07cd9e12a61ae02a0027da80ded5",
+  "rust_components": {
+    "rustc": {
+      "url": "https://static.rust-lang.org/dist/2024-04-09/rustc-1.77.2-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "7fa3779e7693825728e99639c9b34b9475bfc0dc4a31f730d1f2fbb6764e183c"
+    },
+    "cargo": {
+      "url": "https://static.rust-lang.org/dist/2024-04-09/cargo-1.77.2-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "b57b050ee48123e05021aff43f84da4b10d1d777dd350dd54fbc14448cd3d2d8"
+    },
+    "rust-std": {
+      "url": "https://static.rust-lang.org/dist/2024-04-09/rust-std-1.77.2-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "23119121fae4b7163b9c2ff5cbaad03d08f80d55da011a025d6b17d27489df7f"
+    },
+    "rustfmt-preview": {
+      "url": "https://static.rust-lang.org/dist/2024-04-09/rustfmt-1.77.2-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "254658a9aa29464fcfd81d1e10ec1ba762f24407b59d977776745147ce6d2b66"
+    },
+    "clippy-preview": {
+      "url": "https://static.rust-lang.org/dist/2024-04-09/clippy-1.77.2-x86_64-unknown-linux-gnu.tar.xz",
+      "sha256": "8b6920d230612b8c2e59fd3f9bfb9e57b1491c41b68c09cd73ab700be6ffa362"
+    }
+  },
+  "protoc": {
+    "version": "25.3",
+    "purpose": "Exact official protoc for audited local proto generation in isolated baseline",
+    "url": "https://github.com/protocolbuffers/protobuf/releases/download/v25.3/protoc-25.3-linux-x86_64.zip",
+    "bytes": 3105560,
+    "sha256": "f853e691868d0557425ea290bf7ba6384eef2fa9b04c323afab49a770ba9da80",
+    "official_asset_id": 151795851,
+    "official_api_digest": null,
+    "digest_provenance": "single local download of exact official release asset; hash computed on F"
+  },
+  "selected_packages": {
+    "dozer-sql": "dozer-sql/Cargo.toml",
+    "dozer-sql-expression": "dozer-sql/expression/Cargo.toml",
+    "dozer-core": "dozer-core/Cargo.toml"
+  },
+  "log_transport": {
+    "format": "zip+base64",
+    "prefix": "DOZER_R1337",
+    "archive": "observations.zip",
+    "chunk_bytes": 12288,
+    "maximum_archive_bytes": 33554432,
+    "maximum_decoded_member_bytes": 536870912,
+    "artifact_upload": false,
+    "cache_upload": false
+  },
+  "candidate": {
+    "changed_rust_paths": [
+      "dozer-sql/examples/dynamic_in.rs",
+      "dozer-sql/src/aggregation/factory.rs",
+      "dozer-sql/src/builder/mod.rs",
+      "dozer-sql/src/builder/parser.rs",
+      "dozer-sql/src/builder/subquery.rs",
+      "dozer-sql/src/product/set/operator.rs",
+      "dozer-sql/src/product/set/set_factory.rs",
+      "dozer-sql/src/selection/dynamic/mod.rs",
+      "dozer-sql/src/selection/dynamic/plan.rs",
+      "dozer-sql/src/selection/dynamic/processor.rs",
+      "dozer-sql/src/selection/dynamic/tests.rs",
+      "dozer-sql/src/selection/factory.rs",
+      "dozer-sql/src/selection/mod.rs",
+      "dozer-sql/tests/dynamic_in.rs",
+      "dozer-sql/tests/support/dynamic_in.rs"
+    ],
+    "ordinary_defaults": true,
+    "original_control_test": "live_outer_and_inner_changes_reach_the_real_sink",
+    "original_control_files": [
+      "dozer-sql/tests/dynamic_in.rs",
+      "dozer-sql/tests/support/dynamic_in.rs"
+    ],
+    "maximum_build_seconds": 1500,
+    "maximum_test_seconds": 900
+  },
+  "application_ancestry": [
+    "f09a89de3b1a9c965ccff070a4e1ec73cf2e3ee0",
+    "c6ba405c27aa591e5082bacef92ffc25fa4aa2bd",
+    "e533be4d4ebd81f5c051b7b10d23528d153fdac2",
+    "359ab51877a673e622641b5e860b687993adfe18",
+    "fd117380e7d76f834a84f4512535e19bd079cedf",
+    "8b0b4cc021db089722cb3d48dbe915e8e9c532ec"
+  ]
+}
