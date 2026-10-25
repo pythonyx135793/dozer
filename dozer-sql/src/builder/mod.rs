@@ -148,6 +148,10 @@ fn query_to_pipeline(
         ));
     }
 
+    let required_ctes = query_ctx
+        .strict_qualifiers
+        .then(|| subquery::required_ctes(&query));
+
     // Attach the first pipeline if there is with clause
     if let Some(with) = query.with {
         if with.recursive {
@@ -156,6 +160,7 @@ fn query_to_pipeline(
             ));
         }
 
+        let mut declared = HashSet::new();
         for mut table in with.cte_tables {
             if table.from.is_some() {
                 return Err(PipelineError::UnsupportedSqlError(
@@ -176,10 +181,17 @@ fn query_to_pipeline(
             if query_ctx
                 .pipeline_map
                 .contains_key(&(pipeline_idx, table_name.clone()))
+                || !declared.insert(table_name.clone())
             {
                 return Err(InvalidQuery(format!(
                     "WITH query name {table_name:?} specified more than once"
                 )));
+            }
+            if required_ctes
+                .as_ref()
+                .is_some_and(|required| !required.contains(&table_name))
+            {
+                continue;
             }
             query_to_pipeline(
                 TableInfo {

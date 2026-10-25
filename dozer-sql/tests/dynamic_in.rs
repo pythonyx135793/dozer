@@ -420,7 +420,10 @@ fn review_nested_distinct_preserves_multiplicity_before_aggregation() {
 fn review_inherited_cte_relational_clauses_fail_before_ingestion() {
     for (definition, expected) in [
         ("SELECT key FROM members FETCH FIRST 1 ROW ONLY", "FETCH"),
-        ("SELECT key FROM members FOR UPDATE", "locking"),
+        (
+            "SELECT key FROM members FOR UPDATE",
+            "Expected ), found: UPDATE",
+        ),
         (
             "SELECT key FROM members WHERE NOW() IS NOT NULL",
             "Volatile",
@@ -643,7 +646,10 @@ fn unsupported_subqueries_fail_explicitly_before_ingestion() {
     .to_string();
     assert!(error.contains("Volatile"), "{error}");
     let error = run("WITH c AS (SELECT missing.key FROM members) SELECT key FROM outer_rows WHERE key IN (SELECT key FROM c)", tables(), vec![], false, false).unwrap_err().to_string();
-    assert!(error.contains("Qualified column"), "{error}");
+    assert!(
+        error.contains("Correlated or unknown qualifier \"missing\""),
+        "{error}"
+    );
 }
 
 #[test]

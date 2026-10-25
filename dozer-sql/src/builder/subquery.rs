@@ -57,6 +57,94 @@ pub(super) fn has_membership(query: &Query) -> bool {
         .is_some_and(|with| with.cte_tables.iter().any(|cte| has_membership(&cte.query)))
         || body(&query.body)
 }
+
+/// Resolve lexical dependencies before building CTE processors. Definitions
+/// shadowed everywhere by nested WITH clauses must not leave orphan DAG nodes.
+pub(super) fn required_ctes(query: &Query) -> HashSet<String> {
+    query_dependencies(query).0
+}
+
+fn query_dependencies(query: &Query) -> (HashSet<String>, HashSet<String>) {
+    fn expression(expr: &Expr, tables: &mut HashSet<String>) {
+        match expr {
+            Expr::InSubquery { subquery, .. } | Expr::Exists { subquery, .. } => {
+                tables.extend(query_dependencies(subquery).1);
+            }
+            Expr::Subquery(query) | Expr::ArraySubquery(query) => {
+                tables.extend(query_dependencies(query).1);
+            }
+            _ => {}
+        }
+        for child in children(&mut expr.clone()) {
+            expression(child, tables);
+        }
+    }
+    fn relation(table: &TableFactor, tables: &mut HashSet<String>) {
+        match table {
+            TableFactor::Table { name, .. } => {
+                tables.insert(name.to_string());
+            }
+            TableFactor::Derived { subquery, .. } => {
+                tables.extend(query_dependencies(subquery).1);
+            }
+            _ => {}
+        }
+    }
+    fn body(query: &SetExpr, tables: &mut HashSet<String>) {
+        match query {
+            SetExpr::Query(query) => tables.extend(query_dependencies(query).1),
+            SetExpr::SetOperation { left, right, .. } => {
+                body(left, tables);
+                body(right, tables);
+            }
+            SetExpr::Select(select) => {
+                for from in &select.from {
+                    relation(&from.relation, tables);
+                    for join in &from.joins {
+                        relation(&join.relation, tables);
+                        match &join.join_operator {
+                            JoinOperator::Inner(JoinConstraint::On(expr))
+                            | JoinOperator::LeftOuter(JoinConstraint::On(expr))
+                            | JoinOperator::RightOuter(JoinConstraint::On(expr)) => {
+                                expression(expr, tables);
+                            }
+                            _ => {}
+                        }
+                    }
+                }
+                for expr in select
+                    .selection
+                    .iter()
+                    .chain(&select.group_by)
+                    .chain(&select.having)
+                {
+                    expression(expr, tables);
+                }
+                for item in &select.projection {
+                    if let SelectItem::UnnamedExpr(expr) | SelectItem::ExprWithAlias { expr, .. } =
+                        item
+                    {
+                        expression(expr, tables);
+                    }
+                }
+            }
+            _ => {}
+        }
+    }
+    let mut free = HashSet::new();
+    let mut required = HashSet::new();
+    body(&query.body, &mut free);
+    if let Some(with) = &query.with {
+        for cte in with.cte_tables.iter().rev() {
+            let name = cte.alias.name.to_string();
+            if free.remove(&name) {
+                required.insert(name);
+                free.extend(query_dependencies(&cte.query).1);
+            }
+        }
+    }
+    (required, free)
+}
 use crate::{
     errors::PipelineError,
     selection::dynamic::{
