@@ -444,6 +444,7 @@ fn review_ttl_and_nested_operator_cte_inputs_build_without_external_cte_source()
         "TTL(HOP(c, ts, '5 MINUTES', '10 MINUTES'), ts, '1 HOUR')",
     ] {
         let sql = format!("WITH c AS (SELECT key, ts FROM outer_rows) SELECT key FROM {operator} w WHERE key IN (SELECT key FROM members)");
+        println!("Building CTE-backed table operator: {sql}");
         run(
             &sql,
             vec![
