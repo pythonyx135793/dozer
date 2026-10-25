@@ -17,6 +17,14 @@ use processor::DynamicSelectionProcessor;
 pub(crate) mod plan;
 mod processor;
 
+pub(crate) fn membership_port(index: usize) -> Result<PortHandle, PipelineError> {
+    index
+        .checked_add(1)
+        .and_then(|port| PortHandle::try_from(port).ok())
+        .filter(|port| *port != DEFAULT_PORT_HANDLE)
+        .ok_or_else(|| PipelineError::InvalidQuery("Too many IN subqueries in one filter".into()))
+}
+
 #[derive(Debug)]
 pub(crate) struct DynamicSelectionFactory {
     pub id: String,
@@ -35,7 +43,9 @@ impl ProcessorFactory for DynamicSelectionFactory {
         "DynamicSelection".into()
     }
     fn get_input_ports(&self) -> Vec<PortHandle> {
-        (0..=self.input_count).collect()
+        std::iter::once(DEFAULT_PORT_HANDLE)
+            .chain((1..=self.input_count).filter(|port| *port != DEFAULT_PORT_HANDLE))
+            .collect()
     }
     fn get_output_ports(&self) -> Vec<PortHandle> {
         vec![DEFAULT_PORT_HANDLE]
@@ -48,6 +58,17 @@ impl ProcessorFactory for DynamicSelectionFactory {
     ) -> Result<Schema, BoxedError> {
         if *output != DEFAULT_PORT_HANDLE {
             return Err(PipelineError::InvalidPortHandle(*output).into());
+        }
+        if self.input_count == DEFAULT_PORT_HANDLE {
+            return Err(
+                PipelineError::InvalidQuery("Too many IN subqueries in one filter".into()).into(),
+            );
+        }
+        if let Some(port) = inputs
+            .keys()
+            .find(|port| **port != DEFAULT_PORT_HANDLE && !(1..=self.input_count).contains(port))
+        {
+            return Err(PipelineError::InvalidPortHandle(*port).into());
         }
         let schema = inputs
             .get(&DEFAULT_PORT_HANDLE)

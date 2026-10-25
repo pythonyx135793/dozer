@@ -4,6 +4,7 @@ use dozer_core::{
     channels::ProcessorChannelForwarder,
     event::EventHub,
     node::{Processor, ProcessorFactory},
+    DEFAULT_PORT_HANDLE,
 };
 use dozer_sql_expression::sqlparser::{
     ast::{SetExpr, Statement},
@@ -18,7 +19,8 @@ use dozer_types::{
     },
 };
 
-use super::{plan::Plan, DynamicSelectionFactory};
+use super::{membership_port, plan::Plan, DynamicSelectionFactory};
+use crate::errors::PipelineError;
 
 #[derive(Default)]
 struct Output(Vec<TableOperation>);
@@ -84,7 +86,9 @@ fn factory(predicate: &str) -> DynamicSelectionFactory {
 
 fn processor(predicate: &str) -> Box<dyn Processor> {
     let factory = factory(predicate);
-    let inputs = (0..=factory.input_count)
+    let inputs = factory
+        .get_input_ports()
+        .into_iter()
         .map(|port| (port, schema(FieldType::Int)))
         .collect();
     factory
@@ -98,24 +102,128 @@ fn send(processor: &mut dyn Processor, port: u16, op: Operation) -> Vec<Operatio
     processor
         .process(TableOperation::without_id(op, port), &mut output)
         .unwrap();
-    assert!(output.0.iter().all(|op| op.port == 0));
+    assert!(output.0.iter().all(|op| op.port == DEFAULT_PORT_HANDLE));
     output.0.into_iter().map(|op| op.op).collect()
+}
+
+#[test]
+fn factory_and_processor_ports_match_the_engine_contract() {
+    let factory =
+        factory("value IN (SELECT value FROM members) AND value NOT IN (SELECT value FROM others)");
+    assert_eq!(factory.get_input_ports(), vec![DEFAULT_PORT_HANDLE, 1, 2]);
+    assert_eq!(factory.get_output_ports(), vec![DEFAULT_PORT_HANDLE]);
+    let inputs: HashMap<_, _> = factory
+        .get_input_ports()
+        .into_iter()
+        .map(|port| (port, schema(FieldType::Int)))
+        .collect();
+    let output = factory
+        .runtime
+        .block_on(factory.get_output_schema(&DEFAULT_PORT_HANDLE, &inputs))
+        .unwrap();
+    assert_eq!(output, inputs[&DEFAULT_PORT_HANDLE]);
+    let mut p = factory
+        .runtime
+        .block_on(factory.build(inputs.clone(), HashMap::new(), EventHub::new(1)))
+        .unwrap();
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))).is_empty());
+    assert_eq!(send(&mut *p, 1, insert(row(1))), vec![insert(row(1))]);
+    for port in [0, 3] {
+        let mut output = Output::default();
+        let error = p
+            .process(
+                TableOperation::without_id(insert(row(1)), port),
+                &mut output,
+            )
+            .unwrap_err();
+        assert!(matches!(error.downcast_ref::<PipelineError>(),
+            Some(PipelineError::InvalidPortHandle(actual)) if *actual == port));
+        assert!(output.0.is_empty());
+    }
+    assert_eq!(send(&mut *p, 2, insert(row(1))), vec![delete(row(1))]);
+    assert_eq!(send(&mut *p, 2, delete(row(1))), vec![insert(row(1))]);
+    for missing in [DEFAULT_PORT_HANDLE, 1, 2] {
+        let mut incomplete = inputs.clone();
+        incomplete.remove(&missing);
+        let error = factory
+            .runtime
+            .block_on(factory.get_output_schema(&DEFAULT_PORT_HANDLE, &incomplete))
+            .unwrap_err();
+        assert!(matches!(error.downcast_ref::<PipelineError>(),
+            Some(PipelineError::InvalidPortHandle(actual)) if *actual == missing));
+    }
+    let mut unexpected = inputs.clone();
+    unexpected.insert(0, schema(FieldType::Int));
+    let error = factory
+        .runtime
+        .block_on(factory.get_output_schema(&DEFAULT_PORT_HANDLE, &unexpected))
+        .unwrap_err();
+    assert!(matches!(
+        error.downcast_ref::<PipelineError>(),
+        Some(PipelineError::InvalidPortHandle(0))
+    ));
+    let error = factory
+        .runtime
+        .block_on(factory.get_output_schema(&0, &inputs))
+        .unwrap_err();
+    assert!(matches!(
+        error.downcast_ref::<PipelineError>(),
+        Some(PipelineError::InvalidPortHandle(0))
+    ));
+}
+
+#[test]
+fn membership_ports_cannot_alias_the_outer_port_or_overflow() {
+    assert_eq!(membership_port(0).unwrap(), 1);
+    assert_eq!(
+        membership_port(usize::from(DEFAULT_PORT_HANDLE) - 2).unwrap(),
+        DEFAULT_PORT_HANDLE - 1
+    );
+    for index in [
+        usize::from(DEFAULT_PORT_HANDLE) - 1,
+        usize::from(DEFAULT_PORT_HANDLE),
+        usize::MAX,
+    ] {
+        assert!(
+            matches!(membership_port(index), Err(PipelineError::InvalidQuery(message))
+            if message == "Too many IN subqueries in one filter")
+        );
+    }
+    let mut factory = factory("value IN (SELECT value FROM members)");
+    factory.input_count = DEFAULT_PORT_HANDLE;
+    assert_eq!(
+        factory
+            .get_input_ports()
+            .iter()
+            .filter(|port| **port == DEFAULT_PORT_HANDLE)
+            .count(),
+        1
+    );
+    let error = factory
+        .runtime
+        .block_on(factory.get_output_schema(&DEFAULT_PORT_HANDLE, &HashMap::new()))
+        .unwrap_err();
+    assert!(matches!(error.downcast_ref::<PipelineError>(),
+        Some(PipelineError::InvalidQuery(message)) if message == "Too many IN subqueries in one filter"));
 }
 
 #[test]
 fn duplicate_membership_and_outer_multiplicity() {
     let mut p = processor("value IN (SELECT value FROM members)");
-    assert!(send(&mut *p, 0, insert(row(1))).is_empty());
-    assert!(send(&mut *p, 0, insert(row(1))).is_empty());
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))).is_empty());
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))).is_empty());
     assert_eq!(
         send(&mut *p, 1, insert(row(1))),
         vec![insert(row(1)), insert(row(1))]
     );
     assert!(send(&mut *p, 1, insert(row(1))).is_empty());
     assert!(send(&mut *p, 1, delete(row(1))).is_empty());
-    assert_eq!(send(&mut *p, 0, delete(row(1))), vec![delete(row(1))]);
+    assert_eq!(
+        send(&mut *p, DEFAULT_PORT_HANDLE, delete(row(1))),
+        vec![delete(row(1))]
+    );
     assert_eq!(send(&mut *p, 1, delete(row(1))), vec![delete(row(1))]);
-    assert!(send(&mut *p, 0, delete(row(1))).is_empty());
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, delete(row(1))).is_empty());
     assert!(send(&mut *p, 1, insert(row(1))).is_empty());
 }
 
@@ -129,7 +237,7 @@ fn all_outer_update_transitions_and_ids() {
             new: vec![row(1), row(2)],
         },
     );
-    send(&mut *p, 0, insert(row(1)));
+    send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1)));
     let id = Some(OpIdentifier {
         txid: 7,
         seq_in_tx: 9,
@@ -138,7 +246,7 @@ fn all_outer_update_transitions_and_ids() {
     p.process(
         TableOperation {
             id,
-            port: 0,
+            port: DEFAULT_PORT_HANDLE,
             op: update(row(1), row(2)),
         },
         &mut output,
@@ -148,21 +256,21 @@ fn all_outer_update_transitions_and_ids() {
         output.0,
         vec![TableOperation {
             id,
-            port: 0,
+            port: DEFAULT_PORT_HANDLE,
             op: update(row(1), row(2))
         }]
     );
     assert_eq!(
-        send(&mut *p, 0, update(row(2), row(3))),
+        send(&mut *p, DEFAULT_PORT_HANDLE, update(row(2), row(3))),
         vec![delete(row(2))]
     );
-    assert!(send(&mut *p, 0, update(row(3), row(4))).is_empty());
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, update(row(3), row(4))).is_empty());
     assert_eq!(
-        send(&mut *p, 0, update(row(4), row(1))),
+        send(&mut *p, DEFAULT_PORT_HANDLE, update(row(4), row(1))),
         vec![insert(row(1))]
     );
     assert_eq!(
-        send(&mut *p, 0, update(row(1), row(1))),
+        send(&mut *p, DEFAULT_PORT_HANDLE, update(row(1), row(1))),
         vec![update(row(1), row(1))]
     );
     assert_eq!(send(&mut *p, 1, delete(row(1))), vec![delete(row(1))]);
@@ -173,7 +281,7 @@ fn inner_updates_and_batches_are_atomic() {
     let mut p = processor("value IN (SELECT value FROM members) OR value = 9");
     send(
         &mut *p,
-        0,
+        DEFAULT_PORT_HANDLE,
         Operation::BatchInsert {
             new: vec![row(1), row(2), row(9)],
         },
@@ -221,7 +329,7 @@ fn null_empty_and_negation_truth_table() {
                 };
                 let selected = truth.map(|truth| truth != negated) == Some(true);
                 assert_eq!(
-                    !send(&mut *p, 0, insert(value.clone())).is_empty(),
+                    !send(&mut *p, DEFAULT_PORT_HANDLE, insert(value.clone())).is_empty(),
                     selected,
                     "value={value:?}, inner={inner:?}, negated={negated}"
                 );
@@ -233,9 +341,15 @@ fn null_empty_and_negation_truth_table() {
 #[test]
 fn null_boundaries_retract_not_in_including_null_outer() {
     let mut p = processor("value NOT IN (SELECT value FROM members)");
-    assert_eq!(send(&mut *p, 0, insert(null())), vec![insert(null())]);
+    assert_eq!(
+        send(&mut *p, DEFAULT_PORT_HANDLE, insert(null())),
+        vec![insert(null())]
+    );
     assert_eq!(send(&mut *p, 1, insert(row(1))), vec![delete(null())]);
-    assert_eq!(send(&mut *p, 0, insert(row(2))), vec![insert(row(2))]);
+    assert_eq!(
+        send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(2))),
+        vec![insert(row(2))]
+    );
     assert_eq!(
         send(&mut *p, 1, update(row(1), null())),
         vec![delete(row(2))]
@@ -257,11 +371,17 @@ fn compound_three_valued_predicates_preserve_unknown() {
     ] {
         let mut p = processor(predicate);
         send(&mut *p, 1, insert(null()));
-        assert!(send(&mut *p, 0, insert(row(1))).is_empty(), "{predicate}");
+        assert!(
+            send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))).is_empty(),
+            "{predicate}"
+        );
     }
     let mut p = processor("(value IN (SELECT value FROM members)) IS UNKNOWN");
     send(&mut *p, 1, insert(null()));
-    assert_eq!(send(&mut *p, 0, insert(row(1))), vec![insert(row(1))]);
+    assert_eq!(
+        send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))),
+        vec![insert(row(1))]
+    );
 }
 
 #[test]
@@ -269,14 +389,20 @@ fn case_does_not_evaluate_an_unselected_result() {
     let mut p =
         processor("CASE WHEN value IN (SELECT value FROM members) THEN 1 ELSE 1 / 0 END = 1");
     send(&mut *p, 1, insert(row(1)));
-    assert_eq!(send(&mut *p, 0, insert(row(1))), vec![insert(row(1))]);
+    assert_eq!(
+        send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))),
+        vec![insert(row(1))]
+    );
 }
 
 #[test]
 fn multiple_membership_inputs_and_static_null_compatibility() {
     let mut p = processor("(value IN (SELECT value FROM a) AND value NOT IN (SELECT value FROM b)) OR value IN (NULL)");
-    assert_eq!(send(&mut *p, 0, insert(null())), vec![insert(null())]);
-    assert!(send(&mut *p, 0, insert(row(1))).is_empty());
+    assert_eq!(
+        send(&mut *p, DEFAULT_PORT_HANDLE, insert(null())),
+        vec![insert(null())]
+    );
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))).is_empty());
     assert_eq!(send(&mut *p, 1, insert(row(1))), vec![insert(row(1))]);
     assert_eq!(send(&mut *p, 2, insert(row(1))), vec![delete(row(1))]);
     assert_eq!(send(&mut *p, 2, delete(row(1))), vec![insert(row(1))]);
@@ -287,12 +413,15 @@ fn lifetime_and_primary_key_schema_are_preserved() {
     let factory = factory("value IN (SELECT value FROM members)");
     let mut outer = schema(FieldType::Int);
     outer.primary_index = vec![0];
-    let inputs = [(0, outer.clone()), (1, schema(FieldType::Int))]
-        .into_iter()
-        .collect();
+    let inputs = [
+        (DEFAULT_PORT_HANDLE, outer.clone()),
+        (1, schema(FieldType::Int)),
+    ]
+    .into_iter()
+    .collect();
     let output_schema = factory
         .runtime
-        .block_on(factory.get_output_schema(&0, &inputs))
+        .block_on(factory.get_output_schema(&DEFAULT_PORT_HANDLE, &inputs))
         .unwrap();
     assert_eq!(output_schema, outer);
     let mut p = factory
@@ -305,7 +434,7 @@ fn lifetime_and_primary_key_schema_are_preserved() {
             .unwrap(),
         duration: std::time::Duration::from_secs(60),
     });
-    send(&mut *p, 0, insert(record.clone()));
+    send(&mut *p, DEFAULT_PORT_HANDLE, insert(record.clone()));
     assert_eq!(
         send(&mut *p, 1, insert(row(1))),
         vec![insert(record.clone())]
@@ -316,12 +445,12 @@ fn lifetime_and_primary_key_schema_are_preserved() {
 #[test]
 fn invalid_changes_do_not_mutate_or_emit_partial_state() {
     let mut p = processor("value IN (SELECT value FROM members)");
-    send(&mut *p, 0, insert(row(1)));
+    send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1)));
     send(&mut *p, 1, insert(row(1)));
     for (port, op) in [
         (8, insert(row(1))),
         (1, delete(row(8))),
-        (0, delete(row(8))),
+        (DEFAULT_PORT_HANDLE, delete(row(8))),
         (1, update(row(1), Record::new(vec![]))),
         (
             1,
@@ -337,12 +466,22 @@ fn invalid_changes_do_not_mutate_or_emit_partial_state() {
         assert!(output.0.is_empty());
     }
     assert_eq!(send(&mut *p, 1, delete(row(1))), vec![delete(row(1))]);
-    assert!(send(&mut *p, 0, insert(row(2))).is_empty());
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(2))).is_empty());
 }
 
 #[test]
 fn subquery_schema_and_type_errors_are_explicit() {
     let factory = factory("value IN (SELECT value FROM members)");
+    let valid_inputs = [
+        (DEFAULT_PORT_HANDLE, schema(FieldType::Int)),
+        (1, schema(FieldType::Int)),
+    ]
+    .into_iter()
+    .collect();
+    factory
+        .runtime
+        .block_on(factory.build(valid_inputs, HashMap::new(), EventHub::new(1)))
+        .unwrap();
     for inner in [
         Schema::default(),
         Schema {
@@ -351,13 +490,24 @@ fn subquery_schema_and_type_errors_are_explicit() {
         },
         schema(FieldType::Timestamp),
     ] {
-        let inputs = [(0, schema(FieldType::Int)), (1, inner)]
+        let expected = if inner.fields.len() == 1 {
+            "IN subquery types are incompatible:"
+        } else {
+            "IN subquery must return exactly one column"
+        };
+        let inputs = [(DEFAULT_PORT_HANDLE, schema(FieldType::Int)), (1, inner)]
             .into_iter()
             .collect();
-        assert!(factory
+        let error = factory
             .runtime
             .block_on(factory.build(inputs, HashMap::new(), EventHub::new(1)))
-            .is_err());
+            .err()
+            .unwrap();
+        assert!(
+            matches!(error.downcast_ref::<PipelineError>(),
+            Some(PipelineError::InvalidQuery(message)) if message.starts_with(expected)),
+            "{error:?}"
+        );
     }
     assert!(factory
         .runtime
@@ -380,8 +530,9 @@ fn deterministic_multiset_model_matches_every_legal_event() {
         let mut seed = 0x1659_u64;
         for step in 0..400 {
             seed = seed.wrapping_mul(6364136223846793005).wrapping_add(1);
-            let port = ((seed >> 32) & 1) as u16;
-            let rows = if port == 0 { &mut outer } else { &mut inner };
+            let outer_event = ((seed >> 32) & 1) == 0;
+            let port = if outer_event { DEFAULT_PORT_HANDLE } else { 1 };
+            let rows = if outer_event { &mut outer } else { &mut inner };
             let value = match (seed >> 40) % 5 {
                 0 => null(),
                 value => row(value as i64),

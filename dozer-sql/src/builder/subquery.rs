@@ -60,6 +60,7 @@ pub(super) fn has_membership(query: &Query) -> bool {
 use crate::{
     errors::PipelineError,
     selection::dynamic::{
+        membership_port,
         plan::{children, validate_repeatable, Plan},
         DynamicSelectionFactory,
     },
@@ -108,9 +109,7 @@ pub(super) fn selection(
 ) -> Result<Option<DynamicSelectionFactory>, PipelineError> {
     let mut queries = vec![];
     let plan = Plan::parse(statement.clone(), &mut |query| {
-        let port = PortHandle::try_from(queries.len() + 1).map_err(|_| {
-            PipelineError::InvalidQuery("Too many IN subqueries in one filter".into())
-        })?;
+        let port = membership_port(queries.len())?;
         queries.push(query);
         Ok(port)
     })?;

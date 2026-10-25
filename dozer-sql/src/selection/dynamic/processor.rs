@@ -271,7 +271,9 @@ impl Processor for DynamicSelectionProcessor {
         let outputs = if op.port == DEFAULT_PORT_HANDLE {
             self.process_outer(op.op)?.into_iter().collect()
         } else {
-            let index = usize::from(op.port) - 1;
+            let index = usize::from(op.port)
+                .checked_sub(1)
+                .ok_or(PipelineError::InvalidPortHandle(op.port))?;
             if index >= self.inputs.len() {
                 return Err(PipelineError::InvalidPortHandle(op.port).into());
             }
