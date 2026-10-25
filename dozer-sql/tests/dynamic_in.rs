@@ -294,15 +294,65 @@ fn nested_membership_and_parenthesized_queries() {
 
 #[test]
 fn union_all_and_distinct_membership_retract_last_copy() {
-    for quantifier in ["ALL", "DISTINCT"] {
+    for quantifier in ["ALL", "DISTINCT", ""] {
         run(&format!("SELECT key FROM outer_rows WHERE key IN (SELECT key FROM members UNION {quantifier} SELECT key FROM others)"), tables(), vec![
             step("outer", 0, insert(pair(1, 0)), vec![]),
             step("left union", 1, insert(pair(1, 1)), vec![row(1)]),
             step("right union duplicate", 2, insert(pair(1, 2)), vec![row(1)]),
             step("left union retracts", 1, delete(pair(1, 1)), vec![row(1)]),
             step("right union retracts", 2, delete(pair(1, 2)), vec![]),
-        ], true, false).unwrap();
+        ], true, false).unwrap_or_else(|error| panic!("UNION {quantifier}: {error}"));
     }
+}
+
+#[test]
+fn parenthesized_cte_not_in_retains_duplicates_and_null_membership() {
+    let null_member = Record::new(vec![Field::Null, Field::Int(0)]);
+    run("SELECT key FROM outer_rows WHERE key NOT IN (/* query */ (((WITH x AS (SELECT key FROM members) SELECT key FROM x))))", tables(), vec![
+        step("outer duplicates with empty membership", 0, Operation::BatchInsert { new: vec![pair(1, 0), pair(1, 0)] }, vec![row(1), row(1)]),
+        step("first member", 1, insert(pair(1, 0)), vec![]),
+        step("duplicate member", 1, insert(pair(1, 0)), vec![]),
+        step("one copy remains", 1, delete(pair(1, 0)), vec![]),
+        step("last copy removed", 1, delete(pair(1, 0)), vec![row(1), row(1)]),
+        step("NULL makes nonmatches unknown", 1, insert(null_member.clone()), vec![]),
+        step("NULL removed", 1, delete(null_member), vec![row(1), row(1)]),
+    ], true, false).unwrap();
+}
+
+#[test]
+fn union_branch_schemas_are_checked_before_ingestion() {
+    for right in [
+        schema(&[("key", FieldType::String)]),
+        schema(&[("key", FieldType::Int), ("extra", FieldType::Int)]),
+    ] {
+        let mut sources = tables();
+        sources[2].1 = right;
+        let error = run(
+            "SELECT key FROM outer_rows WHERE key IN (SELECT key FROM members UNION ALL SELECT * FROM others)",
+            sources, vec![], false, false,
+        ).unwrap_err().to_string();
+        assert!(error.contains("Invalid input schemas"), "{error}");
+    }
+}
+
+#[test]
+fn union_right_alias_and_nullable_membership_reach_the_sink() {
+    let mut sources = tables();
+    sources[1].1.fields[0].nullable = false;
+    let null_member = Record::new(vec![Field::Null, Field::Int(0)]);
+    run(
+        "SELECT key FROM outer_rows WHERE key NOT IN (SELECT key AS left_key FROM members UNION ALL SELECT key AS right_key FROM others)",
+        sources,
+        vec![
+            step("outer with empty union", 0, insert(pair(1, 0)), vec![row(1)]),
+            step("nullable right branch", 2, insert(null_member.clone()), vec![]),
+            step("left branch match", 1, insert(pair(1, 0)), vec![]),
+            step("right NULL removed", 2, delete(null_member), vec![]),
+            step("last left value removed", 1, delete(pair(1, 0)), vec![row(1)]),
+        ],
+        true,
+        false,
+    ).unwrap();
 }
 
 #[test]
@@ -450,6 +500,9 @@ fn numeric_schema_compatibility_and_parenthesized_union() {
     run("SELECT key FROM outer_rows WHERE key IN ((SELECT key FROM members) UNION ALL (SELECT key FROM others))", tables(), vec![
         step("outer", 0, insert(pair(1, 0)), vec![]),
         step("parenthesized union branch", 1, insert(pair(1, 0)), vec![row(1)]),
+        step("other parenthesized branch", 2, insert(pair(1, 0)), vec![row(1)]),
+        step("left branch retracts", 1, delete(pair(1, 0)), vec![row(1)]),
+        step("last branch retracts", 2, delete(pair(1, 0)), vec![]),
     ], true, false).unwrap();
 }
 
