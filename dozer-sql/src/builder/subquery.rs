@@ -151,7 +151,7 @@ fn unsupported(message: impl Into<String>) -> PipelineError {
     PipelineError::InvalidQuery(message.into())
 }
 
-fn validate_query(query: &mut Query, udfs: &[UdfConfig]) -> Result<(), PipelineError> {
+pub(super) fn validate_query(query: &mut Query, udfs: &[UdfConfig]) -> Result<(), PipelineError> {
     if query.fetch.is_some() || !query.locks.is_empty() {
         return Err(unsupported(
             "FETCH and locking clauses are not supported in IN subqueries",
@@ -196,8 +196,8 @@ fn validate_body(body: &mut SetExpr, udfs: &[UdfConfig]) -> Result<(), PipelineE
             {
                 return Err(unsupported("Unsupported SELECT clause in IN subquery"));
             }
-            // Plain DISTINCT does not affect membership; the processor counts
-            // duplicate values, including every deletion of a duplicate.
+            // DISTINCT is implemented after projection/aggregation. It must not
+            // be discarded here: a containing aggregate can observe its counts.
             let mut local = HashSet::new();
             let from = &mut select.from[0];
             relation_scope(&mut from.relation, &mut local, udfs)?;

@@ -21,6 +21,7 @@ pub struct SetProcessorFactory {
     id: String,
     set_quantifier: SetQuantifier,
     enable_probabilistic_optimizations: bool,
+    unary_distinct: bool,
 }
 
 impl SetProcessorFactory {
@@ -34,6 +35,18 @@ impl SetProcessorFactory {
             id,
             set_quantifier,
             enable_probabilistic_optimizations,
+            unary_distinct: false,
+        }
+    }
+
+    /// Exact counted DISTINCT after projection; no second branch or hash-only
+    /// probabilistic equality is appropriate for relational multiplicities.
+    pub(crate) fn distinct(id: String) -> Self {
+        Self {
+            id,
+            set_quantifier: SetQuantifier::Distinct,
+            enable_probabilistic_optimizations: false,
+            unary_distinct: true,
         }
     }
 }
@@ -48,7 +61,11 @@ impl ProcessorFactory for SetProcessorFactory {
         "Set".to_string()
     }
     fn get_input_ports(&self) -> Vec<PortHandle> {
-        vec![0, 1]
+        if self.unary_distinct {
+            vec![DEFAULT_PORT_HANDLE]
+        } else {
+            vec![0, 1]
+        }
     }
 
     fn get_output_ports(&self) -> Vec<PortHandle> {
@@ -60,6 +77,12 @@ impl ProcessorFactory for SetProcessorFactory {
         _output_port: &PortHandle,
         input_schemas: &HashMap<PortHandle, Schema>,
     ) -> Result<Schema, BoxedError> {
+        if self.unary_distinct {
+            return input_schemas
+                .get(&DEFAULT_PORT_HANDLE)
+                .cloned()
+                .ok_or_else(|| PipelineError::SetError(SetError::InvalidInputSchemas).into());
+        }
         let output_columns = validate_set_operation_input_schemas(input_schemas)?;
 
         let output_schema = Schema {

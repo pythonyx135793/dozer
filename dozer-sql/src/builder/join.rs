@@ -12,7 +12,7 @@ use crate::{
 };
 
 use super::{
-    common::{get_name_or_alias, is_an_entry_point},
+    common::{get_scoped_name_or_alias, is_an_entry_point},
     table_operator::{insert_table_operator_processor_to_pipeline, is_table_operator},
     ConnectionInfo,
 };
@@ -33,13 +33,21 @@ pub fn insert_join_to_pipeline(
     let mut input_nodes = vec![];
 
     let left_table = from.relation;
-    let mut left_name_or_alias = Some(get_name_or_alias(&left_table)?);
+    let mut left_name_or_alias = Some(get_scoped_name_or_alias(
+        &left_table,
+        query_context,
+        pipeline_idx,
+    )?);
     let mut left_join_source =
         insert_join_source_to_pipeline(left_table, pipeline, pipeline_idx, query_context)?;
 
     for join in from.joins {
         let right_table = join.relation;
-        let right_name_or_alias = Some(get_name_or_alias(&right_table)?);
+        let right_name_or_alias = Some(get_scoped_name_or_alias(
+            &right_table,
+            query_context,
+            pipeline_idx,
+        )?);
         let right_join_source = insert_join_source_to_pipeline(
             right_table.clone(),
             pipeline,

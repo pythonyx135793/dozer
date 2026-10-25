@@ -320,6 +320,175 @@ fn parenthesized_cte_not_in_retains_duplicates_and_null_membership() {
 }
 
 #[test]
+fn review_qualified_cte_outputs_rebind_to_their_local_relation() {
+    for sql in [
+        "WITH c AS (SELECT key FROM members) SELECT key FROM outer_rows WHERE key IN (SELECT c.key FROM c)",
+        "SELECT key FROM outer_rows WHERE key IN (WITH c AS (SELECT key FROM members) SELECT c.key FROM c)",
+        "WITH c AS (SELECT key FROM members UNION ALL SELECT key FROM others) SELECT key FROM outer_rows WHERE key IN (SELECT c.key FROM c)",
+    ] {
+        run(sql, tables(), vec![
+            step("outer", 0, insert(pair(1, 0)), vec![]),
+            step("qualified CTE member", 1, insert(pair(1, 0)), vec![row(1)]),
+            step("qualified CTE retraction", 1, delete(pair(1, 0)), vec![]),
+        ], true, false).unwrap_or_else(|error| panic!("{sql}: {error}"));
+    }
+    for source in [
+        "c JOIN others t ON c.key = t.key",
+        "others t JOIN c ON t.key = c.key",
+    ] {
+        let sql = format!("WITH c AS (SELECT key FROM members) SELECT key FROM outer_rows WHERE key IN (SELECT c.key FROM {source})");
+        run(
+            &sql,
+            tables(),
+            vec![
+                step("outer", 0, insert(pair(1, 0)), vec![]),
+                step("CTE side", 1, insert(pair(1, 0)), vec![]),
+                step("join side", 2, insert(pair(1, 0)), vec![row(1)]),
+                step("CTE side removed", 1, delete(pair(1, 0)), vec![]),
+            ],
+            true,
+            false,
+        )
+        .unwrap_or_else(|error| panic!("{sql}: {error}"));
+    }
+}
+
+#[test]
+fn review_union_sibling_queries_keep_independent_cte_names() {
+    for prefix in ["", "WITH x AS (SELECT key FROM more) "] {
+        let sql = format!("{prefix}SELECT key FROM outer_rows WHERE key IN ((WITH x AS (SELECT key FROM members) SELECT x.key FROM x) UNION ALL (WITH x AS (SELECT key FROM others) SELECT x.key FROM x))");
+        run(
+            &sql,
+            tables(),
+            vec![
+                step("outer", 0, insert(pair(1, 0)), vec![]),
+                step("left local x", 1, insert(pair(1, 0)), vec![row(1)]),
+                step("right local x", 2, insert(pair(1, 0)), vec![row(1)]),
+                step("left x removed", 1, delete(pair(1, 0)), vec![row(1)]),
+                step("right x removed", 2, delete(pair(1, 0)), vec![]),
+            ],
+            true,
+            false,
+        )
+        .unwrap_or_else(|error| panic!("{sql}: {error}"));
+    }
+    // A left branch definition is not visible to a sibling without its own WITH.
+    assert!(run("SELECT key FROM outer_rows WHERE key IN ((WITH x AS (SELECT key FROM members) SELECT key FROM x) UNION ALL (SELECT key FROM x))", tables(), vec![], false, false).is_err());
+}
+
+#[test]
+fn review_nested_distinct_preserves_multiplicity_before_aggregation() {
+    for inner in [
+        "SELECT DISTINCT key FROM members",
+        "SELECT DISTINCT payload AS key FROM members GROUP BY key, payload",
+    ] {
+        let sql = format!(
+            "SELECT key FROM outer_rows WHERE key IN (SELECT COUNT(d.key) FROM ({inner}) d)"
+        );
+        let first = pair(7, 7);
+        let second = if inner.contains("GROUP BY") {
+            pair(8, 7)
+        } else {
+            pair(7, 8)
+        };
+        let mut steps = vec![
+            step(
+                "outer alternatives",
+                0,
+                Operation::BatchInsert {
+                    new: vec![pair(1, 0), pair(2, 0)],
+                },
+                vec![],
+            ),
+            step("one distinct value", 1, insert(first.clone()), vec![row(1)]),
+            step(
+                "duplicate projected value",
+                1,
+                insert(second.clone()),
+                vec![row(1)],
+            ),
+            step("one duplicate remains", 1, delete(first), vec![row(1)]),
+            step("last distinct value removed", 1, delete(second), vec![]),
+        ];
+        steps[2].emitted = Some(vec![]);
+        steps[3].emitted = Some(vec![]);
+        run(&sql, tables(), steps, true, false).unwrap_or_else(|error| panic!("{sql}: {error}"));
+    }
+}
+
+#[test]
+fn review_inherited_cte_relational_clauses_fail_before_ingestion() {
+    for (definition, expected) in [
+        ("SELECT key FROM members FETCH FIRST 1 ROW ONLY", "FETCH"),
+        ("SELECT key FROM members FOR UPDATE", "locking"),
+        (
+            "SELECT key FROM members WHERE NOW() IS NOT NULL",
+            "Volatile",
+        ),
+    ] {
+        let sql = format!("WITH c AS ({definition}) SELECT key FROM outer_rows WHERE key IN (SELECT c.key FROM c)");
+        let error = run(&sql, tables(), vec![], false, false)
+            .unwrap_err()
+            .to_string();
+        assert!(error.contains(expected), "{sql}: {error}");
+    }
+}
+
+#[test]
+fn review_union_membership_updates_preserve_atomic_and_noop_behavior() {
+    for quantifier in ["ALL", "DISTINCT", ""] {
+        let sql = format!("SELECT key FROM outer_rows WHERE key IN (SELECT key FROM members UNION {quantifier} SELECT key FROM others)");
+        let mut steps = vec![
+            step(
+                "outer alternatives",
+                0,
+                Operation::BatchInsert {
+                    new: vec![pair(1, 10), pair(2, 20)],
+                },
+                vec![],
+            ),
+            step("first member", 1, insert(pair(1, 100)), vec![row(1)]),
+            step(
+                "payload update leaves membership unchanged",
+                1,
+                update(pair(1, 100), pair(1, 101)),
+                vec![row(1)],
+            ),
+            step(
+                "key update changes membership",
+                1,
+                update(pair(1, 101), pair(2, 101)),
+                vec![row(2)],
+            ),
+            step(
+                "another old-key copy",
+                2,
+                insert(pair(1, 200)),
+                vec![row(1), row(2)],
+            ),
+            step(
+                "key update converges on an existing member",
+                1,
+                update(pair(2, 101), pair(1, 102)),
+                vec![row(1)],
+            ),
+            step(
+                "one UNION copy removed",
+                2,
+                delete(pair(1, 200)),
+                vec![row(1)],
+            ),
+            step("last copy removed", 1, delete(pair(1, 102)), vec![]),
+        ];
+        steps[2].emitted = Some(vec![]);
+        steps[3].emitted = Some(vec![delete(row(1)), insert(row(2))]);
+        steps[5].emitted = Some(vec![delete(row(2))]);
+        steps[6].emitted = Some(vec![]);
+        run(&sql, tables(), steps, true, false).unwrap_or_else(|error| panic!("{sql}: {error}"));
+    }
+}
+
+#[test]
 fn union_branch_schemas_are_checked_before_ingestion() {
     for right in [
         schema(&[("key", FieldType::String)]),
