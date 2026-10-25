@@ -148,9 +148,11 @@ fn query_to_pipeline(
         ));
     }
 
-    let required_ctes = query_ctx
-        .strict_qualifiers
-        .then(|| subquery::required_ctes(&query));
+    let required_ctes = if query_ctx.strict_qualifiers {
+        Some(subquery::required_ctes(&query)?)
+    } else {
+        None
+    };
 
     // Attach the first pipeline if there is with clause
     if let Some(with) = query.with {

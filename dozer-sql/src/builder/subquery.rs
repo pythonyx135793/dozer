@@ -11,7 +11,11 @@ use dozer_sql_expression::{
 };
 use dozer_types::models::udf_config::UdfConfig;
 
-use super::{query_to_pipeline, OutputNodeInfo, QueryContext, TableInfo};
+use super::{
+    query_to_pipeline,
+    table_operator::{is_table_operator, TableOperatorArg, TableOperatorDescriptor},
+    OutputNodeInfo, QueryContext, TableInfo,
+};
 
 pub(super) fn has_membership(query: &Query) -> bool {
     fn expression(expr: &Expr) -> bool {
@@ -60,53 +64,72 @@ pub(super) fn has_membership(query: &Query) -> bool {
 
 /// Resolve lexical dependencies before building CTE processors. Definitions
 /// shadowed everywhere by nested WITH clauses must not leave orphan DAG nodes.
-pub(super) fn required_ctes(query: &Query) -> HashSet<String> {
-    query_dependencies(query).0
+pub(super) fn required_ctes(query: &Query) -> Result<HashSet<String>, PipelineError> {
+    Ok(query_dependencies(query)?.0)
 }
 
-fn query_dependencies(query: &Query) -> (HashSet<String>, HashSet<String>) {
-    fn expression(expr: &Expr, tables: &mut HashSet<String>) {
+fn query_dependencies(query: &Query) -> Result<(HashSet<String>, HashSet<String>), PipelineError> {
+    fn expression(expr: &Expr, tables: &mut HashSet<String>) -> Result<(), PipelineError> {
         match expr {
             Expr::InSubquery { subquery, .. } | Expr::Exists { subquery, .. } => {
-                tables.extend(query_dependencies(subquery).1);
+                tables.extend(query_dependencies(subquery)?.1);
             }
             Expr::Subquery(query) | Expr::ArraySubquery(query) => {
-                tables.extend(query_dependencies(query).1);
+                tables.extend(query_dependencies(query)?.1);
             }
             _ => {}
         }
         for child in children(&mut expr.clone()) {
-            expression(child, tables);
+            expression(child, tables)?;
+        }
+        Ok(())
+    }
+    fn operator_source(operator: &TableOperatorDescriptor) -> Result<String, PipelineError> {
+        // The existing operator grammar puts its input relation in argument 0.
+        // Other arguments are scalar expressions, not relation dependencies.
+        match operator.args.first() {
+            Some(TableOperatorArg::Argument(arg)) => Ok(
+                crate::table_operator::factory::get_source_name(&operator.name, arg)?,
+            ),
+            Some(TableOperatorArg::Descriptor(nested)) => operator_source(nested),
+            None => Err(PipelineError::UnsupportedTableOperator(
+                operator.name.clone(),
+            )),
         }
     }
-    fn relation(table: &TableFactor, tables: &mut HashSet<String>) {
+    fn relation(table: &TableFactor, tables: &mut HashSet<String>) -> Result<(), PipelineError> {
         match table {
             TableFactor::Table { name, .. } => {
-                tables.insert(name.to_string());
+                let source = match is_table_operator(table)? {
+                    Some(operator) => operator_source(&operator)?,
+                    None => name.to_string(),
+                };
+                tables.insert(source);
             }
             TableFactor::Derived { subquery, .. } => {
-                tables.extend(query_dependencies(subquery).1);
+                tables.extend(query_dependencies(subquery)?.1);
             }
             _ => {}
         }
+        Ok(())
     }
-    fn body(query: &SetExpr, tables: &mut HashSet<String>) {
+    fn body(query: &SetExpr, tables: &mut HashSet<String>) -> Result<(), PipelineError> {
         match query {
-            SetExpr::Query(query) => tables.extend(query_dependencies(query).1),
+            SetExpr::Query(query) => tables.extend(query_dependencies(query)?.1),
             SetExpr::SetOperation { left, right, .. } => {
-                body(left, tables);
-                body(right, tables);
+                body(left, tables)?;
+                body(right, tables)?;
             }
             SetExpr::Select(select) => {
                 for from in &select.from {
-                    relation(&from.relation, tables);
+                    relation(&from.relation, tables)?;
                     for join in &from.joins {
-                        relation(&join.relation, tables);
+                        relation(&join.relation, tables)?;
                         match &join.join_operator {
                             JoinOperator::Inner(JoinConstraint::On(expr))
                             | JoinOperator::LeftOuter(JoinConstraint::On(expr))
                             | JoinOperator::RightOuter(JoinConstraint::On(expr)) => {
-                                expression(expr, tables);
+                                expression(expr, tables)?;
                             }
                             _ => {}
                         }
@@ -118,32 +141,33 @@ fn query_dependencies(query: &Query) -> (HashSet<String>, HashSet<String>) {
                     .chain(&select.group_by)
                     .chain(&select.having)
                 {
-                    expression(expr, tables);
+                    expression(expr, tables)?;
                 }
                 for item in &select.projection {
                     if let SelectItem::UnnamedExpr(expr) | SelectItem::ExprWithAlias { expr, .. } =
                         item
                     {
-                        expression(expr, tables);
+                        expression(expr, tables)?;
                     }
                 }
             }
             _ => {}
         }
+        Ok(())
     }
     let mut free = HashSet::new();
     let mut required = HashSet::new();
-    body(&query.body, &mut free);
+    body(&query.body, &mut free)?;
     if let Some(with) = &query.with {
         for cte in with.cte_tables.iter().rev() {
             let name = cte.alias.name.to_string();
             if free.remove(&name) {
                 required.insert(name);
-                free.extend(query_dependencies(&cte.query).1);
+                free.extend(query_dependencies(&cte.query)?.1);
             }
         }
     }
-    (required, free)
+    Ok((required, free))
 }
 use crate::{
     errors::PipelineError,

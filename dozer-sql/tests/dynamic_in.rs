@@ -377,6 +377,91 @@ fn review_union_sibling_queries_keep_independent_cte_names() {
 }
 
 #[test]
+fn review_window_operators_retain_and_use_their_cte_input() {
+    let timestamp = Field::Timestamp("2026-01-01T00:02:00+00:00".parse().unwrap());
+    let input = Record::new(vec![Field::Int(1), timestamp]);
+    let source_schema = schema(&[("key", FieldType::Int), ("ts", FieldType::Timestamp)]);
+    for (operator, copies) in [
+        ("TUMBLE(c, ts, '5 MINUTES')", 1),
+        ("HOP(c, ts, '5 MINUTES', '10 MINUTES')", 2),
+    ] {
+        for physical_collision in [false, true] {
+            let mut sources = vec![
+                ("outer_rows".into(), source_schema.clone()),
+                ("members".into(), schema(&[("key", FieldType::Int)])),
+            ];
+            if physical_collision {
+                sources.push(("c".into(), source_schema.clone()));
+            }
+            // The key transformation proves the CTE stream is consumed even
+            // when an unrelated physical source also happens to be named c.
+            let sql = format!("WITH c AS (SELECT key + 10 AS key, ts FROM outer_rows) SELECT key FROM {operator} w WHERE key IN (SELECT key FROM members)");
+            run(
+                &sql,
+                sources,
+                vec![
+                    step("member before window input", 1, insert(row(11)), vec![]),
+                    step(
+                        "transformed CTE enters window",
+                        0,
+                        insert(input.clone()),
+                        vec![row(11); copies],
+                    ),
+                    step(
+                        "membership retracts window rows",
+                        1,
+                        delete(row(11)),
+                        vec![],
+                    ),
+                    step(
+                        "membership restores window rows",
+                        1,
+                        insert(row(11)),
+                        vec![row(11); copies],
+                    ),
+                    step(
+                        "CTE deletion retracts window rows",
+                        0,
+                        delete(input.clone()),
+                        vec![],
+                    ),
+                ],
+                true,
+                false,
+            )
+            .unwrap_or_else(|error| {
+                panic!("{sql}, physical collision={physical_collision}: {error}")
+            });
+        }
+    }
+}
+
+#[test]
+fn review_ttl_and_nested_operator_cte_inputs_build_without_external_cte_source() {
+    for operator in [
+        "TTL(c, ts, '1 HOUR')",
+        "TUMBLE(TTL(c, ts, '1 HOUR'), ts, '5 MINUTES')",
+        "TTL(HOP(c, ts, '5 MINUTES', '10 MINUTES'), ts, '1 HOUR')",
+    ] {
+        let sql = format!("WITH c AS (SELECT key, ts FROM outer_rows) SELECT key FROM {operator} w WHERE key IN (SELECT key FROM members)");
+        run(
+            &sql,
+            vec![
+                (
+                    "outer_rows".into(),
+                    schema(&[("key", FieldType::Int), ("ts", FieldType::Timestamp)]),
+                ),
+                ("members".into(), schema(&[("key", FieldType::Int)])),
+            ],
+            vec![],
+            false,
+            false,
+        )
+        .unwrap_or_else(|error| panic!("{sql}: {error}"));
+    }
+}
+
+#[test]
 fn review_nested_distinct_preserves_multiplicity_before_aggregation() {
     for inner in [
         "SELECT DISTINCT key FROM members",
