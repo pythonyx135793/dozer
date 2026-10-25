@@ -1,0 +1,4276 @@
+{
+  "commit": "c4af89215d5fb11ab026371d218f39624c0d9e0f",
+  "tree": "cfe2164612af48a7d80ed9f21221cfa051ff79f9",
+  "files": [
+    {
+      "path": ".cargo/config.toml",
+      "gitBlob": "c427b4132f1acc8a5b9959ee48e4010cf48ff401",
+      "mode": "100644",
+      "bytes": 150,
+      "sha256": "4b39962c446e79eaff959f0ff9ea9ca138ac3324ac722d2b8ef56438617f3dfa"
+    },
+    {
+      "path": ".devcontainer/devcontainer.json",
+      "gitBlob": "d5bae8ff64e5e936fbd38e378cbc7cf44e3ab564",
+      "mode": "100644",
+      "bytes": 1267,
+      "sha256": "0223ee54048457ac0749c5ed0df402633e3092020eddb002f144d46bd073d024"
+    },
+    {
+      "path": ".dockerignore",
+      "gitBlob": "b685045d9d83ae6dfb4cc1f4f2161ffafcefee6e",
+      "mode": "100644",
+      "bytes": 62,
+      "sha256": "9e1c8cdf19b4bc3c086331909f72f78ee4a5c928d884a61cc25f476c2707875a"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "gitBlob": "41f1b83cb999a6f5d596e7ec083dc15cfb06ad75",
+      "mode": "100644",
+      "bytes": 604,
+      "sha256": "84642924f45f4889e6df5130b5cf1e5070fa8fafee6fb6db8151f5b35e79ab86"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "gitBlob": "6303df14fe48b300906833100866bc74ad5ed67d",
+      "mode": "100644",
+      "bytes": 279,
+      "sha256": "2e4d10a945219c4c4fa10e728d4a16899e08e1713795b442a34072918cba4e7d"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/documentation_improvement.md",
+      "gitBlob": "7ae2daae4c46ad9375376646acde4ce8f9c7fbbc",
+      "mode": "100644",
+      "bytes": 1365,
+      "sha256": "48ce9c56521a7e4b15c806c9d9ab6ec782fdbf609190e5e777e71a89981cc208"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "gitBlob": "bbcbbe7d61558adde3cbfd0c7a63a67c27ed6d30",
+      "mode": "100644",
+      "bytes": 595,
+      "sha256": "1f48c52f209a971b8e7eae4120144d28fcf8ee38a7778a7b4d8cf1ab356617d2"
+    },
+    {
+      "path": ".github/config/cliff.toml",
+      "gitBlob": "d53f1709c2dd1f342c5fdb06ac5283761c604717",
+      "mode": "100644",
+      "bytes": 2238,
+      "sha256": "a5bbaa041c37e052602ccd72804c1cd925e1d529967fd3eb4b3bfa88972ff789"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "gitBlob": "8ffad3b6f6a2a3900a78d2810a538cda0fc69616",
+      "mode": "100644",
+      "bytes": 154,
+      "sha256": "8430f9402a0b94edc0050413dacc1e000b2755f71200288f6431cf194b6eb976"
+    },
+    {
+      "path": ".github/workflows/coverage.yaml",
+      "gitBlob": "26b9a346426685249f9043e0db5ee944faf356a8",
+      "mode": "100644",
+      "bytes": 5872,
+      "sha256": "7b9b52225fcc2eb6df73b1fcfae16a63233d5c5facf79db9d9e87f5e048db420"
+    },
+    {
+      "path": ".github/workflows/dozer.yaml",
+      "gitBlob": "156b01b3fe8349dd637c7f4058dcc66d00807bac",
+      "mode": "100644",
+      "bytes": 1029,
+      "sha256": "f1324ad2252386cbfc0d958aba381c03076720014186a261b57732fe2ebb49dc"
+    },
+    {
+      "path": ".github/workflows/integration/docker-compose.yaml",
+      "gitBlob": "709a0cd8b93c7b1e1902cd2e9877df2279451134",
+      "mode": "100644",
+      "bytes": 1894,
+      "sha256": "0965a8c721622f59119ebd3763c67b0018d01c074398dab1adf252fa81e0d8f4"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/install-curl-ubuntu.sh",
+      "gitBlob": "9159738ff6cb59729d7a54626326743dca8d3cee",
+      "mode": "100644",
+      "bytes": 39,
+      "sha256": "f43d56429034bb0d3b098e3c5089c2b0f73e9b6771249c7b775b2e2680dc797a"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/install-dozer-ubuntu-amd64.sh",
+      "gitBlob": "bd46233358eaf7550db56819bcfecb78d40e9b59",
+      "mode": "100644",
+      "bytes": 129,
+      "sha256": "2f2c8cce7a04307a4f81939c99d36b83b92f8064c4992b068f99342f90873b07"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/install-dozer-ubuntu-arm64.sh",
+      "gitBlob": "ee8d6d100302234885360a3a454036231fa54d01",
+      "mode": "100644",
+      "bytes": 133,
+      "sha256": "fec70c69759c8869297dce6ab9e37bd29b5ec71fa2af776fbf26f0b254d84ff5"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/install-protoc-ubuntu-20-amd64.sh",
+      "gitBlob": "99376b7e2612234ac5dba732a56272750ecb7082",
+      "mode": "100644",
+      "bytes": 185,
+      "sha256": "155b9c7cae953c22268a00fad73ae3287f5cabbf7680bdba1c1cbfa39073e30a"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/install-protoc-ubuntu-20-arm64.sh",
+      "gitBlob": "05bc3386ce52328f7aa4b9989e8579df665ac3ad",
+      "mode": "100644",
+      "bytes": 189,
+      "sha256": "f58d20a3798e45f73b040ee50877177d38003940057f351b274b810f96eb485f"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/install-protoc-ubuntu-22.sh",
+      "gitBlob": "63084a40a33929e562315238971e22933de027a5",
+      "mode": "100644",
+      "bytes": 41,
+      "sha256": "81fcfca5273928875d257402fd558260fb9bae18bb7203aa5254721826a2e75a"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/ubuntu-20-amd64",
+      "gitBlob": "fe3b719ff0cabaee2ef3aa69ec6169d0355db84e",
+      "mode": "100644",
+      "bytes": 302,
+      "sha256": "442fbd2d196fe66e18dadcc5d6ed9c1cca4bb7afecdbcd1595535f27b6f40b0f"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/ubuntu-20-arm64",
+      "gitBlob": "9d933fbdb802cff7e25207ad09c64d13399cf063",
+      "mode": "100644",
+      "bytes": 302,
+      "sha256": "d62397e3b5935455b638501c95fe780b636b7ec1c0e46f5c341ff373aa3363d8"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/ubuntu-22-amd64",
+      "gitBlob": "90bc0ebd80fe63f70e1c86dc413a224c46d9e164",
+      "mode": "100644",
+      "bytes": 290,
+      "sha256": "64e6bb28c25fe94dda1898fe1250cfc763c27c9113edb6997fde82fceb56b317"
+    },
+    {
+      "path": ".github/workflows/integration/dockerfiles/ubuntu-22-arm64",
+      "gitBlob": "7b9db749d54c219a1e33b26f7041239030f54199",
+      "mode": "100644",
+      "bytes": 290,
+      "sha256": "c514e4e836ed47cede2bc6b3ce21d68eecff6ae16126576e72305822bf1dfd50"
+    },
+    {
+      "path": ".github/workflows/integration/test-dozer-ubuntu.sh",
+      "gitBlob": "0203f8a5eb2d4b5a746c986711b1f02cf63417e7",
+      "mode": "100644",
+      "bytes": 86,
+      "sha256": "625d9ead934d735149c0bd1a2a7358a380ba977f9139394773ce83f2c13f8f71"
+    },
+    {
+      "path": ".github/workflows/integration/test-dozer.sh",
+      "gitBlob": "541c2092a10404392173dac28b350316fd7bc772",
+      "mode": "100644",
+      "bytes": 90,
+      "sha256": "88d841cbe19789bcfe12d8355a5d71e4de6ac4530a783ba18e7eb259c69c9ffc"
+    },
+    {
+      "path": ".github/workflows/setup-mysql-and-mariadb/action.yaml",
+      "gitBlob": "3e6495a13862bf31744211b7c6f67e98fcb239c1",
+      "mode": "100644",
+      "bytes": 591,
+      "sha256": "504979e08eee3090117b3caec54278c844604a86384846250a71d7a33744f2f8"
+    },
+    {
+      "path": ".github/workflows/setup-snowflake-and-kafka/action.yaml",
+      "gitBlob": "d92e2a812afbf8c65d1a557b2c4adbf8942fa477",
+      "mode": "100644",
+      "bytes": 374,
+      "sha256": "a13fa568e3cfd579217c6df06a53f72c5032e44707d30d244cfc95cbe53b52c8"
+    },
+    {
+      "path": ".gitignore",
+      "gitBlob": "7bb4ff0f807a8364227dc7d4cf6e034424cb6fbb",
+      "mode": "100644",
+      "bytes": 733,
+      "sha256": "d0578bf4bc26fef81ab1f514e0e7eb75ed10e2d41cb76dc8dc5088baebacbacb"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "gitBlob": "7c87cdcc1332c97c9d6aa0ad46bd730f1959cdf1",
+      "mode": "100644",
+      "bytes": 3348,
+      "sha256": "0130e317ef75048e4a653e641491a8a44ef59e78857dd4f8f92a2b24601fec49"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "gitBlob": "ac0c017b62ec60db9fb4e68bd7014c3206562ee6",
+      "mode": "100644",
+      "bytes": 215,
+      "sha256": "0d379eeefed8ebce07a8b126bf6526d01e135493d30af60cc9560fff07a1ec41"
+    },
+    {
+      "path": "Cargo.lock",
+      "gitBlob": "55a96a2c335f104e88bfce7f85a9d0ff2d1d95df",
+      "mode": "100644",
+      "bytes": 244580,
+      "sha256": "040622f654c43dc1670c1b6fcbda64a233c3c19281420754305b25453ff26238"
+    },
+    {
+      "path": "Cargo.toml",
+      "gitBlob": "b47925d2f1ccd9438b14e3b39de3460435147c33",
+      "mode": "100644",
+      "bytes": 863,
+      "sha256": "b86e05a673c962ce30be64dd1a3b2e5508126a5b3c6f288c637690fe9e871bb2"
+    },
+    {
+      "path": "Cross.toml",
+      "gitBlob": "95547038757dc5a07f62bdd34d7837ad7027ca36",
+      "mode": "100644",
+      "bytes": 183,
+      "sha256": "6daf5c2dea478fd8fc387b20b5b1c6140c796f7d4ecd040c3a50a2e7f3cee6d0"
+    },
+    {
+      "path": "LICENSE.txt",
+      "gitBlob": "be3f7b28e564e7dd05eaf59d64adba1a4065ac0e",
+      "mode": "100644",
+      "bytes": 34523,
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "path": "README.md",
+      "gitBlob": "c9718999759a5bfa1cdb7244631e6ddb0bfdc18e",
+      "mode": "100644",
+      "bytes": 2157,
+      "sha256": "e5f1a18743e041728f7865610f9c4f9ce2a0d76b94e4bc3e86e4776273f67a4e"
+    },
+    {
+      "path": "SECURITY.md",
+      "gitBlob": "b71205cadd9bc6d7a606364edc89b0df4f26eb5a",
+      "mode": "100644",
+      "bytes": 884,
+      "sha256": "14a05c22392ab947785b2373793ef6a7afb50bfa6bc04e92adc05ac8a43726ac"
+    },
+    {
+      "path": "ci/Dockerfile",
+      "gitBlob": "e5d97d456e43e5066c50141312b7d401458d5723",
+      "mode": "100644",
+      "bytes": 802,
+      "sha256": "a3fc42aa54e6f6e026f5946ab37fced1fb12819764b4f5b3d3536e34651711c0"
+    },
+    {
+      "path": "ci/Dockerfile.aarch64-unknown-linux-gnu",
+      "gitBlob": "3d51cfc25b34d4c47d83e9df57aca4ccc0f39732",
+      "mode": "100644",
+      "bytes": 688,
+      "sha256": "386ab0ff85e32616bb3883c6987e6bc578604a13c9b3036827dffaa7e8caef9e"
+    },
+    {
+      "path": "ci/Dockerfile.x86_64-unknown-linux-gnu",
+      "gitBlob": "8bc56f4fb00713e3844731c048ff7033ac0bee6a",
+      "mode": "100644",
+      "bytes": 645,
+      "sha256": "aaea2bf663704824cdbb75a7eeabc2603eeea9fcb90b2997ab5f187316ecb25f"
+    },
+    {
+      "path": "ci/README.md",
+      "gitBlob": "7d00e3f1ebda0257ea229908cd90adf36fd7cdc0",
+      "mode": "100644",
+      "bytes": 274,
+      "sha256": "1e04a85efe0c71f049a22d98033780dd00fa1d4a45853ec59cdd0aaed4f47524"
+    },
+    {
+      "path": "ci/download-latest.sh",
+      "gitBlob": "9c6f06fe36e46fc035d24e41e66810cf69887d36",
+      "mode": "100755",
+      "bytes": 4223,
+      "sha256": "b60be545dada8226ef6a31438479b9315bca8686f62d7dd54988334b6257d32c"
+    },
+    {
+      "path": "config/README.md",
+      "gitBlob": "7058bea51375b4d53278afb8f2fbe27f07da4b26",
+      "mode": "100644",
+      "bytes": 1659,
+      "sha256": "5efd9d47717aaa874419c17059d97d2fd140d903dbcff52663bacc7ec06615d5"
+    },
+    {
+      "path": "config/tests/local/.gitkeep",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "config/tests/test.debezium-with-schema-registry.yaml",
+      "gitBlob": "cc2dc30e3e8248ffa38cf82ffa658f03219df5e0",
+      "mode": "100644",
+      "bytes": 728,
+      "sha256": "27caa6fa01708ce2c16e2152cae4b13e51a9f18fbdb54443ffc4cfedf6a71104"
+    },
+    {
+      "path": "config/tests/test.debezium.pg.yaml",
+      "gitBlob": "ba0137c8b066f4813ba2af3ffc560a5f10220ebf",
+      "mode": "100644",
+      "bytes": 221,
+      "sha256": "6377b94e2bed7a34b5d43828dc04e57dc64baed4ea2eb98cff9561e977721ec9"
+    },
+    {
+      "path": "config/tests/test.debezium.yaml",
+      "gitBlob": "68dcc7d1583b50995f63db11e2c85a99378dc4cf",
+      "mode": "100644",
+      "bytes": 629,
+      "sha256": "156ab8f112010cb2659a2a6d5f949b39c0477027f8df14f0538ac627a95b7a2e"
+    },
+    {
+      "path": "config/tests/test.postgres.auth.yaml",
+      "gitBlob": "3e4c3588c04d8d9a80e8c36932bed1ebd3a3fee9",
+      "mode": "100644",
+      "bytes": 150,
+      "sha256": "eda931b5a7e2df7f56a5b8b64323e85c6e417d4540a3effc56024da20021d570"
+    },
+    {
+      "path": "config/tests/test.postgres.yaml",
+      "gitBlob": "9ec8f20eb1ed30a0a7937f3ee6abbf560721611c",
+      "mode": "100644",
+      "bytes": 722,
+      "sha256": "b8e9cb1434dbc44f424b2b00a49b069e5c95f86e72f39725b88763410c6b3641"
+    },
+    {
+      "path": "config/tests/test.register-postgres-with-schema-registry.json",
+      "gitBlob": "7242122d6c2d8a53a4c9cf189e6326b7634ada5b",
+      "mode": "100644",
+      "bytes": 1026,
+      "sha256": "4b72315a23c6fd09022d740cfd3872e1a39e9e9be24a53ccb948efd1e83b1249"
+    },
+    {
+      "path": "config/tests/test.register-postgres.json",
+      "gitBlob": "677764a3242fbe8859a38a73bd41474a1f93e777",
+      "mode": "100644",
+      "bytes": 574,
+      "sha256": "14cab204bc74edfd87d752c219daa0c59244e156d3443f005f755b70fc75a75d"
+    },
+    {
+      "path": "config/tests/test.snowflake.yaml",
+      "gitBlob": "80860ebad18f2f035e391fa9a93fe0113bb54e8f",
+      "mode": "100644",
+      "bytes": 783,
+      "sha256": "4c4ddddd79c494651dc00acdae8f2dd8c2e7e4ff084d4f722b41502d39e7eb67"
+    },
+    {
+      "path": "deny.toml",
+      "gitBlob": "8d3df3337df0730a65cabb2cc263161e29e21e78",
+      "mode": "100644",
+      "bytes": 3951,
+      "sha256": "020906b2848cde894ef2aff5b477719a458bf9e72b78a82106cebee25d465585"
+    },
+    {
+      "path": "docker/snowflake.Dockerfile",
+      "gitBlob": "1b545f24948726ef581fcbdc921cd7c897c58ddc",
+      "mode": "100644",
+      "bytes": 1276,
+      "sha256": "52760f56b8b9a2e427ae3c360a478ed29a2f985750a3eb96ca46d4086ab43f21"
+    },
+    {
+      "path": "dozer-cli/Cargo.toml",
+      "gitBlob": "cb0519af7ed0f084522077ddffc92310391c1be3",
+      "mode": "100644",
+      "bytes": 1962,
+      "sha256": "2cb68fc1f82ceb4b2f652e6e1e8d663ad09b1388d7636b56343a4d78f3fc39f8"
+    },
+    {
+      "path": "dozer-cli/build.rs",
+      "gitBlob": "a0e4b4202c82ee31f30dcf33350cca3981d97acf",
+      "mode": "100644",
+      "bytes": 950,
+      "sha256": "24284a4cc54897d95f235890165470024fc5e5531a05e2a92b545af596053daa"
+    },
+    {
+      "path": "dozer-cli/src/cli/helper.rs",
+      "gitBlob": "d2a3590813db73328aeec196a4c7144c04682955",
+      "mode": "100644",
+      "bytes": 8884,
+      "sha256": "47fcf5663fc358765a6b2cb5283a7a33621c0a907108229677147fe0061095a4"
+    },
+    {
+      "path": "dozer-cli/src/cli/init.rs",
+      "gitBlob": "85cda91385068206bda4c21dc59cd6fbb7321cfa",
+      "mode": "100644",
+      "bytes": 10866,
+      "sha256": "85e07b623d0e83308efed7005181ef5f9ee3f9d258b9a65b14887216f1042a34"
+    },
+    {
+      "path": "dozer-cli/src/cli/mod.rs",
+      "gitBlob": "2af173457779da50ab9b5acaebda61df6bd8d872",
+      "mode": "100644",
+      "bytes": 203,
+      "sha256": "225b4e7f31849be7c1b7fae464fbcf127b4f90ac106727ea2eb740740c28863c"
+    },
+    {
+      "path": "dozer-cli/src/cli/tests.rs",
+      "gitBlob": "c05cdf48345de37f82dc7db40a0758b65190230f",
+      "mode": "100644",
+      "bytes": 8996,
+      "sha256": "56d6b403ebf817bc247d70c48b8be9cd43c0bae4dfad1c9e73f92059a4a97b42"
+    },
+    {
+      "path": "dozer-cli/src/cli/types.rs",
+      "gitBlob": "ce979cbd063784ef955cfad6fa9388a4d68be94b",
+      "mode": "100644",
+      "bytes": 3674,
+      "sha256": "1be14944c4752519b06748fdbc22359b3ffbc7ce43a16a9a35ef067c2bbfd958"
+    },
+    {
+      "path": "dozer-cli/src/config_helper.rs",
+      "gitBlob": "832dcfab1477f4d3b22d1cacac329dff1162ad03",
+      "mode": "100644",
+      "bytes": 5027,
+      "sha256": "a1f86b6e2325d06a7663745c69bf232eb26b13a9725f953d3b6ea096281de8be"
+    },
+    {
+      "path": "dozer-cli/src/console_helper.rs",
+      "gitBlob": "9f39f05a4fd5f8227a4c0016e1c9786a3a6fd898",
+      "mode": "100644",
+      "bytes": 413,
+      "sha256": "ccbf59fdbd079547a20597e953b370cd1e83684c914417a6223b88f26840a226"
+    },
+    {
+      "path": "dozer-cli/src/errors.rs",
+      "gitBlob": "ecca284d63ef393e097daad58ed9dd1b29829bf1",
+      "mode": "100644",
+      "bytes": 9693,
+      "sha256": "5df2c15f6584ff33adc8e4ff7c78175699b37a8bd08bf5651cad9c90c2c932f3"
+    },
+    {
+      "path": "dozer-cli/src/home_dir.rs",
+      "gitBlob": "4d73e3b8f0374d1024e7d08b6575be80a2b3e46b",
+      "mode": "100644",
+      "bytes": 1552,
+      "sha256": "11a03986fc39afda19e6ee0c02c5dc75833a76e42f137a6a3f0b8558af9753d3"
+    },
+    {
+      "path": "dozer-cli/src/lib.rs",
+      "gitBlob": "7eeace9f44133e41679bb333a21f6ec96919dcf8",
+      "mode": "100644",
+      "bytes": 2769,
+      "sha256": "5c8f64ee7b3cb5e503e03e5b32badc869184d71fa6bcf5fcd501370b296a81f2"
+    },
+    {
+      "path": "dozer-cli/src/main.rs",
+      "gitBlob": "241e751574568e39e1475e8e150f5292b4f5d322",
+      "mode": "100644",
+      "bytes": 4625,
+      "sha256": "fc6c5f6ebc40de1fb4db021cc0e18b826c1fa0340472d87660bf4c23842a48d7"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/builder.rs",
+      "gitBlob": "45e755a58e4bf8718f679c8c4a510c7375d23ef4",
+      "mode": "100644",
+      "bytes": 10916,
+      "sha256": "eb4102f40748771d3aec3bb761127f2d0edc6b084b417f58b0045be749607056"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/connector_source.rs",
+      "gitBlob": "6b4d550fc8912badc7bb1b31c86ca0dac9162165",
+      "mode": "100644",
+      "bytes": 12419,
+      "sha256": "46a497446566a505504ee2d42eb243df6f114c47fe8fa7d3ffee3b21887f1c89"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/dummy_sink.rs",
+      "gitBlob": "9607278badbea39e26c27a61008adc0823dc3428",
+      "mode": "100644",
+      "bytes": 6016,
+      "sha256": "9173528a09206dbbc1a6559af79d3ca0c776ac6f77125dc8bf9c5ac9d4df58da"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/mod.rs",
+      "gitBlob": "ad3ba89f2abd8fba8488b8e797102f7213316f1a",
+      "mode": "100644",
+      "bytes": 139,
+      "sha256": "8d581ebc8e2badea92509e2a3d5949e191c36df90762366e784e0483836bb01c"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/source_builder.rs",
+      "gitBlob": "8f646ae80acdcb9cab07e9f3235c204fd4689de6",
+      "mode": "100644",
+      "bytes": 2627,
+      "sha256": "d555d07b096501fdb2ea44b8b9e78cec9bc95aeaf2ff2cf37b318fd15febcc60"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/tests/builder.rs",
+      "gitBlob": "a250f7989325d1d338bdb4c3f6431e080b969e3f",
+      "mode": "100644",
+      "bytes": 2827,
+      "sha256": "212d4ab39ad368418fae9b47c060cdb0d20917fb94602a89a7c27ba2568bbcea"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/tests/mod.rs",
+      "gitBlob": "0d1e2f594c8be270b554201a7a84054dad3867ae",
+      "mode": "100644",
+      "bytes": 13,
+      "sha256": "f76ef2a768d4f09f2c5129b2c71c6f034184ac0e7017a6f4a759281054d379be"
+    },
+    {
+      "path": "dozer-cli/src/pipeline/tests/schemas.json",
+      "gitBlob": "114a1dba2dd64246331c656b8904b6f09cf2e7bd",
+      "mode": "100644",
+      "bytes": 532,
+      "sha256": "ceb040b2698283050b5e8f16c356a66630c570ca763dd754d20aaf13690c2f71"
+    },
+    {
+      "path": "dozer-cli/src/simple/build/contract/mod.rs",
+      "gitBlob": "99fe8c4e77b7f4e0f6465e5d6a224c6149cf6175",
+      "mode": "100644",
+      "bytes": 7349,
+      "sha256": "2aa807d5167e7ae38892290a76a86b05e7047d2b5dcbb6014e8a66cc158e6aef"
+    },
+    {
+      "path": "dozer-cli/src/simple/build/contract/service.rs",
+      "gitBlob": "8f289c5e1518985044554e28071913245c4b0450",
+      "mode": "100644",
+      "bytes": 13297,
+      "sha256": "5785f6cf65d7321ab042ce4eaab5ba8bd6a2e1eba7e6cbaeadf558dae0f505b6"
+    },
+    {
+      "path": "dozer-cli/src/simple/build/mod.rs",
+      "gitBlob": "f4545d079137e121c91b90ba5e706c83fbf7e18d",
+      "mode": "100644",
+      "bytes": 62,
+      "sha256": "d4b8b0df1f4969d807f175ff59d38b2790cc9f0d3da67fe5b56d7482e2b6cd3b"
+    },
+    {
+      "path": "dozer-cli/src/simple/executor.rs",
+      "gitBlob": "5e22ffb5ef50ad82c6460c47772286f8a532160f",
+      "mode": "100644",
+      "bytes": 2345,
+      "sha256": "ea8fd5ac276d5bdd53c29d6bf4864bdbfe184ed2225a28907271c7b3a57f2514"
+    },
+    {
+      "path": "dozer-cli/src/simple/helper.rs",
+      "gitBlob": "340010c649cea90fc994debf742f4f24e4375ef2",
+      "mode": "100644",
+      "bytes": 750,
+      "sha256": "c6156c7e13fd0f7b62c7daa73981ce58890a47e07de0974a73a2c127bde55c87"
+    },
+    {
+      "path": "dozer-cli/src/simple/mod.rs",
+      "gitBlob": "1d453045d0106d312aee964c8a210115cc1424f2",
+      "mode": "100644",
+      "bytes": 150,
+      "sha256": "2eeeef44a99fca243df6bdcb359be71a2eb14642425de145eb529ab60f8c5423"
+    },
+    {
+      "path": "dozer-cli/src/simple/orchestrator.rs",
+      "gitBlob": "e587c8d7d4314da95d8c00962f1282fb2c653219",
+      "mode": "100644",
+      "bytes": 8579,
+      "sha256": "4b8823e2bce21952e4b92a75c6a6b30d44c8d5ff0a8b0b7de5668355d3246d67"
+    },
+    {
+      "path": "dozer-cli/src/tests.rs",
+      "gitBlob": "5c462b6db6cf8ee47611f24afe8379a6e353c5a1",
+      "mode": "100644",
+      "bytes": 1917,
+      "sha256": "2015d38c1b549c5a848e087bb28c396cf462294a6a2ab115b45d2e140dce9bbe"
+    },
+    {
+      "path": "dozer-cli/src/ui/app/errors.rs",
+      "gitBlob": "03985a67b8b2511d23a239a303b4542a14c34026",
+      "mode": "100644",
+      "bytes": 1989,
+      "sha256": "ba7f2085544997a79dbaf11dd2148d3ce7a2685e4c27219f0db1f217defedcff"
+    },
+    {
+      "path": "dozer-cli/src/ui/app/mod.rs",
+      "gitBlob": "4e15b01ff4c5484da70cb96e0639812eabc8f6c4",
+      "mode": "100644",
+      "bytes": 2474,
+      "sha256": "e575c404c477247ea3781b1c7dee68d3e0bd684942ba8d375eec857c89c01d5c"
+    },
+    {
+      "path": "dozer-cli/src/ui/app/server.rs",
+      "gitBlob": "08680d4fd06be2d1889f0e1c699fe8f58d22104f",
+      "mode": "100644",
+      "bytes": 6327,
+      "sha256": "c81b5867ebe0de31d4e324c174fe697f5d97073e4968e34d2c048f9a3363df26"
+    },
+    {
+      "path": "dozer-cli/src/ui/app/state.rs",
+      "gitBlob": "b4ee1e42fc68ca60d166bf61011d09c7cba524ca",
+      "mode": "100644",
+      "bytes": 12679,
+      "sha256": "df3c255d3ddaedb22d20838431ef9beaf10963957168ff5efd287d78b15b4c28"
+    },
+    {
+      "path": "dozer-cli/src/ui/app/watcher.rs",
+      "gitBlob": "f8ddb369c80284c01ea1f1de0e62b484d33a1251",
+      "mode": "100644",
+      "bytes": 2342,
+      "sha256": "76eca5eb626aeb5e2d119587c2c5a91c0587a1012ea708ffeb96fe23cd76648b"
+    },
+    {
+      "path": "dozer-cli/src/ui/downloader.rs",
+      "gitBlob": "12ed0f97915ac8104b29f997819642be105d593b",
+      "mode": "100644",
+      "bytes": 8122,
+      "sha256": "204fbb0110d251fd4534af29436e86fd84058b53b53a48c95f6ac3d37946af74"
+    },
+    {
+      "path": "dozer-cli/src/ui/mod.rs",
+      "gitBlob": "90d4ae830f84d34123a78f09274b4bd06151c738",
+      "mode": "100644",
+      "bytes": 33,
+      "sha256": "74d58a5eb7dc8235978970656127da43b8e5a9b8a1c3047e97879a7b0b0ef0d7"
+    },
+    {
+      "path": "dozer-cli/src/utils.rs",
+      "gitBlob": "2246972782e975626662817dd7cbddc87c66ed10",
+      "mode": "100644",
+      "bytes": 924,
+      "sha256": "a60df2f0411c23f59f26010e1e563dffa16a7fdda8704c594eabb05ab3207bfe"
+    },
+    {
+      "path": "dozer-core/Cargo.toml",
+      "gitBlob": "afae7e6f700245fb44c6e415cbc4ac779f0e4212",
+      "mode": "100644",
+      "bytes": 765,
+      "sha256": "6415a231e9a78ac177fe34648542f589b2e2a6321a4a6ddb42fb1d36f9f9cc77"
+    },
+    {
+      "path": "dozer-core/src/app.rs",
+      "gitBlob": "29597fca7a219a8c058b43aa2977be5e44784ec9",
+      "mode": "100644",
+      "bytes": 5385,
+      "sha256": "a0f84e749d49cc46781df0165301ef1b465f47075e163436dd8e50c18fdefea8"
+    },
+    {
+      "path": "dozer-core/src/appsource.rs",
+      "gitBlob": "c5e7eb55a4da0c8134728f123429ef6d3f680356",
+      "mode": "100644",
+      "bytes": 2251,
+      "sha256": "84695104365f6521f5ff00aff0dd284e5d0acf6b16840b7fe854e84c915b683f"
+    },
+    {
+      "path": "dozer-core/src/builder_dag.rs",
+      "gitBlob": "e2041af90b42823554a28f2be915596fb8b724c5",
+      "mode": "100644",
+      "bytes": 9134,
+      "sha256": "b62f8c5e7e0d63b7c8b2b04b9eef9dae0fbacbfc45a49a89f1ccb198890f58a5"
+    },
+    {
+      "path": "dozer-core/src/channels.rs",
+      "gitBlob": "36951d8d4029a86d9804915db998ffc24660fb6e",
+      "mode": "100644",
+      "bytes": 379,
+      "sha256": "3febacf56f76121be41345f5f111d956d9146430f2922e2c786e183654a36816"
+    },
+    {
+      "path": "dozer-core/src/dag_impl.rs",
+      "gitBlob": "4d284150fb42369e87c30f167cf57d9166a5f511",
+      "mode": "100644",
+      "bytes": 12381,
+      "sha256": "d26d2e4b780c7c484296e4c22789e8c4d6dc0e89cac37197c6ca409919d280e3"
+    },
+    {
+      "path": "dozer-core/src/dag_schemas.rs",
+      "gitBlob": "cd90f1cf8b87901eb9920d987387c16f248965fd",
+      "mode": "100644",
+      "bytes": 16690,
+      "sha256": "6d7514ff69e167e4d18e08af6334d795b72f339a873d240f830b7070446ff187"
+    },
+    {
+      "path": "dozer-core/src/error_manager.rs",
+      "gitBlob": "3f876ef7395b85fc8bd16fa06b8ef52f9abb8eae",
+      "mode": "100644",
+      "bytes": 1145,
+      "sha256": "7937e429efa165c48be7b54a2e07d4f05b49a8615246b8673f48188ea687c687"
+    },
+    {
+      "path": "dozer-core/src/errors.rs",
+      "gitBlob": "72d84930453ce2f211e6cd0acffcc227fdc267b5",
+      "mode": "100644",
+      "bytes": 2630,
+      "sha256": "6c151133ca818dfb1777875e6c24d63d1eb4ff05a3e86c5d19cf878e197aebfb"
+    },
+    {
+      "path": "dozer-core/src/executor/execution_dag.rs",
+      "gitBlob": "f492bd499517b900c548b041605d6c9a05d7f070",
+      "mode": "100644",
+      "bytes": 9218,
+      "sha256": "cd2b31a6f9897cf5cf33ff2675b2738b2be1fb93cc0d2c82bb0b1672488b6ba0"
+    },
+    {
+      "path": "dozer-core/src/executor/mod.rs",
+      "gitBlob": "2b3b2a7a55735e3426b9ff414c6b7290e32e4211",
+      "mode": "100644",
+      "bytes": 5385,
+      "sha256": "474366ff9efd4547c9c8d74b8de3fb37fe90e58e9163c7c166bb9b63f52a3419"
+    },
+    {
+      "path": "dozer-core/src/executor/name.rs",
+      "gitBlob": "16686e8b14d0f7938e09f3912506844f8d167c06",
+      "mode": "100644",
+      "bytes": 74,
+      "sha256": "de04e715a6d10cf77a4cebea97d48f06a1ccc41fc3f2bd61ea8cecd08d53b939"
+    },
+    {
+      "path": "dozer-core/src/executor/node.rs",
+      "gitBlob": "2e841a5a1d0eff9526ce880b6b76558ad02d5c47",
+      "mode": "100644",
+      "bytes": 424,
+      "sha256": "892f6ad96593278d61b9aa6817272b585eb4a9a0dc4fcfa90cf8cfa079f0b38f"
+    },
+    {
+      "path": "dozer-core/src/executor/processor_node.rs",
+      "gitBlob": "bc345aa9b89ae3d962467823b9262a52346ad37d",
+      "mode": "100644",
+      "bytes": 3913,
+      "sha256": "7b080e717d884ac6ebe370c33874c15c4a7ebb030deeb4b7240b61a130de53ca"
+    },
+    {
+      "path": "dozer-core/src/executor/receiver_loop.rs",
+      "gitBlob": "f4f3bf7b8c7d1ebc5fa0520d84264833a2a8ec20",
+      "mode": "100644",
+      "bytes": 12328,
+      "sha256": "b16fe389747cd392a1b50f567fe8aeba8e23435aee806128a5c8ea88624ad5e3"
+    },
+    {
+      "path": "dozer-core/src/executor/sink_node.rs",
+      "gitBlob": "79fa4fb38c3048e1b43433251d422d59790d4dcb",
+      "mode": "100644",
+      "bytes": 16794,
+      "sha256": "db3ed7d80cfd1312f5a65a9aa9a320c6e7f2e250e60c4cc26e3fb87ddb16daab"
+    },
+    {
+      "path": "dozer-core/src/executor/source_node/mod.rs",
+      "gitBlob": "0fa913c00464a474e9c6435a6c6173314c3af78c",
+      "mode": "100644",
+      "bytes": 8656,
+      "sha256": "5da51e8f4c84c5c2ce45dc5313993646c25ec2eb5c7dd05668adcc4e7c8889dc"
+    },
+    {
+      "path": "dozer-core/src/executor/source_node/stream.rs",
+      "gitBlob": "5f1a0d73b3da6d2e1202c3428b1f0d6a0cb14481",
+      "mode": "100644",
+      "bytes": 1329,
+      "sha256": "00e872a81ff7bab934d0fdef5050c7def12f9c64240eb83e7e8cab544be162c8"
+    },
+    {
+      "path": "dozer-core/src/executor_operation.rs",
+      "gitBlob": "44600b6fef1b2c787fecd217363b0ad75017fee2",
+      "mode": "100644",
+      "bytes": 408,
+      "sha256": "67c2e6552e83a5004f4f1bf1166072fc609b69b505281c7375565e512fd262fa"
+    },
+    {
+      "path": "dozer-core/src/forwarder.rs",
+      "gitBlob": "df9be44e1e2e5a419b7e931a75e4f6c83316742f",
+      "mode": "100644",
+      "bytes": 4253,
+      "sha256": "8e679fc609e2362f500dcb12cab65776b670b96b63a18b63a16d5c8f06104834"
+    },
+    {
+      "path": "dozer-core/src/hash_map_to_vec.rs",
+      "gitBlob": "cd4af673f5db67ef54683dbefdf03726b059ff2e",
+      "mode": "100644",
+      "bytes": 391,
+      "sha256": "d608618abf612bf21ed285923b8ddb163ca4a68d6b4ce9fdb1218dd904847249"
+    },
+    {
+      "path": "dozer-core/src/lib.rs",
+      "gitBlob": "33f8663d9a94c33fc4a9844b23494bc10c91cb05",
+      "mode": "100644",
+      "bytes": 413,
+      "sha256": "44d9057a271e6b8fc961b6846cb63c3aa57e9d421e7736841f74a8585a3d9d99"
+    },
+    {
+      "path": "dozer-core/src/node.rs",
+      "gitBlob": "d9eb136b1000c90b8883997cd58bd2cbbe97b486",
+      "mode": "100644",
+      "bytes": 4692,
+      "sha256": "feb4183762b64338f2aa3c214113553215a26c2b8d4365b923ca3ef389bd5a67"
+    },
+    {
+      "path": "dozer-core/src/record_store.rs",
+      "gitBlob": "cff53fb58d5fc126e1935c21c25368054610694c",
+      "mode": "100644",
+      "bytes": 2989,
+      "sha256": "0ab51664a0684a243c71915418f40b684e180563fae03ee877cedb5a7faf6cb8"
+    },
+    {
+      "path": "dozer-core/src/shutdown.rs",
+      "gitBlob": "1d676ba4b918e6836fe001004f041dea1642b43b",
+      "mode": "100644",
+      "bytes": 1281,
+      "sha256": "0008a9a0144c056ca9fab68830feb0592829869e8bded05a66bf4b62510e0929"
+    },
+    {
+      "path": "dozer-core/src/tests/app.rs",
+      "gitBlob": "5c49c7e499b9dee1c5de69e8e0d585fc32b168bc",
+      "mode": "100644",
+      "bytes": 8639,
+      "sha256": "6b680f2c47b07db23ffd70ed42bbec3a039b57a65c43edb3e49f9a94dfc86974"
+    },
+    {
+      "path": "dozer-core/src/tests/checkpoint_ns.rs",
+      "gitBlob": "14c6bef429d4a89857c67081cfdde2ad43d06812",
+      "mode": "100644",
+      "bytes": 2373,
+      "sha256": "cd0fa13ee88444174b1088aac99a538520c02d1b632499e019398146d3e05887"
+    },
+    {
+      "path": "dozer-core/src/tests/dag_base_create_errors.rs",
+      "gitBlob": "45d07a733f05c563e9baefaf323e2c8751dea594",
+      "mode": "100644",
+      "bytes": 7579,
+      "sha256": "b8d093774ecb4c6ab1351dda29cbf125a38f919d06d349bbb07560ee0dde243e"
+    },
+    {
+      "path": "dozer-core/src/tests/dag_base_errors.rs",
+      "gitBlob": "e8a2bed55a577140f59c4cf94edeb749b20b1769",
+      "mode": "100644",
+      "bytes": 15266,
+      "sha256": "b0a488127e549ff5909ab9823578eeacd48e1c277185443607ffc85e44151f39"
+    },
+    {
+      "path": "dozer-core/src/tests/dag_base_run.rs",
+      "gitBlob": "e427b0f03bfa2f36db06515fdc2f67d03cf85bab",
+      "mode": "100644",
+      "bytes": 10321,
+      "sha256": "ac3a80a539ddadd84c13a216b6fb1fa6b6aeb0fb317272d9a695dcdc38f19999"
+    },
+    {
+      "path": "dozer-core/src/tests/dag_ports.rs",
+      "gitBlob": "9222e458d3595126bc4b53ff86199272f2bd38fd",
+      "mode": "100644",
+      "bytes": 3932,
+      "sha256": "8b97c88f5a41ecefbe63fbdbed3e08d7eb50c94935f73ebd2c279b5f28428d68"
+    },
+    {
+      "path": "dozer-core/src/tests/dag_schemas.rs",
+      "gitBlob": "99555036ef7b296f15f8b83c8bd4f6a8deccbf29",
+      "mode": "100644",
+      "bytes": 7390,
+      "sha256": "1836a3d41ec8d00bbb57e37b739f0549dc4c41f53ddc4584321361074353133d"
+    },
+    {
+      "path": "dozer-core/src/tests/mod.rs",
+      "gitBlob": "64c78620aba8735710911a4fd7c4338e16795d59",
+      "mode": "100644",
+      "bytes": 889,
+      "sha256": "8ce0988f9a87e12993f9542ded09eaf87f0273e3962f2898301468baa42077fe"
+    },
+    {
+      "path": "dozer-core/src/tests/processors.rs",
+      "gitBlob": "57f41f8c146a102aa52a84867b87909c154be42a",
+      "mode": "100644",
+      "bytes": 2470,
+      "sha256": "068b0d8109e4bdecc4bdda560dc46eeaef09ea91c6c6dba93a844fb1a687692d"
+    },
+    {
+      "path": "dozer-core/src/tests/sinks.rs",
+      "gitBlob": "6f67a1021604a5012eb2386ea86df0ddd0e83d26",
+      "mode": "100644",
+      "bytes": 4511,
+      "sha256": "fb1e3f07ad6bc633fb9e80214d98e67e683d2a51f27f23c65fe482d06e731845"
+    },
+    {
+      "path": "dozer-core/src/tests/sources.rs",
+      "gitBlob": "896b1cf782dbdff909b76a036135a5e0c40a87ac",
+      "mode": "100644",
+      "bytes": 10057,
+      "sha256": "9bf3daeb6358bfd550433a94efc92eee565553e49ad038db4cebb363e4a9041e"
+    },
+    {
+      "path": "dozer-deno/Cargo.toml",
+      "gitBlob": "cd0aa018eff05d1602f351555f84eacaec05dfca",
+      "mode": "100644",
+      "bytes": 767,
+      "sha256": "d3fa573613a79f39906181c07110673db6708efe172120fc28ff121f01d51e41"
+    },
+    {
+      "path": "dozer-deno/js/06_util.js",
+      "gitBlob": "bf71c371b968161c343967d68e6cf7ac9973ec76",
+      "mode": "100644",
+      "bytes": 857,
+      "sha256": "7da1724338162f018f4bf47b86cb3de0e4ef524bbe83ab87f3aff024b0dad71c"
+    },
+    {
+      "path": "dozer-deno/js/98_global_scope.js",
+      "gitBlob": "1e8be0070ee954102173ce62bf37fb9171c7ba20",
+      "mode": "100644",
+      "bytes": 10471,
+      "sha256": "616d7a1c6a5ab643d13bb3d31ff8a340bc050b95026db77fe6d69efe6fbd4583"
+    },
+    {
+      "path": "dozer-deno/js/99_main.js",
+      "gitBlob": "edd6a2d8dea6b0d4fa5853634e93034c564a3e9e",
+      "mode": "100644",
+      "bytes": 5869,
+      "sha256": "9038d91592fb3ebce882c27ab4c53d1a4b5f48fcca5ff9ad31003f5be6006ae6"
+    },
+    {
+      "path": "dozer-deno/js/README.md",
+      "gitBlob": "4055e6e0f56552601a6d97f0902b0b0888492e01",
+      "mode": "100644",
+      "bytes": 560,
+      "sha256": "346a28969d2c083c0caf6eded1891be3facbe797805e3dd0dbf92d6f818949e3"
+    },
+    {
+      "path": "dozer-deno/src/lib.rs",
+      "gitBlob": "e4bee9f349b42964b96445fa28b3215284059787",
+      "mode": "100644",
+      "bytes": 299,
+      "sha256": "d6e5d3069160aba2e17eed7362234418e6d055102b2217b2686567c753f36d56"
+    },
+    {
+      "path": "dozer-deno/src/runtime/conversion.rs",
+      "gitBlob": "0e9b6770b989ce59a6fe2b4eb3645374d8d4b0cd",
+      "mode": "100644",
+      "bytes": 3227,
+      "sha256": "99fec1cc9678dddd34a79c6a7ff65de8532d4f85a29c8d842012f4a4b61b2046"
+    },
+    {
+      "path": "dozer-deno/src/runtime/exception.js",
+      "gitBlob": "8f150c0f19c702672813e24d8e754fcdb7903962",
+      "mode": "100644",
+      "bytes": 81,
+      "sha256": "a36089430cdcbd12ddd6e77677feb5d52dabf8225f63f19dd809666e37c6d175"
+    },
+    {
+      "path": "dozer-deno/src/runtime/fetch.js",
+      "gitBlob": "8c500a69d5456c8be46d9e82e03da20de11226b6",
+      "mode": "100644",
+      "bytes": 194,
+      "sha256": "9dfb3109fc1f971b2ba0d10278e182530199219c869025097273eab52118d843"
+    },
+    {
+      "path": "dozer-deno/src/runtime/fetch_exception.js",
+      "gitBlob": "9166926550a5eacd27ae8fcc341642f141641ed1",
+      "mode": "100644",
+      "bytes": 165,
+      "sha256": "ba98ae3bfe8db43fcf2c6a4cf2558b5eb5593965fb38ed2d1346988938a0373a"
+    },
+    {
+      "path": "dozer-deno/src/runtime/js_runtime.rs",
+      "gitBlob": "70229f18be7af9f6100ae4c02471ec4d6ae2b850",
+      "mode": "100644",
+      "bytes": 4593,
+      "sha256": "f401da0a88c5331d9ffb126228b043172b3c56341067ffc55a30f664bd741e5b"
+    },
+    {
+      "path": "dozer-deno/src/runtime/mod.rs",
+      "gitBlob": "246c79190bd995e63bcaa2c3d4e98ae304e19f28",
+      "mode": "100644",
+      "bytes": 8646,
+      "sha256": "9840d2f11633fa65056568cf1ed99fdd48cd8f40f19b4a71966a02e1ea9f75d6"
+    },
+    {
+      "path": "dozer-deno/src/runtime/permissions.rs",
+      "gitBlob": "215674693984743c630eccef43bfe146b65ac1f8",
+      "mode": "100644",
+      "bytes": 1865,
+      "sha256": "bda9120d787d5d2298a3c417982594d34d1275f26101bfed51ad9fa634d07c86"
+    },
+    {
+      "path": "dozer-deno/src/runtime/square.js",
+      "gitBlob": "8a73c42839b21ab032f80259969ae13c0236b4e4",
+      "mode": "100644",
+      "bytes": 62,
+      "sha256": "8a23141265c079b48220b1e1cbb76a2d78d2a92f039257df0fa9edc6df9051fc"
+    },
+    {
+      "path": "dozer-deno/src/runtime/tests.rs",
+      "gitBlob": "00ab9449de72b2f7cc88e0f17300c282b8049955",
+      "mode": "100644",
+      "bytes": 1161,
+      "sha256": "b1311799e4e5d7434a56cb1d8af7fca0f3229389f371eb4515e14429544adc2d"
+    },
+    {
+      "path": "dozer-deno/src/ts_module_loader/cache.rs",
+      "gitBlob": "e01cfe054f290c135b86bc2aaa1cf79bf89c4fbf",
+      "mode": "100644",
+      "bytes": 1307,
+      "sha256": "645358c422bed6d13628b88b1648f6e1135d1e151effc2b1ff3b3c0d92441c61"
+    },
+    {
+      "path": "dozer-deno/src/ts_module_loader/file_fetcher.rs",
+      "gitBlob": "de8b6a0ac1dfd41d3680a5ae68572dcdad2d8498",
+      "mode": "100644",
+      "bytes": 19023,
+      "sha256": "bf3459212319d292fc0695a3165447bddd8c2862cdedac4a2c50b5ea4947abdc"
+    },
+    {
+      "path": "dozer-deno/src/ts_module_loader/fs.rs",
+      "gitBlob": "b2c9f5c4bfab93ce5ef2b31b7629a4ab6bb9ba21",
+      "mode": "100644",
+      "bytes": 3523,
+      "sha256": "349332cb4568c0c30e52ebf6ef4ef6c7a773dd5a6d45ce145312dd5eb4b2d0c0"
+    },
+    {
+      "path": "dozer-deno/src/ts_module_loader/http_util.rs",
+      "gitBlob": "071ea21a935de7ac306710d595752310be403a82",
+      "mode": "100644",
+      "bytes": 3976,
+      "sha256": "aedc975ab8b88b5617bd9456d6f5e8c64d1707e4001b16b08fa1abde0cf3970e"
+    },
+    {
+      "path": "dozer-deno/src/ts_module_loader/mod.rs",
+      "gitBlob": "21630ab0f609a3e719221bab14989fe4937e246a",
+      "mode": "100644",
+      "bytes": 5379,
+      "sha256": "323504f6004003f8d888399bc22fc035fb35fc73eb93ac1ef220beed96660168"
+    },
+    {
+      "path": "dozer-deno/src/ts_module_loader/text_encoding.rs",
+      "gitBlob": "3bc3439be5fa9e070f072bb044caf35278f22258",
+      "mode": "100644",
+      "bytes": 1316,
+      "sha256": "dbe6bdd71b5d9c7807de4e190293d676dca28c2ac96a6e273bbf2bb7506d5c42"
+    },
+    {
+      "path": "dozer-ingestion/Cargo.toml",
+      "gitBlob": "1525d8cc5f4fc41a689e5145ede48ab68abf7b6c",
+      "mode": "100644",
+      "bytes": 1855,
+      "sha256": "ba8b4424a165d8526e205a72deb7a570f56a5be375c2b34a89882b261e843d3b"
+    },
+    {
+      "path": "dozer-ingestion/README.md",
+      "gitBlob": "6b5d6decb21f15976ad2beab2043056fe257a2b5",
+      "mode": "100644",
+      "bytes": 4534,
+      "sha256": "4771910085add70381313804ca208254dc974b83e7f3f8abad48a89582f49e66"
+    },
+    {
+      "path": "dozer-ingestion/SPEC.md",
+      "gitBlob": "1d1c918e457bd1a615c86d103870acc5ca1bfbaa",
+      "mode": "100644",
+      "bytes": 6931,
+      "sha256": "a90a85c6972399a603c77b1bd238ed4298b905e06b35340ddf0534588a51b955"
+    },
+    {
+      "path": "dozer-ingestion/benches/connectors.rs",
+      "gitBlob": "356965fcbfd1ab30064015caa8ea7991f8f204b0",
+      "mode": "100644",
+      "bytes": 1190,
+      "sha256": "2eeaaa902e9e472ba9fe2d1be9c8b40c172807111dc19ff98cbc9f4c12bdaee5"
+    },
+    {
+      "path": "dozer-ingestion/benches/connectors.sample.yaml",
+      "gitBlob": "a6ca25f4865c765dca6dfd4915930c009e4225d5",
+      "mode": "100644",
+      "bytes": 834,
+      "sha256": "5247ced3fbee7c2eb28eab2a9033046fe978beba0dfeb284f065f467afee2259"
+    },
+    {
+      "path": "dozer-ingestion/benches/grpc.rs",
+      "gitBlob": "04a73f0ce478c6fe25b4cb9265b809be542db714",
+      "mode": "100644",
+      "bytes": 3954,
+      "sha256": "4d35291a7ec94c6965288cf7d7644ffff69aab1ddca4f8850fddb2e07c9c5861"
+    },
+    {
+      "path": "dozer-ingestion/benches/grpc.yaml",
+      "gitBlob": "4cc21ec77ca9a9d9f5c8748194f4d6534a0bed76",
+      "mode": "100644",
+      "bytes": 763,
+      "sha256": "4ee02f7db925c9ef88ba58efd848b86e7fac7b169f3daad5cb94edd4d54b9c5f"
+    },
+    {
+      "path": "dozer-ingestion/benches/helper.rs",
+      "gitBlob": "fdcd3b5b92a1c8928c9969a2519d8fdcb127925b",
+      "mode": "100644",
+      "bytes": 2151,
+      "sha256": "68d85088e17b25caf98336a06f09ef39b984f352a03ed60ed04d71c2579a8ff5"
+    },
+    {
+      "path": "dozer-ingestion/connector/Cargo.toml",
+      "gitBlob": "6f003316c7826712f954c349c1785f07c69499e4",
+      "mode": "100644",
+      "bytes": 305,
+      "sha256": "317453a0b31c46aafea85d29660d73f06cb9c6eef50bc435d902e3f7131c3995"
+    },
+    {
+      "path": "dozer-ingestion/connector/src/ingestor.rs",
+      "gitBlob": "170ee9601e961be78d0370e41e28cc633ac0c050",
+      "mode": "100644",
+      "bytes": 3879,
+      "sha256": "74df14d52e9d8c01f27b491a61fbe0846292bed9d45866a985e65460ecb66095"
+    },
+    {
+      "path": "dozer-ingestion/connector/src/lib.rs",
+      "gitBlob": "fdea56e861cd53c80542e709d61b0e03a8d6a226",
+      "mode": "100644",
+      "bytes": 5255,
+      "sha256": "d9f773652bc8db48a89d0ca8ed2ecb1b172abf89394233dcbbe09c3b79b26ba8"
+    },
+    {
+      "path": "dozer-ingestion/connector/src/schema_parser.rs",
+      "gitBlob": "b0d801fef25e0d12d2e5d9817cfdbe67f970d814",
+      "mode": "100644",
+      "bytes": 777,
+      "sha256": "812a8ad486e986be7a2f55a4d3d635871421f56f3d2cd27017ea14e4f49c1c8a"
+    },
+    {
+      "path": "dozer-ingestion/connector/src/test_util.rs",
+      "gitBlob": "50703ff266237566c00566cd68b0562a7f812963",
+      "mode": "100644",
+      "bytes": 2218,
+      "sha256": "7b78d4b22ba114df9002a2409274cd79f8f03289f3e95abcdf3e6d1b83680568"
+    },
+    {
+      "path": "dozer-ingestion/connector/src/utils.rs",
+      "gitBlob": "ca1f19c9c0ec461bc730a8245161c2c89a3d5f4a",
+      "mode": "100644",
+      "bytes": 2651,
+      "sha256": "ba121f204e1e544d6ebd58fd6a9ea6d3d307a9ed0a6a649a562f4efdb5513278"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/Cargo.toml",
+      "gitBlob": "bef786066a170d27174ce36261363b3ce2427942",
+      "mode": "100644",
+      "bytes": 434,
+      "sha256": "55bf8602ecc295f6c0029387d6a889b48f84e2efdaccb98d6237f89a3e703ed6"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/connector.rs",
+      "gitBlob": "958af46360ed531e59e69c8ce136229e67fe5240",
+      "mode": "100644",
+      "bytes": 3863,
+      "sha256": "439251c6955641054eeec97d6d0def0513c4dcf724ac4afb131af2e4845012de"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/lib.rs",
+      "gitBlob": "a03a7a8997e544b22d07fc10a4c4c5797f4ce1e8",
+      "mode": "100644",
+      "bytes": 96,
+      "sha256": "cf7fea6a24b9cba735ca34141c8ed6b2c60b6639a813aeebab9c4c70e7b34317"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/reader.rs",
+      "gitBlob": "d55e066a52d5200313bf179f5a09c584c091490b",
+      "mode": "100644",
+      "bytes": 2910,
+      "sha256": "6847d2bd924cc44559c7962196848e3d716d9c24636a7685f316e761a0d1b541"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/schema_helper.rs",
+      "gitBlob": "cc20d3904a925411320066a80d22b3c140163320",
+      "mode": "100644",
+      "bytes": 1423,
+      "sha256": "9b510ccc467cc616af028a22649126be0a670033d51b4ee6f399e7cc30f449ea"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/.part-00000-04ec9591-0b73-459e-8d18-ba5711d6cbe1-c000.snappy.parquet.crc",
+      "gitBlob": "87694ce3ae2a585de967588cd88f94334ae83290",
+      "mode": "100644",
+      "bytes": 12,
+      "sha256": "dc4a3634be7752caf1f4912ec245bc1d5da787223afb97510024ae8a86aa02ba"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/.part-00000-c9b90f86-73e6-46c8-93ba-ff6bfaf892a1-c000.snappy.parquet.crc",
+      "gitBlob": "35d245353ac7d87b6f07c8e8e3c19d7f883cd005",
+      "mode": "100644",
+      "bytes": 12,
+      "sha256": "2989d788c941951c8f7383c4413c4d3f619ccb4bcbceb07d22d4b1c19e2bc849"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/.part-00001-911a94a2-43f6-4acb-8620-5e68c2654989-c000.snappy.parquet.crc",
+      "gitBlob": "ec945d35b4e29bf1ae6b84ea1c5b18393e7926f6",
+      "mode": "100644",
+      "bytes": 12,
+      "sha256": "1b66fb1f80aa8ca2445d50ea593860ec519f9dffdef6806dbd3bd01046c030c4"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/_change_data/.gitkeep",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/_delta_index/.gitkeep",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/_delta_log/00000000000000000000.json",
+      "gitBlob": "c52444eae23b8429ac2672f1abf81e82a09966d2",
+      "mode": "100644",
+      "bytes": 1154,
+      "sha256": "02d4999b498430f6c76d2dbf849c9fa286b47a193c26bd92d34663023f0b4203"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/_delta_log/00000000000000000001.json",
+      "gitBlob": "a4fb7af5705aa9e76ab78ba7227a43bd4a3c0394",
+      "mode": "100644",
+      "bytes": 750,
+      "sha256": "20d93345ce01aa077f9583406f17ea4379a8432ee83bf5edb31c72e490a5c00a"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/part-00000-04ec9591-0b73-459e-8d18-ba5711d6cbe1-c000.snappy.parquet",
+      "gitBlob": "67d45baa2f10e8651ccc2996516d0aeb66611b62",
+      "mode": "100644",
+      "bytes": 440,
+      "sha256": "6951cb087b31619dbba30fdac786bf412930e539ec2d8aaab817a997432f9386"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/part-00000-c9b90f86-73e6-46c8-93ba-ff6bfaf892a1-c000.snappy.parquet",
+      "gitBlob": "a50604bfef04411a36ae8c48f1f5147192a6b107",
+      "mode": "100644",
+      "bytes": 440,
+      "sha256": "ff1617f00713118f03a50a88bc543699e8eb13b9e19b29efa90bf1ba5c30bdae"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/data/delta-0.8.0/part-00001-911a94a2-43f6-4acb-8620-5e68c2654989-c000.snappy.parquet",
+      "gitBlob": "fa54bd18480b1ab6e11fdf0c17e557cd55fd2887",
+      "mode": "100644",
+      "bytes": 445,
+      "sha256": "731eafa027917bcb49808fa6de09527257c2bf37c7618a6a59f8d9a8971c7448"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/deltalake_test.rs",
+      "gitBlob": "164015809e8cabc7e783fc0f9966710df59b3bc3",
+      "mode": "100644",
+      "bytes": 1819,
+      "sha256": "7640bfa5c5fc2af2ea023325033e435bc73f0729968aba945504caf1fe73b748"
+    },
+    {
+      "path": "dozer-ingestion/deltalake/src/test/mod.rs",
+      "gitBlob": "ad170fd2a911987db6acdbb4f9bd1a54c542c651",
+      "mode": "100644",
+      "bytes": 33,
+      "sha256": "5a05a0cdac4004636477e4ba67f456066f6cd331f5e8ddfad773286aad15b05d"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/Cargo.toml",
+      "gitBlob": "dd42dca0f017af5d7c9167f4800859ee719d4c6f",
+      "mode": "100644",
+      "bytes": 364,
+      "sha256": "ca6b49c7d7bfc762210fbe0a04efd6b7f90b844a1e848c1e66a3256e2128a4e1"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/README.md",
+      "gitBlob": "77efbb7644ceb36047c8eb2d3a389042a1015cf4",
+      "mode": "100644",
+      "bytes": 464,
+      "sha256": "7fe7d3ed27fa607f74f1337fb26c8c8c23ed7f3cc0c252462bd3872324e77cd5"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/helper.rs",
+      "gitBlob": "c71fc6b33072c1e34ab97355413d5359e827cb4a",
+      "mode": "100644",
+      "bytes": 799,
+      "sha256": "df9fd2f604ca3c52cfd862944b75aff839f7ecf414502811cb39cb32b427bbdd"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/lib.rs",
+      "gitBlob": "99d39eea43e7ba5c354a61c6c52c26503230c829",
+      "mode": "100644",
+      "bytes": 100,
+      "sha256": "8032b726e22565eaadc9636f1387753843cb38eb39f372a505ee3431eeb3720f"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/connector.rs",
+      "gitBlob": "e41661f82d5afb5352876fa119a7dc532d322f8c",
+      "mode": "100644",
+      "bytes": 8392,
+      "sha256": "c71007902d1aa402f8dc114f8ddb82b03593d12c475e86698aec563980253a1a"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/helper.rs",
+      "gitBlob": "609d49df6c368a9cea1163f87869dead567e50c3",
+      "mode": "100644",
+      "bytes": 11022,
+      "sha256": "d16f8f25e6f211c880a94da5911a3fca623083f6124875fa510db33492db0385"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/mod.rs",
+      "gitBlob": "84ee6733772eeb5b391868357a179621f5df47a0",
+      "mode": "100644",
+      "bytes": 368,
+      "sha256": "f690501d8fc85499ed8fc563bd7363d6f852db9fdc3cb7cff234d0838af772ab"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/sender.rs",
+      "gitBlob": "bb922acb7de6d9c3c98cea17862457aa687ae1cb",
+      "mode": "100644",
+      "bytes": 8572,
+      "sha256": "0f1dfdcd633b8345b5234d126332dc8c64728298b2ddc31832b958d52210a9e2"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/Dockerfile",
+      "gitBlob": "2dd177721d2a50a7bec159b07c4e8ac2f1ac3183",
+      "mode": "100644",
+      "bytes": 502,
+      "sha256": "2e77d090fa0a8745ab131a246be35a825498d11eb6f43282133baf4e1e19534b"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/connector.rs",
+      "gitBlob": "60951b6d1757b7b18672daa49cc60c585114c051",
+      "mode": "100644",
+      "bytes": 1089,
+      "sha256": "7bc732ea6c5a0a05ae72c8deb75389f95d77330d259fe0fecffb3e7aea595a72"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/contracts/CustomEvent.code",
+      "gitBlob": "1265e4897924dcff93b2c2dbd0afd9b717626a67",
+      "mode": "100644",
+      "bytes": 782,
+      "sha256": "702489041b8a10e41f6fd41223ee9a83b62bfd018813ca1e80ab4db9c68dc25f"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/contracts/CustomEvent.json",
+      "gitBlob": "0013a98f673035c659e320692e909b66e84ff026",
+      "mode": "100644",
+      "bytes": 500,
+      "sha256": "0ce5603a6575b88da2470b35242158386252a438517b2682d31ff1a9c40d08d6"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/contracts/CustomEvent.sol",
+      "gitBlob": "6ef72d80a5959a1ec73458fa995e432e52d1c21f",
+      "mode": "100644",
+      "bytes": 278,
+      "sha256": "62cec6e99030f8edf60aa82507f492efc2099a2203b472ef822ce462e2c42224"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/docker-compose.yml",
+      "gitBlob": "ce6c1219ebc419437c3b03a24d1dee1eb004f454",
+      "mode": "100644",
+      "bytes": 283,
+      "sha256": "4e10d509dd4bd39433e6cce28e9dd012d584c24ea91b545b7e138a3f25802b53"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/helper.rs",
+      "gitBlob": "3a49f35ef132bac17e80573193109ff73ec56888",
+      "mode": "100644",
+      "bytes": 3187,
+      "sha256": "baf97ae156f83859a63c921f3248ad9682567b6e0519c36b6e791166a435f3fd"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/log/tests/mod.rs",
+      "gitBlob": "7fba8c6200bb81629959e7585e76b6da5bdfa674",
+      "mode": "100644",
+      "bytes": 31,
+      "sha256": "3b96e8dbb931892eaec6710589e1c91b946e9976844edf45ef4835749196efd2"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/trace/connector.rs",
+      "gitBlob": "215aa5717aabfa91024c53e93988c9b632c6e344",
+      "mode": "100644",
+      "bytes": 6554,
+      "sha256": "6a2e379a8ad9afffb58e9c21766df50b891a9a7074b89d4832a6b0bdc91a8de8"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/trace/helper.rs",
+      "gitBlob": "b69fbf67bdbba6f9ca94772dfcfd736fc189cb51",
+      "mode": "100644",
+      "bytes": 5378,
+      "sha256": "ceea9cc817efaa9a5a8651398dc95f2596d37f27e591cdebc610d30c94c4d408"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/trace/mod.rs",
+      "gitBlob": "5b9d78cd25fd7a4ae243a1b17bf8a8f228e402a3",
+      "mode": "100644",
+      "bytes": 93,
+      "sha256": "de3db87653d1f1155e3e8ab253290081bc9409d380f9ac4d85bf2109a6324103"
+    },
+    {
+      "path": "dozer-ingestion/ethereum/src/trace/tests.rs",
+      "gitBlob": "a4da1e1ea152adb4380b6fe4649ccec3a1f4d131",
+      "mode": "100644",
+      "bytes": 2997,
+      "sha256": "155f27f221f60b92dfb29a976603ea5f7649893379a909335c2655b9ff099657"
+    },
+    {
+      "path": "dozer-ingestion/grpc/Cargo.toml",
+      "gitBlob": "971afa5ba01abf3c9a79d0d865842d2f2fbc0a2d",
+      "mode": "100644",
+      "bytes": 376,
+      "sha256": "7e44cd8760a6f924b9dab0c35331c826c5efd9e1628846c84e5fce1c6ae5ae78"
+    },
+    {
+      "path": "dozer-ingestion/grpc/src/adapter/arrow.rs",
+      "gitBlob": "3e8b258eb6546587f9604a6d6bc46b877112e7dc",
+      "mode": "100644",
+      "bytes": 4418,
+      "sha256": "6aa6281e7becb338f70e153757005e0aed22e60f12a96e0d3baa50783fb01b84"
+    },
+    {
+      "path": "dozer-ingestion/grpc/src/adapter/default.rs",
+      "gitBlob": "09de2ec9057d85c09661be9b5dce23daff227e66",
+      "mode": "100644",
+      "bytes": 6804,
+      "sha256": "be17799cee42b09b30960cef2cbbc649dcfe368451f3ff0a0758228229097c14"
+    },
+    {
+      "path": "dozer-ingestion/grpc/src/adapter/mod.rs",
+      "gitBlob": "07f4262e6991a6778388f1ce9ea25523c1886399",
+      "mode": "100644",
+      "bytes": 1484,
+      "sha256": "edca24061a1d81f42810567318eb4bf5facdae4cf99d3fef911663514e856112"
+    },
+    {
+      "path": "dozer-ingestion/grpc/src/connector.rs",
+      "gitBlob": "33ecb3e9dc92470ee5028cf2a135d871db1d5fe0",
+      "mode": "100644",
+      "bytes": 6586,
+      "sha256": "81c3ed0d71533b040a6bdcd875962e057bb1276dfd1cbd089d4f3e2f541bbf67"
+    },
+    {
+      "path": "dozer-ingestion/grpc/src/ingest.rs",
+      "gitBlob": "21beed123d62c8ac883083493b3f0aeb4dc7758e",
+      "mode": "100644",
+      "bytes": 5748,
+      "sha256": "04ab64fcc5acbaf9b5c004ca52a5273b809ea2df197f11b543662a353da331fb"
+    },
+    {
+      "path": "dozer-ingestion/grpc/src/lib.rs",
+      "gitBlob": "79908d9f9eae9710386a98c0111e15c37e62ce3d",
+      "mode": "100644",
+      "bytes": 1720,
+      "sha256": "c67f17fd0f35839deaf28284e55e39ae4ec8e3ef0204197a9615b3ddcdc1ab86"
+    },
+    {
+      "path": "dozer-ingestion/grpc/src/tests.rs",
+      "gitBlob": "99ce9566648142be0e9324ee39e171f1dab2c6a1",
+      "mode": "100644",
+      "bytes": 7795,
+      "sha256": "f41100adbf6a4114f284bef07b6233c1594e4743142648f55b6e740ceb186132"
+    },
+    {
+      "path": "dozer-ingestion/javascript/Cargo.toml",
+      "gitBlob": "c29f92c8567a34578fb32de6e975ba4945809fe2",
+      "mode": "100644",
+      "bytes": 392,
+      "sha256": "ef315d1cd06d54fd5a1761d4396d89f4ee0a3b234aab0d8c9120b3eddc05981c"
+    },
+    {
+      "path": "dozer-ingestion/javascript/src/js_extension/ingest.js",
+      "gitBlob": "ee9899b8ae5edaaab7ddcee0e4110fe440d4e780",
+      "mode": "100644",
+      "bytes": 552,
+      "sha256": "c51240a74bcf02a55c676a4e11e36d687152c3be1cf999f98c92ffdf99ecccae"
+    },
+    {
+      "path": "dozer-ingestion/javascript/src/js_extension/mod.rs",
+      "gitBlob": "57c52fd959de8cc73cc32f44f18b26aa60cdf2ce",
+      "mode": "100644",
+      "bytes": 4675,
+      "sha256": "b3349c1e978d613a4f544678a0207dbb9934b0e3c333bc502321cc18282801d5"
+    },
+    {
+      "path": "dozer-ingestion/javascript/src/js_extension/tests.rs",
+      "gitBlob": "b4f0a5d9bc1bb4a765a31fff8c9af25f3c626ec7",
+      "mode": "100644",
+      "bytes": 957,
+      "sha256": "bfcbefb18723c0b911d64d3346049d2543c7828298364dd9b9c5fc96d30f371c"
+    },
+    {
+      "path": "dozer-ingestion/javascript/src/lib.rs",
+      "gitBlob": "ba9fef603a7a936c78026a80cd340cb17e38b874",
+      "mode": "100644",
+      "bytes": 2973,
+      "sha256": "2822933cfa65c49eee28a265eff1d020dcfce01427e179b6ba5b61e8cb649f15"
+    },
+    {
+      "path": "dozer-ingestion/kafka/Cargo.toml",
+      "gitBlob": "ed4dc987e60b49b0ea79e3a8036e60b374f2db01",
+      "mode": "100644",
+      "bytes": 382,
+      "sha256": "09d3f98cb4bf68d3592536dda53a1746340794f92868b89ed3681e610e84c0ad"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/connector.rs",
+      "gitBlob": "e48d672d58e1283cbbc51f9590f36306707f2def",
+      "mode": "100644",
+      "bytes": 5185,
+      "sha256": "970f922f588e86a630a2333fe305f064382d4efa591820c68ba9df8f008c678f"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/debezium/mapper.rs",
+      "gitBlob": "8f496f18a660794c5cf488135dcb1757a75c6257",
+      "mode": "100644",
+      "bytes": 16466,
+      "sha256": "278a9a0f5d5283b12b60e1ff7bdcb35a7d72ea6f64227a0adf2b42deebd5aa0a"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/debezium/mod.rs",
+      "gitBlob": "35a9de8f054af1f3e77c7c3894e9bae74cd497f0",
+      "mode": "100644",
+      "bytes": 110,
+      "sha256": "99d460e9686845eeaebb3a75eb50ea321fca0e9c61e7356c0f942200949c4bbf"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/debezium/no_schema_registry.rs",
+      "gitBlob": "dc5e2b528b415eb01957885b98f1b62050242a8f",
+      "mode": "100644",
+      "bytes": 2536,
+      "sha256": "5f8f9f4f9030ac852f0fbc7411c4cf626d841029d01c7a2f154777d65ed66e3a"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/debezium/schema.rs",
+      "gitBlob": "76ee9bb5a038705a6799487cf2a6b17d212343a7",
+      "mode": "100644",
+      "bytes": 10783,
+      "sha256": "9802cc958769a5b40c6025999aa3af7abbb4d9539562565db48d916b0421db5d"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/debezium/schema_registry.rs",
+      "gitBlob": "d88644ca460ee03d03dc53614aab0b632a13a66a",
+      "mode": "100644",
+      "bytes": 6054,
+      "sha256": "68f04c423ff91d6afb864cd19a6e035bc6e31abd83c00f7751e99fa244c2093b"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/debezium/stream_consumer.rs",
+      "gitBlob": "d59f8d790a4fd70e952aba44a762dc499750794f",
+      "mode": "100644",
+      "bytes": 8298,
+      "sha256": "5b9ce9e51e4699d3b74a967e346d2ce891faf210f5cd4419bdc1a8941ebc0af8"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/lib.rs",
+      "gitBlob": "d7e9212ab8cc26471641eea7c69f9b12252f3f29",
+      "mode": "100644",
+      "bytes": 2277,
+      "sha256": "1b4d2023df239807b5e1cb6f02bb89bfd7d9fff61d6567cf72d9f2e76fbe969c"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/no_schema_registry_basic.rs",
+      "gitBlob": "20f93a7b355b4b5372cb85b7c454c4ea4f6cc635",
+      "mode": "100644",
+      "bytes": 1375,
+      "sha256": "4dc4410fa858108ee6086ad50cfb00de449b9ba544911218897b4261e260d825"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/schema_registry_basic.rs",
+      "gitBlob": "634ca1f0304e092f1af96f6d40796b4c4dd8e727",
+      "mode": "100644",
+      "bytes": 2853,
+      "sha256": "92a77ad54a0ec93acffc5ac8175e06298895fd56caa494caf1beecbf39881c06"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/stream_consumer.rs",
+      "gitBlob": "00765fd2b2fdc1657ff8f569c1ad42783edbbf5e",
+      "mode": "100644",
+      "bytes": 460,
+      "sha256": "f0fb04a214924e615c91dbb54780fef4c780bb21d4e71e0b0b58487f2e071a21"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/stream_consumer_basic.rs",
+      "gitBlob": "fceade97244a3cad349d787da9a6b62aad350703",
+      "mode": "100644",
+      "bytes": 6884,
+      "sha256": "46b0094e9f287c2808a93b4628cb0f73cefd28ae99418fa3e06f58c2da2e2bcf"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/stream_consumer_helper.rs",
+      "gitBlob": "c7eb31c345ff17652a1ffcaf9a4cc8d66db322a6",
+      "mode": "100644",
+      "bytes": 3805,
+      "sha256": "281fd0aec17c6e44ab896758b3cc349cd14c37f25ba20a39611b5ed3e8c69c31"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/test_utils.rs",
+      "gitBlob": "954caac7bd9927c1bd2fad3c82709f3fb36b17ea",
+      "mode": "100644",
+      "bytes": 3907,
+      "sha256": "76fbc4b9a5e6582cc2f96428fd56bd3f0c9a5206780f1b7afcfbe44e62002293"
+    },
+    {
+      "path": "dozer-ingestion/kafka/src/tests.rs",
+      "gitBlob": "9790f0933d495780176ccd2e04b9f752416022a9",
+      "mode": "100644",
+      "bytes": 6733,
+      "sha256": "d56a6623510a4db046b9b3cdf2899ddaa0dcaec079fc74de1fd833b4a93847fb"
+    },
+    {
+      "path": "dozer-ingestion/mongodb/Cargo.toml",
+      "gitBlob": "be23664b4598ef61e98b5188d7c55d2f19aaf682",
+      "mode": "100644",
+      "bytes": 309,
+      "sha256": "eee2cfb0014fee113cf910217e3d9ee9eeeb6cce304b47e72177929e8d871744"
+    },
+    {
+      "path": "dozer-ingestion/mongodb/src/lib.rs",
+      "gitBlob": "190be41267572b8d40d126d05a55712172f0c866",
+      "mode": "100644",
+      "bytes": 23861,
+      "sha256": "30caa88eb140c873a1419d5e4e71c1fef8752488349cbee001dcc6b89da2df82"
+    },
+    {
+      "path": "dozer-ingestion/mysql/Cargo.toml",
+      "gitBlob": "fada98eb8d01ff62efea8243f88964af6d037712",
+      "mode": "100644",
+      "bytes": 696,
+      "sha256": "49835c7d7b29004feaf2afbdaabc16253ec9b572c1b13940153de30d1b2e172f"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/binlog.rs",
+      "gitBlob": "6ff486dcca5c78212677ebc72624ca6251c77a05",
+      "mode": "100644",
+      "bytes": 48391,
+      "sha256": "83d6113a813517496349c8778b36280f6d1a867c0083ac818a4cc0777b383089"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/connection.rs",
+      "gitBlob": "db444ed97348d1a86041506b683120172d460c85",
+      "mode": "100644",
+      "bytes": 6176,
+      "sha256": "6be6d53eb187c3e18249c876c2150b5d7d38618447ffce4e4282a1c8b4e5f49f"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/connector.rs",
+      "gitBlob": "3229335cc74f9dda0460ad81422eaece6e5d8caf",
+      "mode": "100644",
+      "bytes": 31210,
+      "sha256": "fa130efcad113493d09673659e54014cbe669d620a295f69e997584e63098f9b"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/conversion.rs",
+      "gitBlob": "98ef8c341537a8002eb3d65cd28a80d46f25e6bd",
+      "mode": "100644",
+      "bytes": 15112,
+      "sha256": "06a79d72eb1c90003671419f7df488d4dbc5ef688df8650137ab8d987f1ae4b2"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/helpers.rs",
+      "gitBlob": "df3b2fd4157bd512cb59bb7570e916cf4560105a",
+      "mode": "100644",
+      "bytes": 758,
+      "sha256": "0dbe2dc89ce8c91804e88e77f5d61c1162bdea4253e1bfc3ffe610ba5535288b"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/lib.rs",
+      "gitBlob": "10ba9a244736494bec1d5515dbb2a4823a1dc396",
+      "mode": "100644",
+      "bytes": 3807,
+      "sha256": "3f4e9b7e138be769909b2e96344923763deb4be7c22e0186be6b89ab72cbef69"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/schema.rs",
+      "gitBlob": "dbe4de1ab964b9a3ca8cf9e1a429609115ca3742",
+      "mode": "100644",
+      "bytes": 21841,
+      "sha256": "2d79c5eb2679faa393ff0c6947a87025bcb9c29f7237f0e5e3cf8eb7443be0aa"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/state.rs",
+      "gitBlob": "d9798b89f3a7f0143fdeebd49fd24225283d299f",
+      "mode": "100644",
+      "bytes": 986,
+      "sha256": "a5d3da76a7e1740d6917eadae8785cbe584be089111fcf66c5b6e72278b7c469"
+    },
+    {
+      "path": "dozer-ingestion/mysql/src/tests.rs",
+      "gitBlob": "8b5155167dbceacc98c81e92cc0cef12cc0f0b22",
+      "mode": "100644",
+      "bytes": 2323,
+      "sha256": "f525f37bae057c3c8c5f9a76aac3dcaaedbe0a1fb06be7807cd3fec4b2a10af3"
+    },
+    {
+      "path": "dozer-ingestion/object-store/Cargo.toml",
+      "gitBlob": "be8a8653e32da60c91e5e82e2935d1148d5969c2",
+      "mode": "100644",
+      "bytes": 388,
+      "sha256": "3a0db21b2484da82266f3cea0243d3b727b21814adf1856e5b4d1b9487f89044"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/adapters.rs",
+      "gitBlob": "17ea1d9e32ecca2ca41a7ffcac59f2f26ec47316",
+      "mode": "100644",
+      "bytes": 4085,
+      "sha256": "a0acfafcf270d08ef3ac2db393b4cd52233f7dacc4b86606a023396bf97666d1"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/connection.rs",
+      "gitBlob": "fa199f2462d4c3399df470f1c86b7d8ad8f4b50a",
+      "mode": "100644",
+      "bytes": 19,
+      "sha256": "5a108fed6811ff710173041eff5549b63a0de4f4a3856ba939301818fb4bd8ea"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/connection/validator.rs",
+      "gitBlob": "34ff20767f556547f131b4e79316427850889cec",
+      "mode": "100644",
+      "bytes": 1510,
+      "sha256": "cc8c981a2e2ada2d6a9bb23258b01e2aa0d23be151e02bff6f1f629d736d369e"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/connector.rs",
+      "gitBlob": "20d7e44601097e4456f691a22477a661caa1df39",
+      "mode": "100644",
+      "bytes": 8418,
+      "sha256": "fa9c3bdecf87a319bc211c0eb6d1bbed38b648a4fe50ae88029b8518952dc32f"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/helper.rs",
+      "gitBlob": "69476f720f6fc21fd46d5fe300be09bc47993506",
+      "mode": "100644",
+      "bytes": 1399,
+      "sha256": "cf0c61dce52b21c4d8ce99170246c816daba3ae43b4910da592cd430dcf4d84c"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/lib.rs",
+      "gitBlob": "69acbf8a3930aea39ee6640bce61446cbddd174e",
+      "mode": "100644",
+      "bytes": 2477,
+      "sha256": "37e9b740ad4bdb79e0cfc024aa4d5b3bef7246e040bc332cf14e9f9d8e919da8"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/readme.md",
+      "gitBlob": "d0caa4f9820885befe9d39f59d3f588ef318d055",
+      "mode": "100644",
+      "bytes": 1104,
+      "sha256": "7d81bf8742f42695b7a647eb9cb7bda6a1ea477e4d77cd8bdaa6e5c8754385d7"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/schema_helper.rs",
+      "gitBlob": "2f18df30ccad579600d68d9a5dad8bc7346c833f",
+      "mode": "100644",
+      "bytes": 2376,
+      "sha256": "400f4a1d62ca793bd68633f3bf55151329e60225011a21817652c7153a48dd3e"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/schema_mapper.rs",
+      "gitBlob": "31f531e035fbde649cd69cc9611ffd84a6825f04",
+      "mode": "100644",
+      "bytes": 3466,
+      "sha256": "1b7de8d11c8e1effb79312bac5a443e58fa2242b8abdd835b6ccb2d702e81ae9"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/table.rs",
+      "gitBlob": "202eca59ba46a686fdd3a49bb1a5ea90619acae3",
+      "mode": "100644",
+      "bytes": 14687,
+      "sha256": "6217a09cfa47975f98b062377291dad64c7ccd5ed2c024b7332222c3018f7f8c"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/table_reader.rs",
+      "gitBlob": "4cd990cfd5ec77990af54dc095bd707d497f2a47",
+      "mode": "100644",
+      "bytes": 4253,
+      "sha256": "93af1f80dde0bc08c5ffb3b21dc13736bc4b6abdb2e2983cbff85cf22abd54fb"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/table_watcher.rs",
+      "gitBlob": "a45472c230bda8d24f1974ef0d6e65f3278021e6",
+      "mode": "100644",
+      "bytes": 1400,
+      "sha256": "9244be2d04bd662aaa66e30e30ca9b7e55c56ef94d64510f03ef93504d2cadce"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/all_types_csv/new_sample.csv",
+      "gitBlob": "85656e55ba19bcca8efce3d2aabbc997592fa72b",
+      "mode": "100644",
+      "bytes": 1141,
+      "sha256": "e614b2269655cc89da4196b4d1c89757032183026c61b2a73436ebea428411e4"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/all_types_csv/sample.csv",
+      "gitBlob": "302d93a7d6998916dc90ca4b05049ab3cc16c1db",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "67b57ad41b6ed09bc4bf19342abfcb86ed7663c806df0d022fe46d0f7c05e48f"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/all_types_parquet/alltypes_plain.parquet",
+      "gitBlob": "a63f5dca7c3821909748f34752966a0d7e08d47f",
+      "mode": "100644",
+      "bytes": 1851,
+      "sha256": "12a618d20a59ee0967fef45e7ec1ff6d451e724838edc1bbeac780ca15e8fcc4"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/marker_csv/marker_sample.csv",
+      "gitBlob": "302d93a7d6998916dc90ca4b05049ab3cc16c1db",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "67b57ad41b6ed09bc4bf19342abfcb86ed7663c806df0d022fe46d0f7c05e48f"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/marker_csv/marker_sample.marker",
+      "gitBlob": "302d93a7d6998916dc90ca4b05049ab3cc16c1db",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "67b57ad41b6ed09bc4bf19342abfcb86ed7663c806df0d022fe46d0f7c05e48f"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/marker_only_one_csv/maker_new_sample.csv",
+      "gitBlob": "85656e55ba19bcca8efce3d2aabbc997592fa72b",
+      "mode": "100644",
+      "bytes": 1141,
+      "sha256": "e614b2269655cc89da4196b4d1c89757032183026c61b2a73436ebea428411e4"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/marker_only_one_csv/marker_sample.csv",
+      "gitBlob": "302d93a7d6998916dc90ca4b05049ab3cc16c1db",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "67b57ad41b6ed09bc4bf19342abfcb86ed7663c806df0d022fe46d0f7c05e48f"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/marker_only_one_csv/marker_sample.marker",
+      "gitBlob": "302d93a7d6998916dc90ca4b05049ab3cc16c1db",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "67b57ad41b6ed09bc4bf19342abfcb86ed7663c806df0d022fe46d0f7c05e48f"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/marker_parquet/marker_plain.marker",
+      "gitBlob": "a63f5dca7c3821909748f34752966a0d7e08d47f",
+      "mode": "100644",
+      "bytes": 1851,
+      "sha256": "12a618d20a59ee0967fef45e7ec1ff6d451e724838edc1bbeac780ca15e8fcc4"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/marker_parquet/marker_plain.parquet",
+      "gitBlob": "a63f5dca7c3821909748f34752966a0d7e08d47f",
+      "mode": "100644",
+      "bytes": 1851,
+      "sha256": "12a618d20a59ee0967fef45e7ec1ff6d451e724838edc1bbeac780ca15e8fcc4"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/no_marker_csv/marker_sample.csv",
+      "gitBlob": "302d93a7d6998916dc90ca4b05049ab3cc16c1db",
+      "mode": "100644",
+      "bytes": 1132,
+      "sha256": "67b57ad41b6ed09bc4bf19342abfcb86ed7663c806df0d022fe46d0f7c05e48f"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/files/no_marker_parquet/marker_plain.parquet",
+      "gitBlob": "a63f5dca7c3821909748f34752966a0d7e08d47f",
+      "mode": "100644",
+      "bytes": 1851,
+      "sha256": "12a618d20a59ee0967fef45e7ec1ff6d451e724838edc1bbeac780ca15e8fcc4"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/local_storage_tests.rs",
+      "gitBlob": "779ddafc6ad48dcf555ccb80b243b3d86c5566c9",
+      "mode": "100644",
+      "bytes": 12815,
+      "sha256": "b4b3cf5d7999c00653b7423504c3e5a51e4a4185065a2b0e4ccbf96399b21bec"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/mod.rs",
+      "gitBlob": "b7aa489d67e6618003b288f19bf23218e76223e6",
+      "mode": "100644",
+      "bytes": 41,
+      "sha256": "e7bbf0a1b3999a2d59791b730c335b37cbf8722e2dd308e1b935bead38cce485"
+    },
+    {
+      "path": "dozer-ingestion/object-store/src/tests/test_utils.rs",
+      "gitBlob": "ec680b44c710562a837552f17eaa86f0992f90ae",
+      "mode": "100644",
+      "bytes": 2606,
+      "sha256": "db6e414feb309cbc1a4a8de360e5135a63e9eeb18691b4fbdc2a1e87149f0c87"
+    },
+    {
+      "path": "dozer-ingestion/postgres/Cargo.toml",
+      "gitBlob": "22c8bdcfd26ec09fc76efa3d2c5ef559ab621d42",
+      "mode": "100644",
+      "bytes": 787,
+      "sha256": "fa95d8aaf026dd3c375857a8b2e4243cb89724f7636cab4882c444375ac4fa66"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/connection.rs",
+      "gitBlob": "668f31a2e498e513d551a5d9af968f3eeb603ac5",
+      "mode": "100644",
+      "bytes": 73,
+      "sha256": "5eb459f072603f19f8fe782a1f524d82f10e5dde209b6ecebedbd6d2effd2b12"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/connection/client.rs",
+      "gitBlob": "ec59b0952bd79caab3ddc0b03b73e737cbd0c671",
+      "mode": "100644",
+      "bytes": 7777,
+      "sha256": "eb522d5b339daf80cd4f70d3623f50c065d28d41e00b40ff0eb958dd7de22108"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/connection/helper.rs",
+      "gitBlob": "3531e32e42faa147ea5f99179decc104b0b24e75",
+      "mode": "100644",
+      "bytes": 6591,
+      "sha256": "0079faedeababc7d4e5e5e6b7e3a9e71aa522458723ceae744756bee7bd22b7f"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/connection/tables_validator.rs",
+      "gitBlob": "562a2c77acaec5588ddb6813926c9e443c18cb85",
+      "mode": "100644",
+      "bytes": 6728,
+      "sha256": "1e9bdcbc32085fe336db4612886ce5136dd992294c45ed44a5b8470466fb6504"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/connection/validator.rs",
+      "gitBlob": "af1416e8281dd6570a722d79227c6c291b7089a9",
+      "mode": "100644",
+      "bytes": 21849,
+      "sha256": "92f2c5c020a024ebac3878686f6632d41cb17b77105033836eb5517047d99679"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/connector.rs",
+      "gitBlob": "3ba69bc02e895a517c1ffa82b39fcf7fd05cafd0",
+      "mode": "100644",
+      "bytes": 8061,
+      "sha256": "ede8034444ec3dcee0671b3d30fa7301eb21d44b5ca8b961f5436688756d8cf9"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/helper.rs",
+      "gitBlob": "9d2fb3f4c55ac1f0b01a756b277e031feac66b72",
+      "mode": "100644",
+      "bytes": 19182,
+      "sha256": "2eeb71f3a1681151a88a2be2f0355641194323e404af464a394b9b9a9a20acf1"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/iterator.rs",
+      "gitBlob": "a618691dd10fa0335ac9033ff7be8505fed4cf97",
+      "mode": "100644",
+      "bytes": 7048,
+      "sha256": "da982ce373fbe5245ecba650d0544951d6ad8281f3009a46f66cc20604582267"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/lib.rs",
+      "gitBlob": "85e73241179a6113991f6456df7e2424e2fc7c0f",
+      "mode": "100644",
+      "bytes": 6432,
+      "sha256": "4f78b0e76e849e5e68109b1f42e014cfc2c44afb24d569be757dc37e3f984e1b"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/readme.md",
+      "gitBlob": "3cc68bad02a87fa65d0967d873e862e1a985e972",
+      "mode": "100644",
+      "bytes": 1807,
+      "sha256": "60c3cf1b6a63415202cb40ed8071c1d6703d3d25e3e7c7bc45060b8957671e76"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/readme_replication.md",
+      "gitBlob": "075576c1807f9653dd889b4f22fe92baf3552adf",
+      "mode": "100644",
+      "bytes": 10412,
+      "sha256": "3b4073045fbc3791afd2f6be35a7d4a142f3eea16e5b4d64b1de8906951e58cc"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/replication_slot_helper.rs",
+      "gitBlob": "8532b405de97577fa50b3bd4c79cb021768d987b",
+      "mode": "100644",
+      "bytes": 8256,
+      "sha256": "e59531d1a429fd7f64b55768ab4f3b009335c4417ce403710aedd4e8f3e41fd2"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/replicator.rs",
+      "gitBlob": "6a472f5039ce167d5f8b671bfe4637e280306f5c",
+      "mode": "100644",
+      "bytes": 9224,
+      "sha256": "b10f38e45e933aee051af859299c9a96325249e66d44cc245047703be029ca22"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/schema/helper.rs",
+      "gitBlob": "aa869c7e2ded5aad8a64d1b55fab0e2e6c7f2596",
+      "mode": "100644",
+      "bytes": 15650,
+      "sha256": "dbd8befc3f6da3e45b8cfa8b1b59c8f3e56044557451d02bb77744da48561aaa"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/schema/mod.rs",
+      "gitBlob": "9899524721416e769e4031c7bacd874aa207e206",
+      "mode": "100644",
+      "bytes": 53,
+      "sha256": "425bcbf2366eb2ab16141eccac93aa9f86f06660f3bf1447f5e68d1cca009efa"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/schema/sorter.rs",
+      "gitBlob": "9bd1a36f3e7ae9e56bd42f3132f9b4a182401dd4",
+      "mode": "100644",
+      "bytes": 12076,
+      "sha256": "41b127e060ff8350a35c28f92b47e95f0d1d0dec44f444291d83c9464907a1c7"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/schema/tests.rs",
+      "gitBlob": "1a31816b2d65b539db36c70663b184bee391af24",
+      "mode": "100644",
+      "bytes": 5569,
+      "sha256": "389526f9866f0e3fa798b61a42e11ff362a96e1813b84891f032008ee0064c34"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/snapshotter.rs",
+      "gitBlob": "2141e06d0ef03ab70654dc011bcb23f520f8a1f2",
+      "mode": "100644",
+      "bytes": 10363,
+      "sha256": "f1b45bcbf65fbe00b09e40a6fdba935e5f5c14f43aa554bd2d93565ceb01f12e"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/test_utils.rs",
+      "gitBlob": "f8dba354ec937455f8d4eee216611036fffffb16",
+      "mode": "100644",
+      "bytes": 2470,
+      "sha256": "a3d56c88d65b4a1f25e4fad52482e7d59ea3edfb05a65d8e67b66274a799a2a6"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/tests/client.rs",
+      "gitBlob": "0bfa88c3cc906ef5d21009a5cea3123d949d6a50",
+      "mode": "100644",
+      "bytes": 3222,
+      "sha256": "9172c4d08467d41956c04f3b29e4875b9c776541bf531904f1e6c56c30029c3c"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/tests/continue_replication_tests.rs",
+      "gitBlob": "6771f5fb0fe24031be672d8d3c8b84c31dd2b6d7",
+      "mode": "100644",
+      "bytes": 5738,
+      "sha256": "de0e0a770aa0666d0ab540ae8ae257f5f76d7b65654c3c5c50f80499ac26884e"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/tests/dozer-config.yaml",
+      "gitBlob": "ac138fd0a8b21c7d116abfa9754cffa0c5d6606e",
+      "mode": "100644",
+      "bytes": 943,
+      "sha256": "c94b23e102017b576ff5cbe4b71e6b87e2c91f5e9211c461e096e10775c6318a"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/tests/e2e.rs",
+      "gitBlob": "4e378e717f85b5e2fdba0848042e0434cf68d3e4",
+      "mode": "100644",
+      "bytes": 1654,
+      "sha256": "a27c64748ed60542859030289e8abee4c9b807b7898976e6d9fd2adaf86327d9"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/tests/mod.rs",
+      "gitBlob": "6ab3cb17a8370913ea34f73134e18b40b7135266",
+      "mode": "100644",
+      "bytes": 57,
+      "sha256": "9183df6aba53b70a80ca3a4df3eba5daf33e1aff031be428167c9916892d30de"
+    },
+    {
+      "path": "dozer-ingestion/postgres/src/xlog_mapper.rs",
+      "gitBlob": "59967052708eac9dfb62a10884d8693ac9a8161e",
+      "mode": "100644",
+      "bytes": 9348,
+      "sha256": "fd817a19d7788ee849c4f83bc99ff7d5c144567966fdea39d7c5e126c6dd1026"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/Cargo.toml",
+      "gitBlob": "54c9e508a7347ba40a8ef2d1b0beca64910554db",
+      "mode": "100644",
+      "bytes": 388,
+      "sha256": "bad3ba6ed57af772f2dd810eb4f780fb66832cc3d524aa18765db8550aa2d33f"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/README.md",
+      "gitBlob": "150009dc658065d0a0c5ca377a68d662a2670dd4",
+      "mode": "100644",
+      "bytes": 1976,
+      "sha256": "8b7b05fb401c127352ac5349c0f3b62429de54b7d0245617089e4059bf94a2f4"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/connection/client.rs",
+      "gitBlob": "a5d1c0996294ec62f83593908db77b70e011c03f",
+      "mode": "100644",
+      "bytes": 22441,
+      "sha256": "9c94e131cd85ee42d304bcf64e78a29208c9ae62b06dd5a7b0280213cf8a5947"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/connection/helpers.rs",
+      "gitBlob": "3cf74ec66d2da5774b61338c8951f7f6990e2689",
+      "mode": "100644",
+      "bytes": 663,
+      "sha256": "e91090b74de70f14fe8bf5fe5b3d4086cf1ed9789a3571f29db5ee248c318371"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/connection/mod.rs",
+      "gitBlob": "6a6edbbe76bda37bdd5441d80f3152319c060090",
+      "mode": "100644",
+      "bytes": 63,
+      "sha256": "6fda3e9905670bf527471c8be1b96a195d368b457a50107620750a7c738b5312"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/connection/params.rs",
+      "gitBlob": "c1fb79349adf779dfb31ccade831fcb0a33bd096",
+      "mode": "100644",
+      "bytes": 4625,
+      "sha256": "d870bb3187cd73ab9deaac7e703116fbdd0f89a78a5ab512f67b662c10daee83"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/connection/pool.rs",
+      "gitBlob": "9e3d0600bad84aea3bc53c64925c65603c711a19",
+      "mode": "100644",
+      "bytes": 2333,
+      "sha256": "82035fc0d430780aa1a9563e69e91f511b9d26ccf0e81cdce746c687975bdd1f"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/connector/mod.rs",
+      "gitBlob": "4c719cecdd55243e944e25c6c19814422af079f7",
+      "mode": "100644",
+      "bytes": 54,
+      "sha256": "cf27ef5c828c6cd47f5b063412fd5fcdf8b6d85a0d9978d24ffda88878deee33"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/connector/snowflake.rs",
+      "gitBlob": "6b844568bfffa9428ce524d2aa45ef20cd8d58d1",
+      "mode": "100644",
+      "bytes": 6591,
+      "sha256": "ee07a4e9147c20e6227070911d3c8401962445a3d4cc398d0d9e389f9a0f156e"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/flow.png",
+      "gitBlob": "46d3fb48994d87787c56f77c2c6abe0fd6b6d0fe",
+      "mode": "100644",
+      "bytes": 1654315,
+      "sha256": "ba3780f2de2f1cd38afaf4d1c987b6351db7d52c265f50638cc1da8fdbff185d"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/lib.rs",
+      "gitBlob": "4a449e05c077c454807b264eeeaa145b455fc18e",
+      "mode": "100644",
+      "bytes": 1776,
+      "sha256": "17146a8883a2fabbd3a402fabc53e964f64f1308a3927594ff291dfe77850d28"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/schema_helper.rs",
+      "gitBlob": "bf1716932a918cd4dd86ee49039befdf50feacc9",
+      "mode": "100644",
+      "bytes": 2096,
+      "sha256": "465b48f646ee7377d3a593adcceb4003c7f61c1d637e762569c09be18a9aeae0"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/stream_consumer.rs",
+      "gitBlob": "811ca6d96d856ebd419ba1e9f1691d2e27fe4094",
+      "mode": "100644",
+      "bytes": 5180,
+      "sha256": "280ea910b6828c985111e73780dcad374030a16f1c2bae8898cc95eeb6e86efa"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/test_utils.rs",
+      "gitBlob": "a8e0e8519845602b60db93171b1031b589695b6f",
+      "mode": "100644",
+      "bytes": 549,
+      "sha256": "4517f5df2f56dcb3793860be67be79f875e9ab1863909a3e470085d1662aefa1"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/tests/dozer-config.yaml",
+      "gitBlob": "663b9f970a507c01feeabf721e22303e37ea82b5",
+      "mode": "100644",
+      "bytes": 624,
+      "sha256": "5e996755e0a83915641254be61968f833c8da1a2cf53f56ac8f9468df7bf35d3"
+    },
+    {
+      "path": "dozer-ingestion/snowflake/src/tests/mod.rs",
+      "gitBlob": "a7fda4c5f57e3a65c800f9e0264df8d8b5612f36",
+      "mode": "100644",
+      "bytes": 6613,
+      "sha256": "5ce0f0734253da072c2b865844bb90d0dbe7be95da87011f48eca8fa0fc3b606"
+    },
+    {
+      "path": "dozer-ingestion/src/errors.rs",
+      "gitBlob": "8668bc6e204e66b54820724942c08cecb275366d",
+      "mode": "100644",
+      "bytes": 1294,
+      "sha256": "ee300684a61273d60c0993475b024918c1859096e4ec64af5f39200d7090521a"
+    },
+    {
+      "path": "dozer-ingestion/src/lib.rs",
+      "gitBlob": "934429f0d32909cd6898828f371b3a21fdd2b75f",
+      "mode": "100644",
+      "bytes": 7413,
+      "sha256": "4d6eee6796f56d40650e4b142847b13301acf8b0edf450300b756d0dfbc820f4"
+    },
+    {
+      "path": "dozer-ingestion/src/tests/README.md",
+      "gitBlob": "4ef8f1e0b50c5adef99591b19bc0676406d91036",
+      "mode": "100644",
+      "bytes": 873,
+      "sha256": "82bae53cddaf21f913bd84a0bcd651df8e2c7c41d113e85fddcd36e059367963"
+    },
+    {
+      "path": "dozer-ingestion/src/tests/connections/mysql/docker-compose.yaml",
+      "gitBlob": "4959b99461659cf7cc5198b63a775ed3f2d2e68f",
+      "mode": "100644",
+      "bytes": 631,
+      "sha256": "bdba919656e97483e77b821f0e5d751d9122aeade731a2b3e262c94afdcfdd4b"
+    },
+    {
+      "path": "dozer-ingestion/src/tests/connections/postgres/docker-compose.yaml",
+      "gitBlob": "a5d1073168ebf4eeac51d70acfadcc8f12ce1212",
+      "mode": "100644",
+      "bytes": 746,
+      "sha256": "99b3aa1a8d28529d44b6c62f32cca9246456eccf9d574474c2002fac3145de16"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_connectors.rs",
+      "gitBlob": "307fa4f29ef7e7cfe160e56d4cea38f1332ac70c",
+      "mode": "100644",
+      "bytes": 1725,
+      "sha256": "85c47293502904f7e2c781ffa8ecf2e493304320bf43b77f4b64bf1475543aa5"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/basic.rs",
+      "gitBlob": "2f1e30f8834457caaa49e907be8cc14c51acffbf",
+      "mode": "100644",
+      "bytes": 12646,
+      "sha256": "c55adbf898d7df3f2945c7a2bb9b509dd34866d9cfde0f17352f9f304a4f6b20"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/connectors/mod.rs",
+      "gitBlob": "51b27e079c57a6e5b0ae76169a328751af2a9c1d",
+      "mode": "100644",
+      "bytes": 332,
+      "sha256": "efc770b1c45dfbd9142b0c2902e75c92a4aab99aa8690ebecdb318bdb5d3190e"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/connectors/mongodb.rs",
+      "gitBlob": "38c45ee48c3dcb223b89c6de1cb16f786aa253fc",
+      "mode": "100644",
+      "bytes": 4393,
+      "sha256": "4bf0a9770fceac35dde0302ec017a9e25948d73ca08c77cab910c7780b3ed933"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/connectors/object_store/arrow.rs",
+      "gitBlob": "5376a15df7e88bd3cd41eca75b72dcfb9ee8bad8",
+      "mode": "100644",
+      "bytes": 20324,
+      "sha256": "41453b34f2032f394f463fab4da72f0d06c395d36f852d16fa19f7c28ec577aa"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/connectors/object_store/local_storage.rs",
+      "gitBlob": "6a21882a6a38766b4aae3e39474ad915de84de22",
+      "mode": "100644",
+      "bytes": 3210,
+      "sha256": "9c352eefa28ea5f056a9dba0de5d8c235fc897b4ec893f099e583163ecb23c34"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/connectors/object_store/mod.rs",
+      "gitBlob": "aee220ddf6f9623a517d3dc0f9a43ebf6b77b93c",
+      "mode": "100644",
+      "bytes": 92,
+      "sha256": "7665e44255f306b133d4e97827a46a4a70bf2f7917fcf2cfac752706609d056b"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/connectors/postgres.rs",
+      "gitBlob": "681cc99b959fc7a14c61e5fa424c3cd66fcbb274",
+      "mode": "100644",
+      "bytes": 5493,
+      "sha256": "38115ca89eb2b678bbe6d68d56c15a61216a8b2b80fcd04ae223c53cc8258fcc"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/connectors/sql.rs",
+      "gitBlob": "3608f1214cbe97760d50a764fd7dbcf25ab5f7ed",
+      "mode": "100644",
+      "bytes": 10194,
+      "sha256": "86df28fdea42b69c8e3315c645588bbb4757368fcc4d9c208760893659c56bf2"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/data.rs",
+      "gitBlob": "fa3c9d6ceb81b1a917172a122cb7a2ac7c0a9729",
+      "mode": "100644",
+      "bytes": 2135,
+      "sha256": "12114eba3988309a5066a610da154a0d593398ebdeec9e1f55bd861cf99f238f"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/mod.rs",
+      "gitBlob": "58ee1af7e5b46ef4d50bec3f073b7a7a570e6d00",
+      "mode": "100644",
+      "bytes": 1686,
+      "sha256": "e0e3a274d9bdaa79941a2ea8c2e862e9a7f0eb6c5ffa5cba03772f0baffbef29"
+    },
+    {
+      "path": "dozer-ingestion/tests/test_suite/records.rs",
+      "gitBlob": "8b709efa2d570e0754df1e34c98907616678d965",
+      "mode": "100644",
+      "bytes": 1595,
+      "sha256": "0ff8b10a375d5cf5b929ff606f402cd30414eff3c5d4081dc250d703cd4b4317"
+    },
+    {
+      "path": "dozer-ingestion/webhook/Cargo.toml",
+      "gitBlob": "ddf467775af24d0a253a78d7c37f2014426cbc93",
+      "mode": "100644",
+      "bytes": 467,
+      "sha256": "e9fefdb88536dd1c11a19f12188d2bba0b023ca92afc3293921047c4ae3831bf"
+    },
+    {
+      "path": "dozer-ingestion/webhook/src/connector.rs",
+      "gitBlob": "84d9f087644b4e051b4954a367d10d7351b7762f",
+      "mode": "100644",
+      "bytes": 4788,
+      "sha256": "a05ec8f5563ab92fa7e2d6eb301bd244a2be4981f4454827b7e772a736c38e7a"
+    },
+    {
+      "path": "dozer-ingestion/webhook/src/lib.rs",
+      "gitBlob": "ee1a902034d1e7d21614e24f9129ecdf8d16857f",
+      "mode": "100644",
+      "bytes": 762,
+      "sha256": "e1ba2f85d677667414d086fe281feb5cd83dddaf3cffeb5edeff052e2332e052"
+    },
+    {
+      "path": "dozer-ingestion/webhook/src/server.rs",
+      "gitBlob": "b226c3cc311670dcbc7637a89b9fef11078518dd",
+      "mode": "100644",
+      "bytes": 7283,
+      "sha256": "ac311228c994f2d0bbfe7d4c24cb3282021407aa2b154454d4d488354a3401c8"
+    },
+    {
+      "path": "dozer-ingestion/webhook/src/tests.rs",
+      "gitBlob": "00020b711adebeae92342b403869a37a92bf5e04",
+      "mode": "100644",
+      "bytes": 6284,
+      "sha256": "294ee8a2f6aa6fe5753ff3adb87049cd009bcb23270b2706a70b934f05599152"
+    },
+    {
+      "path": "dozer-ingestion/webhook/src/util.rs",
+      "gitBlob": "333a30c09a6917ff561b516de6e655f2d31316a7",
+      "mode": "100644",
+      "bytes": 5979,
+      "sha256": "3a6a10f7236ba90556909843d97804ceaec103d3bd594049eb29c11876b1e186"
+    },
+    {
+      "path": "dozer-sink-clickhouse/Cargo.toml",
+      "gitBlob": "47b93314c9314a54a5c0f5d0948a5580656d941e",
+      "mode": "100644",
+      "bytes": 428,
+      "sha256": "01e0090ca6fc14f4590b8a49ee5997118dfbd48143fba4bed5790fdcf00eae9f"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/client.rs",
+      "gitBlob": "3df34f4c3a5643b6dd0d6f60a4734106d20358f0",
+      "mode": "100644",
+      "bytes": 4713,
+      "sha256": "441a639e8fe53c49a153b359f18a3302ad70bab873f82a15c3a0b6c881c5a0de"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/ddl.rs",
+      "gitBlob": "aa4da3f1bf13d0a9cc6311f454f0ededd3a40405",
+      "mode": "100644",
+      "bytes": 2341,
+      "sha256": "d7936d291d17b93939e49fbf214c98c697e36ae188fa2f78e6e9f76b9e1af3c3"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/errors.rs",
+      "gitBlob": "afa0201f8d02141198dc2c815b1231e4b5ccc57c",
+      "mode": "100644",
+      "bytes": 1391,
+      "sha256": "1ce871166b9842104dae29dada4bc1d81f17255ae96e4c478e3e42ed671aff50"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/lib.rs",
+      "gitBlob": "426b54ba6ce6e596488b810a75f65d35151e125f",
+      "mode": "100644",
+      "bytes": 165,
+      "sha256": "335a8ce30322da3616f5ad4671bdb1581dc1afb922005e82988eca32b0a83624"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/metadata.rs",
+      "gitBlob": "d5c6075c807b737dcb940d36ced295460b1bc54c",
+      "mode": "100644",
+      "bytes": 1529,
+      "sha256": "97c840ebaafa7dcb0fce93b441a473de1930715291e11942885efe1c624dc344"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/schema.rs",
+      "gitBlob": "14c21f0a308dcfa911b4fb0cee078d9a6661d3a8",
+      "mode": "100644",
+      "bytes": 5788,
+      "sha256": "7aa70f533c9ef65106ad96c1be3b77a6db6a4e2648bb71b944fc5344ff1c8ed1"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/sink.rs",
+      "gitBlob": "06dbd8e1a2e810a62c748c1bf4c07c16f2711ddd",
+      "mode": "100644",
+      "bytes": 10847,
+      "sha256": "cae5942a7eee608f58b8f4c55f067314eadb452a07090d0267cf2ea59daa5b35"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/tests.rs",
+      "gitBlob": "859eb42458201ce54f1b50c59e468147850c9329",
+      "mode": "100644",
+      "bytes": 3110,
+      "sha256": "611d3025fb7ba0230db1ce2746cc6f25fdbc00966c1942ea27fb48af62e35665"
+    },
+    {
+      "path": "dozer-sink-clickhouse/src/types.rs",
+      "gitBlob": "1994b6b3c61ff9925a6c02afc5d9a76fac014ae3",
+      "mode": "100644",
+      "bytes": 12292,
+      "sha256": "f56eb1cfc8c01bf0d5878d32f7cd275355d69113d03b2490d0364cb0188a1f26"
+    },
+    {
+      "path": "dozer-sql/.gitignore",
+      "gitBlob": "f315ad9fc5c695fc89fe83195627db84a47d2d16",
+      "mode": "100644",
+      "bytes": 415,
+      "sha256": "3b729f2785abb35d036c4b751069a57cf23a6b6c9b585a2e9b9c1475bdb21b90"
+    },
+    {
+      "path": "dozer-sql/Cargo.toml",
+      "gitBlob": "28bb354f41ef141844fea0013b219a7ba46790bc",
+      "mode": "100644",
+      "bytes": 825,
+      "sha256": "95446693cca95630763faf1b88e7e7607f697d24388b929373b703d728da2952"
+    },
+    {
+      "path": "dozer-sql/examples/dynamic_in.rs",
+      "gitBlob": "726e417c8e3a6bc8e2d7e1b56d785389c57e09b2",
+      "mode": "100644",
+      "bytes": 3567,
+      "sha256": "38f5aa646790590193e0e388735c4aa12a04c2cfa081a07a30b04ee920ba310a"
+    },
+    {
+      "path": "dozer-sql/expression/Cargo.toml",
+      "gitBlob": "3423d7904a3feb3d9184abc2c3e4cdbaa56d1f0f",
+      "mode": "100644",
+      "bytes": 1031,
+      "sha256": "4d54653a24b0e2c93477a0e859ec4ca9c4ed72aabd7201b8aa9e0e46a7c1028a"
+    },
+    {
+      "path": "dozer-sql/expression/src/aggregate.rs",
+      "gitBlob": "e194d66372dd8fd204def407f54ac17c3d9bb23e",
+      "mode": "100644",
+      "bytes": 1774,
+      "sha256": "3cd362b55159881d45aefdb3b96d271a9062dcb8606c49f57a518db69d689b44"
+    },
+    {
+      "path": "dozer-sql/expression/src/arg_utils.rs",
+      "gitBlob": "5c625b91ed8b7a40ba1f299baefab96405d167c8",
+      "mode": "100644",
+      "bytes": 3239,
+      "sha256": "97945f1c1b1504364dc2a88bc4a1b2cfedb3ee7cfb1d24aa6f57fcb5dfa5b6fd"
+    },
+    {
+      "path": "dozer-sql/expression/src/builder.rs",
+      "gitBlob": "cefcda003985ccf88f0dea261ccaec0e9be860ff",
+      "mode": "100644",
+      "bytes": 35224,
+      "sha256": "8176e280fe6020f3019270973eb125754e08537b8fcdaaea5a6011c2dcfa90d6"
+    },
+    {
+      "path": "dozer-sql/expression/src/case.rs",
+      "gitBlob": "6a09e7a2bfcb5cdf50366b10e7d5d2b0cbf27735",
+      "mode": "100644",
+      "bytes": 955,
+      "sha256": "15213ba12630ba2426f92d4b288e399eda9b6a8d50cdd613b7360a1819b9af74"
+    },
+    {
+      "path": "dozer-sql/expression/src/cast.rs",
+      "gitBlob": "7c84720676b7e3fc9d2d6ecff0599204c4f725d4",
+      "mode": "100644",
+      "bytes": 12583,
+      "sha256": "89da8df3b4b09b48a298796d9589078aae71ae6c12bae34b8f16b824ab4be8fe"
+    },
+    {
+      "path": "dozer-sql/expression/src/comparison/mod.rs",
+      "gitBlob": "644815288d8f19a46d12189c4f3bda85cfa0d358",
+      "mode": "100644",
+      "bytes": 92670,
+      "sha256": "b852fecf2876c9b46eb6ae76bf3cd661c520da7ab732ae08c3a85168007cb83f"
+    },
+    {
+      "path": "dozer-sql/expression/src/comparison/tests.rs",
+      "gitBlob": "17823e133cda554e1af52967f8110e887943fa45",
+      "mode": "100644",
+      "bytes": 25534,
+      "sha256": "62319b22e19c77f6bf8a3abaa9578c75572d06c0bbef51fd730c9f87ac4ca4a3"
+    },
+    {
+      "path": "dozer-sql/expression/src/conditional.rs",
+      "gitBlob": "4c36755f15d269935235587c486881ef9b8e2ab8",
+      "mode": "100644",
+      "bytes": 15336,
+      "sha256": "b86ed38585d38b2a3cd1cdbc6b1e97605572d4c31682738c855ec722e5ddb499"
+    },
+    {
+      "path": "dozer-sql/expression/src/datetime.rs",
+      "gitBlob": "ae864da9a97befde4727b487c64b5873edd45ae3",
+      "mode": "100644",
+      "bytes": 8642,
+      "sha256": "c1ef10364a1ec426edb40ada954031f374de3f9d4318fe380226d906bf335e55"
+    },
+    {
+      "path": "dozer-sql/expression/src/error.rs",
+      "gitBlob": "7078229713ea59b002bd79e07096c08d8ca77de8",
+      "mode": "100644",
+      "bytes": 4815,
+      "sha256": "7b4058e44d3f1cebecefe7c3ae74cc300a0cf51d85b8d38f0e795fcf1b3e61d0"
+    },
+    {
+      "path": "dozer-sql/expression/src/execution.rs",
+      "gitBlob": "1c2891b23432dfa76a4dac92f50677a3c0dce77a",
+      "mode": "100644",
+      "bytes": 41285,
+      "sha256": "5cca290b1ff9ba79af30156ced08f1d44f6c6dcdc089e1cb24a98d60c91ecc55"
+    },
+    {
+      "path": "dozer-sql/expression/src/geo/common.rs",
+      "gitBlob": "9022f28c695ae044e4149bef30add4f12a4aa049",
+      "mode": "100644",
+      "bytes": 1610,
+      "sha256": "3a5276b148121501189667f56f083c058e66b6efa9f3969066c77054c4a92340"
+    },
+    {
+      "path": "dozer-sql/expression/src/geo/distance.rs",
+      "gitBlob": "082a47e87a0fa6a1c5a5caf50605c69110507622",
+      "mode": "100644",
+      "bytes": 9014,
+      "sha256": "b2df07ccbafb48c5be520112fbb4aa5af91fd73bbdbc43b5be0244312434e605"
+    },
+    {
+      "path": "dozer-sql/expression/src/geo/mod.rs",
+      "gitBlob": "c718300627dad4450aed704efeade10eb1327198",
+      "mode": "100644",
+      "bytes": 49,
+      "sha256": "a261d78e986203cfbc64969fb1e210526897fb1a1096340036866c50edc01150"
+    },
+    {
+      "path": "dozer-sql/expression/src/geo/point.rs",
+      "gitBlob": "378749a426d57b139adbf46a953deb3ff08199a7",
+      "mode": "100644",
+      "bytes": 6482,
+      "sha256": "3c23a87b5660c29e2c996904bb23ba7de02f7c0d0eb16e346b32d02acc17bf10"
+    },
+    {
+      "path": "dozer-sql/expression/src/in_list.rs",
+      "gitBlob": "d538214d6586991bfe3098e672804bd0071925b0",
+      "mode": "100644",
+      "bytes": 685,
+      "sha256": "85bbdc2b4eaaf8b1d2be0cd2355a0757b68e044855944ae8c2131fa5b7315338"
+    },
+    {
+      "path": "dozer-sql/expression/src/is_null.rs",
+      "gitBlob": "5d682991f7db4e90c40b65af6c31110604feac38",
+      "mode": "100644",
+      "bytes": 1457,
+      "sha256": "c54ab169a63e85da3047f98a614264238ebae1f33d298f1ec369d38c2910d90f"
+    },
+    {
+      "path": "dozer-sql/expression/src/javascript/evaluate.rs",
+      "gitBlob": "c2c4b7023d1469ce14f5628c64de97d723f1f10f",
+      "mode": "100644",
+      "bytes": 3651,
+      "sha256": "1b6af5125b5f438971a3cb00237a5b145593b5d262b7eafdce9c286dc61171f2"
+    },
+    {
+      "path": "dozer-sql/expression/src/javascript/mod.rs",
+      "gitBlob": "10a48e17566a9e264a14b7c721f78a540c47c613",
+      "mode": "100644",
+      "bytes": 94,
+      "sha256": "9d17ec4121d953ef22885072567ecbceed23de577daade25b1783518aff5df0c"
+    },
+    {
+      "path": "dozer-sql/expression/src/javascript/validate.rs",
+      "gitBlob": "b6359ae78af595284ec0920cef684ddf01d86277",
+      "mode": "100644",
+      "bytes": 712,
+      "sha256": "7d69513fe5b985ca3a3978aff85bcb6f6e83d863b3845c8c16e40f4a6606c769"
+    },
+    {
+      "path": "dozer-sql/expression/src/json_functions.rs",
+      "gitBlob": "d7528bbfa167b7e6d29a82ed29c12b14b5f5ae24",
+      "mode": "100644",
+      "bytes": 3674,
+      "sha256": "2e660e154f0067f797733e44f8bdcd9d52bea505c28c730907e27802f80d794a"
+    },
+    {
+      "path": "dozer-sql/expression/src/lib.rs",
+      "gitBlob": "c94463f9d9702b1bfbbffbe9af135c84bca89b6d",
+      "mode": "100644",
+      "bytes": 2572,
+      "sha256": "2273492611c01dbb47b554bff48b0b9fed1d4421ce40035e6150172191313882"
+    },
+    {
+      "path": "dozer-sql/expression/src/logical.rs",
+      "gitBlob": "63a9017840421e3f9c878788cd193f5638541d3c",
+      "mode": "100644",
+      "bytes": 11235,
+      "sha256": "53ca6e5f0a56dc0829f4911b50cc3c37c695d21ef2074305444b8333607aa448"
+    },
+    {
+      "path": "dozer-sql/expression/src/mathematical/mod.rs",
+      "gitBlob": "fa084be15e07613290941dfa5fb78617b3645bd6",
+      "mode": "100644",
+      "bytes": 125087,
+      "sha256": "3f7aa73a4f6cd6a713ca4c5fb93c8a7e6e9431e658c7990b59eeba5f41d1784e"
+    },
+    {
+      "path": "dozer-sql/expression/src/mathematical/tests.rs",
+      "gitBlob": "87ce450ceb8d4d0d71d87b4f7cb44fc64c2f96b5",
+      "mode": "100644",
+      "bytes": 105047,
+      "sha256": "e79816be2d3b986d3b084c6f800c9ae441b901b8c43322b54c4ead1d16bab426"
+    },
+    {
+      "path": "dozer-sql/expression/src/onnx/error.rs",
+      "gitBlob": "2765f25fcb9bba42f7a60101d7b5786b43a4fa28",
+      "mode": "100644",
+      "bytes": 1613,
+      "sha256": "bf74a82d47334e17efe0d3ecb485d78b9dbc7a26a9a94f5a466cb20b03871d56"
+    },
+    {
+      "path": "dozer-sql/expression/src/onnx/mod.rs",
+      "gitBlob": "ce74b51382ff9d0438a73d0d26fcac1a59d57202",
+      "mode": "100644",
+      "bytes": 269,
+      "sha256": "e7bb7d73ab1db91ed486ce6e742fe5e6f3e21b24dc93064ac6f772a02a6a3d6e"
+    },
+    {
+      "path": "dozer-sql/expression/src/onnx/udf.rs",
+      "gitBlob": "0741c31b32a5b5a94fa7fd753d345ab015d438bc",
+      "mode": "100644",
+      "bytes": 36376,
+      "sha256": "bdb1d3b520b9df053fce0abb48fd3d4c7842813129f5922c0892e14444569939"
+    },
+    {
+      "path": "dozer-sql/expression/src/onnx/utils.rs",
+      "gitBlob": "126ac2dc126d6946e59f1fea8b245f1c8329c7de",
+      "mode": "100644",
+      "bytes": 5201,
+      "sha256": "d4d8a3ae9623736144f314bbe6be5bec57caaa510b67fb29dbe01ae5656f918e"
+    },
+    {
+      "path": "dozer-sql/expression/src/operator.rs",
+      "gitBlob": "55889dbfdab747644bc374db11def5c878df6d80",
+      "mode": "100644",
+      "bytes": 3570,
+      "sha256": "15c588034ba809c3d63687c1d4290043abbe7fc284bf509f523fe46ecc1f4cd7"
+    },
+    {
+      "path": "dozer-sql/expression/src/python_udf.rs",
+      "gitBlob": "25f5394f0491fb341136c7112570f94b2457910c",
+      "mode": "100644",
+      "bytes": 3132,
+      "sha256": "08b76e4c87e64e30f1d481be6b4bf61fb880d20c37d4ce5c7a1ef72e1b424e70"
+    },
+    {
+      "path": "dozer-sql/expression/src/scalar/common.rs",
+      "gitBlob": "1698f11809efe377cb8422c3f5cc75e7cdb42032",
+      "mode": "100644",
+      "bytes": 7810,
+      "sha256": "41b3fe5d453a5855b25cc01b5ceb22387f98610f48d484eaeea34edcdec69f2d"
+    },
+    {
+      "path": "dozer-sql/expression/src/scalar/field.rs",
+      "gitBlob": "6ce434c7069ed8b9d61152a5084b621341b2ab17",
+      "mode": "100644",
+      "bytes": 3300,
+      "sha256": "d2e40f16b37ae654648a6dd4666c8606ca799c76f7131402798540c1e33c763e"
+    },
+    {
+      "path": "dozer-sql/expression/src/scalar/mod.rs",
+      "gitBlob": "08358522c3023ad09a6758fb0980187ee9e44047",
+      "mode": "100644",
+      "bytes": 63,
+      "sha256": "77055ce7b45d51a7997cf7643e1792302fc9dc42507273adf56947f322aeb3bc"
+    },
+    {
+      "path": "dozer-sql/expression/src/scalar/number.rs",
+      "gitBlob": "787d4259075c1518b9bbb12cc1b562428160552f",
+      "mode": "100644",
+      "bytes": 7191,
+      "sha256": "b3c00dfa3bd2ab365bf089eefc4075a58051cfe13494084f46bce336a1ddec64"
+    },
+    {
+      "path": "dozer-sql/expression/src/scalar/string.rs",
+      "gitBlob": "7e557fe63cddaded7d2d1308ffd9bf85a331e377",
+      "mode": "100644",
+      "bytes": 28812,
+      "sha256": "8440075436f3d72a7f6580bcc3daac334d03ecff0467024e95c1764cd2205bd8"
+    },
+    {
+      "path": "dozer-sql/jsonpath/Cargo.toml",
+      "gitBlob": "82bab342961953f47123bacb41abb97d7e8d39a7",
+      "mode": "100644",
+      "bytes": 669,
+      "sha256": "7ea1438a862bc84de34c7ae927ebd46fbb99270bf8c8dd677d068587baab85e9"
+    },
+    {
+      "path": "dozer-sql/jsonpath/LICENSE",
+      "gitBlob": "3e7627bcf97ce9927624cee56cca25f0d8856f2a",
+      "mode": "100644",
+      "bytes": 1075,
+      "sha256": "4c05531cc6b57add55852d79fad3afa6b6a62121d4cc1f963e5bc1ae11c6cef7"
+    },
+    {
+      "path": "dozer-sql/jsonpath/README.md",
+      "gitBlob": "63d6c29056751d020f2875426cb76ba225bd72fa",
+      "mode": "100644",
+      "bytes": 159,
+      "sha256": "1859aca151ccda2a177771386e5fa7cc26bd33d426a1e1219ce05fdae05089bb"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/lib.rs",
+      "gitBlob": "9a145b9d1d8ced82351dc145620b66ea87dd6d97",
+      "mode": "100644",
+      "bytes": 6443,
+      "sha256": "9a8844218ae9520bb4c5b5a8a70ad496c01fc48c588915f140f53973149dc057"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/parser/grammar/json_path.pest",
+      "gitBlob": "a0ed9594b67205d30845763293fd58221991ead8",
+      "mode": "100644",
+      "bytes": 1778,
+      "sha256": "7c533c353f0a1f5ea622dbb3ec1b288382d85d33f2adae62104b016171112df9"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/parser/macros.rs",
+      "gitBlob": "e8847005aad7bb9557113e5b11ee780becd95d8e",
+      "mode": "100644",
+      "bytes": 2620,
+      "sha256": "c2beb959b6d040b7534af598d9f8880c3cabe821c335b3994d8d191017474666"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/parser/mod.rs",
+      "gitBlob": "9077ad6c64175277fc4584944f5777438916a676",
+      "mode": "100644",
+      "bytes": 180,
+      "sha256": "42804770d57d9ab80d37aa431a103d40dc7e1035c2815e50cdf5a97f0d487786"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/parser/model.rs",
+      "gitBlob": "094c6e566ca4750519a8634bece273c3b46b2ae1",
+      "mode": "100644",
+      "bytes": 5006,
+      "sha256": "6fd449e446af0dae077b0abcf0e63691287143cfb7208268958f46ab29d007bd"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/parser/parser.rs",
+      "gitBlob": "c66db97001546e3ce1d904dd72b0ee061afd38e0",
+      "mode": "100644",
+      "bytes": 6983,
+      "sha256": "65d976907788a9208d1ee49163c80c1b5b60910e899aa0ce7c92c12a03cffe24"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/path/index.rs",
+      "gitBlob": "50289374d1b3bbebb31b0ad707142454212d8b02",
+      "mode": "100644",
+      "bytes": 10115,
+      "sha256": "51820a7674c95dca2dd58ca687a2e36065060188611f1bf550b934293feb3d35"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/path/json.rs",
+      "gitBlob": "f805f7525c0e5e46b70fc94910c45749674eac7e",
+      "mode": "100644",
+      "bytes": 4456,
+      "sha256": "e0397e2ab60274aacc363ea4d65bb3be9d1fb11f16441c1ef4e8827abec419dd"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/path/mod.rs",
+      "gitBlob": "edbf8ad4ade736d53899a1a790ae0ee1efd7db52",
+      "mode": "100644",
+      "bytes": 3482,
+      "sha256": "3a8ee21b658cf1599cac70d92825ccc48138196017bea2c44650a93344baa797"
+    },
+    {
+      "path": "dozer-sql/jsonpath/src/path/top.rs",
+      "gitBlob": "4cd5611fcd202df2eebe0d0b10b6e1f5d1925a92",
+      "mode": "100644",
+      "bytes": 8358,
+      "sha256": "0bab4f7cebd027d8a156c33e2c5bc4c7f0036fa3a76a759f6911ed57fbba8011"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/aggregator.rs",
+      "gitBlob": "bf5c4521c4a4164f86b4f0555fcbcf48ac22be82",
+      "mode": "100644",
+      "bytes": 18799,
+      "sha256": "3ffbe83ffd905da0d6fc26cafa083b01df9a357aa2346b89a36859b1e84f85d9"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/avg.rs",
+      "gitBlob": "92878cd5d7fd2528170c9eb1d8b946c8849890b9",
+      "mode": "100644",
+      "bytes": 5981,
+      "sha256": "33978007b1dbb5d6641e9ffe95cf226b6a78d28d411f1ae7c309d16fd69c2bcb"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/count.rs",
+      "gitBlob": "d653f68ba732d371138aed9ba6afe10d792beabc",
+      "mode": "100644",
+      "bytes": 2642,
+      "sha256": "89880c1e7a76c262d9b52799e5c4e807da6f0ee2d29ece118addfa6b06ff69be"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/factory.rs",
+      "gitBlob": "a84ca68135da25838cd53a74a8605cf845e19a28",
+      "mode": "100644",
+      "bytes": 5468,
+      "sha256": "3c1eb21983aaaff1df7b697ce4ebca3f13e635cf9d601fd321793588c09e173d"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/max.rs",
+      "gitBlob": "cc67f9418cf209d85e500c951b96c4f12263e2fd",
+      "mode": "100644",
+      "bytes": 2104,
+      "sha256": "1c9c21dce8ce0e5488bfb2e9e3991cf411f8fa10ee360c235db1026598b51c6a"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/max_append_only.rs",
+      "gitBlob": "d586ff5eaed0e1a61292703db6c3940ea85637d0",
+      "mode": "100644",
+      "bytes": 8030,
+      "sha256": "6e35408cfbd9b61ba55c62d5ce53e302f7f4b0548f1c0db84f9a424a4ffd9596"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/max_value.rs",
+      "gitBlob": "2e39568af533eb9810e09af2c93d2148d232e5e3",
+      "mode": "100644",
+      "bytes": 2387,
+      "sha256": "e6a9120012ea93d056c86cb2b56be1b5d91d019466a9ec3e5482bed0c62cb714"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/min.rs",
+      "gitBlob": "767fb9bce9fc303b00fbc5ba52260884b72a5131",
+      "mode": "100644",
+      "bytes": 2136,
+      "sha256": "978170eb913cb878e3f310f55f9f4603af5bed10c046aea33c99c9b9aba5307b"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/min_append_only.rs",
+      "gitBlob": "6dbd4717012e35ba73cba31eff449ce3aeaab5d2",
+      "mode": "100644",
+      "bytes": 8029,
+      "sha256": "acba9cf4cfb4e3cce1b2bdd04ad1a8a10443f0df3a36df8b603911df435fc117"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/min_value.rs",
+      "gitBlob": "845635649e72673b5155efb26f295ea83510ed37",
+      "mode": "100644",
+      "bytes": 2387,
+      "sha256": "083cd5438df344019da788b9bcd48f87e4b4b8f934bdad426c8ba92eda46ab73"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/mod.rs",
+      "gitBlob": "21bfebdfc827ea100877637b4cadd6e6a594b0da",
+      "mode": "100644",
+      "bytes": 223,
+      "sha256": "e0a7e9c554fd64e22fde79b7a8ebef4c45fa5f6571b260a222e92a1a9262ddcc"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/processor.rs",
+      "gitBlob": "4a9400c6b0627201dd8eb22ae5cecc5dc4c5877f",
+      "mode": "100644",
+      "bytes": 20155,
+      "sha256": "5635082802d104098762805fa86727e5e9f3b26cfad7fd43f81d5c009815ef07"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/sum.rs",
+      "gitBlob": "03c16b7482c130ac375381592e8dc97b8cd6a352",
+      "mode": "100644",
+      "bytes": 7619,
+      "sha256": "c2a738f559a7cd35cbcaf969d4e5a5f27c487bbdbcb50b4e159cad72612905e9"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_avg_tests.rs",
+      "gitBlob": "2bfad812303af69492d5db780803f2be41a563ab",
+      "mode": "100644",
+      "bytes": 24984,
+      "sha256": "0b796f3902678f28e2371cfe9fa453ab37207f906c1714b9c28d8772c57def18"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_count_tests.rs",
+      "gitBlob": "41a57f50e962b1a7053e68e30ac1422ad15786b7",
+      "mode": "100644",
+      "bytes": 24023,
+      "sha256": "1adb48babae548829ac304e2e5813c308e068b542c524d604d61497f2ec2ac1b"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_having_tests.rs",
+      "gitBlob": "20d5ea801c94716997a0d578efcfb76f0e3398c6",
+      "mode": "100644",
+      "bytes": 7508,
+      "sha256": "cdcea98d4282fbfedbe33401d11801f0d3d37535d6dec3ef5f9ea1ee7e5d9a45"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_max_append_only_tests.rs",
+      "gitBlob": "d26fbf2004bab1ffb212a3ddd98f7e8add6578c5",
+      "mode": "100644",
+      "bytes": 16630,
+      "sha256": "9c1f29d3550a8e7b1b4891e61ef302a590a527f6fbcbfc48251c90ed1909d57a"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_max_tests.rs",
+      "gitBlob": "daccb788e3c8d20ff7da2d06359afc09bbdd2762",
+      "mode": "100644",
+      "bytes": 33905,
+      "sha256": "884766a1327236c4c4d1036c0ed2049f40ac831a31d34ffc5770ecc99edfa7e8"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_max_value_tests.rs",
+      "gitBlob": "ea6f900865f7e3e5f8d740ca13ea0a3efb151e70",
+      "mode": "100644",
+      "bytes": 38528,
+      "sha256": "470b1b9bff531bfce93c1b707b75c891214321cdfdbe27645796f0764a9fc089"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_min_append_only_tests.rs",
+      "gitBlob": "7b66d5cac2f557d5ac8a378c9c86be0fc1718a38",
+      "mode": "100644",
+      "bytes": 16630,
+      "sha256": "f583efed0781c658b4fc0b95fdc57734db11e065e7948b69a7d5657765f51995"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_min_tests.rs",
+      "gitBlob": "d1ff5d2a16aee241fff83cc52c71de7829601823",
+      "mode": "100644",
+      "bytes": 33835,
+      "sha256": "179757c5c71a2d6997e771ae570407cf1dc3bc9f40a37c6dd08d1cacf359b1e1"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_min_value_tests.rs",
+      "gitBlob": "0ec34b08c09f80f1d59b1582e841bd63938b1fe5",
+      "mode": "100644",
+      "bytes": 38288,
+      "sha256": "477d961adf13fe685115e7f4c25a1203c0d37351cc89b8fc95097d79753a4c97"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_null.rs",
+      "gitBlob": "4965cdc125dce194cc8bbc29f417ff8f439e7e11",
+      "mode": "100644",
+      "bytes": 2332,
+      "sha256": "44d059b179bdb277377c0ce6aa8c235cb719aeb71c1f5c5139fc33a3e644c41e"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_sum_tests.rs",
+      "gitBlob": "7bc07b01a40c159c44bcdd849b9c1974ad016a47",
+      "mode": "100644",
+      "bytes": 23958,
+      "sha256": "1be83c26cb03aa1c93d62f1b40568b8f022fca5d3d618d903b0772cfd5cb81fb"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_test_planner.rs",
+      "gitBlob": "cc2207ea915443490b05ae2fa85ee21e7b4ae33b",
+      "mode": "100644",
+      "bytes": 3669,
+      "sha256": "f051cc90d6df96d1cf103385b5cf282adf81fefa239c155347ca7fa1fb18bd4f"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/aggregation_tests_utils.rs",
+      "gitBlob": "4a81283f3302448858b799b4c916dba8ba54ec0b",
+      "mode": "100644",
+      "bytes": 9607,
+      "sha256": "8ea776e17e3fd009d52924100e8fa281e9cd8b99ec6e36b5d722a537600e5c3f"
+    },
+    {
+      "path": "dozer-sql/src/aggregation/tests/mod.rs",
+      "gitBlob": "9d5eafa52cbf6e8254e80799d23a8c00c034837b",
+      "mode": "100644",
+      "bytes": 562,
+      "sha256": "e3de06d944a7bc5b63c431a8cc632e00bf4c6c875fc6f4bcba818796c1ae5bd1"
+    },
+    {
+      "path": "dozer-sql/src/builder/common.rs",
+      "gitBlob": "f897105030c8d8d466bc36da9d3522d222a5373a",
+      "mode": "100644",
+      "bytes": 3125,
+      "sha256": "b1caa7a8dc6f975acffb634efcddf3f6bed5a72b5db1df6b8671bf5242ba67dd"
+    },
+    {
+      "path": "dozer-sql/src/builder/from.rs",
+      "gitBlob": "29c1850b6498e25fc99628559522683b60712705",
+      "mode": "100644",
+      "bytes": 4168,
+      "sha256": "9247006ea9aed28cb4978406f3d7c64257ef8c053ed0ff07975572ef3e2d653c"
+    },
+    {
+      "path": "dozer-sql/src/builder/join.rs",
+      "gitBlob": "f24b85de6f5da470594d605fa4ddcf3a4e6b03c2",
+      "mode": "100644",
+      "bytes": 5458,
+      "sha256": "a41573e0987aaea4199908e8cb8c241580a3961b090133a0a72a64e1d681549e"
+    },
+    {
+      "path": "dozer-sql/src/builder/mod.rs",
+      "gitBlob": "3c6ad13810b051908e00a15ccdc6194e98d23897",
+      "mode": "100644",
+      "bytes": 20379,
+      "sha256": "8cd8473ff02f1ecd3aaab08227f8a6201e9a882b45ad73369a1aa7450e691e9b"
+    },
+    {
+      "path": "dozer-sql/src/builder/parser.rs",
+      "gitBlob": "8825b82a80e820e69b794eddfb4a29ad2e6c4cd6",
+      "mode": "100644",
+      "bytes": 5263,
+      "sha256": "8ecd57fe5905b1a07f01dc1d1eacea4b3e6bd949ea14de97b3586e67f5731ce8"
+    },
+    {
+      "path": "dozer-sql/src/builder/subquery.rs",
+      "gitBlob": "55dd605f62ffabd1cb93682d0354a8ef5d366e06",
+      "mode": "100644",
+      "bytes": 15198,
+      "sha256": "4be6f05fe508b72ffaed332702a9fe6cd620bfc597342c5ef0dd93d75c3526c6"
+    },
+    {
+      "path": "dozer-sql/src/builder/table_operator.rs",
+      "gitBlob": "3f1001e6c6704f99fd3ebbb236e63dc353ed99e6",
+      "mode": "100644",
+      "bytes": 6339,
+      "sha256": "eaddb28ab081963d6ca8585dad6e333f9f5432e6e418df29d5c52ac1e9d8e859"
+    },
+    {
+      "path": "dozer-sql/src/builder/tests.rs",
+      "gitBlob": "0426c4dc847e4f4d88cfe98f856e3539742efaf7",
+      "mode": "100644",
+      "bytes": 5673,
+      "sha256": "a7f9978a52536d2d96a5c1f70b02d319643254d072f96be08d42421aa94ed2d7"
+    },
+    {
+      "path": "dozer-sql/src/errors.rs",
+      "gitBlob": "0182b855947b52f00fba85ee8236037c17f23abc",
+      "mode": "100644",
+      "bytes": 10908,
+      "sha256": "6ab310ead404c0ea1d9c02363606d13aed00a735c0c020b0de6c8776af3bb4c6"
+    },
+    {
+      "path": "dozer-sql/src/expression/mod.rs",
+      "gitBlob": "87c2771955a9d1fc25c7b8f615f1afeffa52aa29",
+      "mode": "100644",
+      "bytes": 24,
+      "sha256": "ed6a6ed2629a5e28fec619c5e7f030309b98af77d33e77afa1fd47782e131c5f"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/case.rs",
+      "gitBlob": "e5e07c788bafd7a0d92d2b77159d2288c9ff12d7",
+      "mode": "100644",
+      "bytes": 3223,
+      "sha256": "82dbf553b865960234aa321f6353b49df5adfc29b091c3c116fea6996fee6699"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/cast.rs",
+      "gitBlob": "2bdfc701f1cc16cad32acdfbfd7a8efc38456483",
+      "mode": "100644",
+      "bytes": 22072,
+      "sha256": "51af28a09e462016987ade46c6beff66f7e1e74c90be95d909202f11c5c5d0a0"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/comparison.rs",
+      "gitBlob": "235fef0a3e8ed36da08bf0de8685fabbda0f291b",
+      "mode": "100644",
+      "bytes": 4724,
+      "sha256": "98c6c0806707961ff77ef018a32bf61c30b4234431b418107106ce136f035594"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/conditional.rs",
+      "gitBlob": "8148e7073571028a5e605dfd4e7166d83c989e80",
+      "mode": "100644",
+      "bytes": 2593,
+      "sha256": "47d3bb5308f42a9ed49e8530506170f875e95ba946fd49117d45b157c23cebb1"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/datetime.rs",
+      "gitBlob": "24d04d856ba6cd2815e5415980742be2f48b9093",
+      "mode": "100644",
+      "bytes": 5327,
+      "sha256": "40f050b86f29cad777d95d676f043844902c8122b19b7db89b02c88d07ece59f"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/distance.rs",
+      "gitBlob": "fa1a04ff49d26bfaf03782ed1a4834bb2eff6d41",
+      "mode": "100644",
+      "bytes": 2407,
+      "sha256": "90a509cafab3c912e72393bde516cd72304827aed8198527a8f0b7e7272ea178"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/execution.rs",
+      "gitBlob": "42b697815bbf27b40679235305a2cbce6e968f3c",
+      "mode": "100644",
+      "bytes": 6732,
+      "sha256": "8661f55c84715add1a3684a43152a630909643b974f84281894c1c0e22cd46f4"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/expression_builder_test.rs",
+      "gitBlob": "5fd3e3877104361870a1bd68e916985fa91c07c1",
+      "mode": "100644",
+      "bytes": 15681,
+      "sha256": "966e45d957118b778157f533aeaf230f4abeb3aa59e209b1b7013c30842da88b"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/in_list.rs",
+      "gitBlob": "0296f2210cfb8850944d5c195ab9aa41fece2be2",
+      "mode": "100644",
+      "bytes": 2231,
+      "sha256": "4546a2d1a46c7829ca5e6f688955272b14802c8f6e1cc465f6612a13b295f09a"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/json_functions.rs",
+      "gitBlob": "619b85aa0035f07a6ba12db4c12524fedd02649c",
+      "mode": "100644",
+      "bytes": 21274,
+      "sha256": "d43ea4084d1c3b0bd42a2434d519a02bcff1b5bc4dd61a073da69981647de2a7"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/mod.rs",
+      "gitBlob": "3fdb76ff534dcb29fce7173c8f3c1d8007b6b33b",
+      "mode": "100644",
+      "bytes": 210,
+      "sha256": "3138ea0a8deaeaa64cfa0b63396c62d051c2928af5f7fc61694c4cb41b6ea62a"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/models/onnx_modeling.py",
+      "gitBlob": "6fd8847f26388c21e47c1becb087cac98e6bdb88",
+      "mode": "100644",
+      "bytes": 419,
+      "sha256": "99d9b1dd5b53f9eb19db4d1ae805b2798bb6a5ce8b90dc9cb30f048781b1561c"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/number.rs",
+      "gitBlob": "abfeca822b23283bef8416a54059aaa3b70fb488",
+      "mode": "100644",
+      "bytes": 817,
+      "sha256": "4586f51b4f438be4dfb2111d1ec4928808338c5b5c119acf6e685e80c512f4cb"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/point.rs",
+      "gitBlob": "407b3900b89708b42181320366bcb3b85099b6fe",
+      "mode": "100644",
+      "bytes": 1850,
+      "sha256": "3bfb2be9367ec83cfb9511f6117c1027921511f7d954ec5718c32575734e9cd0"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/string.rs",
+      "gitBlob": "80f374a20b02c7cdccd3a723621363c988c8fa5f",
+      "mode": "100644",
+      "bytes": 13239,
+      "sha256": "7729dc405da5c9486428176f7148b37786c118e69dfff5c1ccfe3323454053ac"
+    },
+    {
+      "path": "dozer-sql/src/expression/tests/test_common.rs",
+      "gitBlob": "951a2a08d5b87f6a91fd94709b5751f41f2ef7ba",
+      "mode": "100644",
+      "bytes": 1904,
+      "sha256": "3c00e78cd63dafc23a3884626e6712bf8bcd9edb7593823feba595cf445b3d0a"
+    },
+    {
+      "path": "dozer-sql/src/lib.rs",
+      "gitBlob": "5ef05a1d2c8c3ae5dbbc8883248b6747b803053e",
+      "mode": "100644",
+      "bytes": 233,
+      "sha256": "47a78ec40f2921ef6d0b220753ee64aa2825efcd117365c6129ad6409c9853a3"
+    },
+    {
+      "path": "dozer-sql/src/planner/mod.rs",
+      "gitBlob": "d63d7287cc4cf221adafbea2e44a52b4185d5418",
+      "mode": "100644",
+      "bytes": 45,
+      "sha256": "ca0f646aa682a50a1cf0d5ec772aa4d795d147de350050bc6eff1c5304012b32"
+    },
+    {
+      "path": "dozer-sql/src/planner/projection.rs",
+      "gitBlob": "6330adfbf1e945a8fda76a45a23242e20e4d42b1",
+      "mode": "100644",
+      "bytes": 8143,
+      "sha256": "39c80bf6ead84f2836306f2f57bbd3541be12e6aae548efc4ae2a45da6ef8565"
+    },
+    {
+      "path": "dozer-sql/src/planner/tests/mod.rs",
+      "gitBlob": "6f00d6133b53c4438e9246f19f2155bdb3219cf7",
+      "mode": "100644",
+      "bytes": 53,
+      "sha256": "37e1887a36689368f6607ee1f2dcd4030ad5ba5cae1f262af7a83740fbcf180f"
+    },
+    {
+      "path": "dozer-sql/src/planner/tests/projection_tests.rs",
+      "gitBlob": "4241957fceccdd5484a2563a3b6abbab976918cb",
+      "mode": "100644",
+      "bytes": 3987,
+      "sha256": "13f906184ba1537e8e04672f65562cb7f2acc786aa9a433b1c406deb4f359440"
+    },
+    {
+      "path": "dozer-sql/src/planner/tests/schema_tests.rs",
+      "gitBlob": "1458080fa5d6ba41ea2c173e690ad916f9020eac",
+      "mode": "100644",
+      "bytes": 3481,
+      "sha256": "9e3d974ae595878663e2b4d97c3db1534f5440b9326925053e0ece7df17d9da7"
+    },
+    {
+      "path": "dozer-sql/src/product/join/factory.rs",
+      "gitBlob": "8a04d0ce232e2d4f321b8dcfab859f49ec78b985",
+      "mode": "100644",
+      "bytes": 10816,
+      "sha256": "96772fb8fec3eb690aa0fec5cc20c44e1b6370407d009c92a8cf916b9ba22892"
+    },
+    {
+      "path": "dozer-sql/src/product/join/mod.rs",
+      "gitBlob": "e3e84169aa9bfb5af250a9195735d9f3f25b1324",
+      "mode": "100644",
+      "bytes": 133,
+      "sha256": "53831ff5ddae5931a44c0d38bca863b55537397281d4fe20b657e823e37465b2"
+    },
+    {
+      "path": "dozer-sql/src/product/join/operator/mod.rs",
+      "gitBlob": "1e8e3c673839fb0749d1bd87cb76637675f04887",
+      "mode": "100644",
+      "bytes": 8046,
+      "sha256": "da2984bc74eab2d305f159d4752dd40ee75e606cc3cc12bc7b59e28b5cbf8156"
+    },
+    {
+      "path": "dozer-sql/src/product/join/operator/table.rs",
+      "gitBlob": "a16e7094e936bdafdcf9b1c2620ca480dd73ad79",
+      "mode": "100644",
+      "bytes": 6861,
+      "sha256": "7f806a6128e0a2acacda64492a6353e93fa493909994be537ca6ca321958dcec"
+    },
+    {
+      "path": "dozer-sql/src/product/join/processor.rs",
+      "gitBlob": "eb187a846428fd7972f7bcdebb97116db869d699",
+      "mode": "100644",
+      "bytes": 14364,
+      "sha256": "43faff219a688ab5b656b3ede09cb7ee085e29d1a4876f92c387a88582a67f19"
+    },
+    {
+      "path": "dozer-sql/src/product/mod.rs",
+      "gitBlob": "c3631b42ea2338f1dda6b1e3a02caa5f1aa1dd42",
+      "mode": "100644",
+      "bytes": 63,
+      "sha256": "1e93e64e163852bcc86ddcf12100afb275e9e5f16adcf681ec199b27220568a0"
+    },
+    {
+      "path": "dozer-sql/src/product/set/mod.rs",
+      "gitBlob": "9da13861bf91160830347472fa52e89f591b0d47",
+      "mode": "100644",
+      "bytes": 93,
+      "sha256": "a100e05756751a781b27121776c51221677f442bc804d24d26bcde1bb3fcfde9"
+    },
+    {
+      "path": "dozer-sql/src/product/set/operator.rs",
+      "gitBlob": "6dfbddd67208ef62407454689934d2f04df0d5a6",
+      "mode": "100644",
+      "bytes": 3836,
+      "sha256": "014b32cb5a0888e997bab414b493c13ef129c22281eb36fb7fa200f301206cf7"
+    },
+    {
+      "path": "dozer-sql/src/product/set/record_map/bloom.rs",
+      "gitBlob": "c27b94d930119e8f89583ca6feec608f32a52132",
+      "mode": "100644",
+      "bytes": 6394,
+      "sha256": "e9fb3dede6c6ce35a87d95de833e051f444a56fc467d3c87087b062499e4048d"
+    },
+    {
+      "path": "dozer-sql/src/product/set/record_map/mod.rs",
+      "gitBlob": "1d4119e18f9aed0a820f7a9de39500c55ecc51c6",
+      "mode": "100644",
+      "bytes": 4264,
+      "sha256": "665c3ff7b06a28b704394b1dcf2c13159da1cbc916a347a730569d0c78df1649"
+    },
+    {
+      "path": "dozer-sql/src/product/set/set_factory.rs",
+      "gitBlob": "93b6f0b3b8e13a3779ac39f9085d5dc73a9fc049",
+      "mode": "100644",
+      "bytes": 7500,
+      "sha256": "627854a8a87e24d69439eb90fb8c53108676bfc288625c64669c6f851c5acc2e"
+    },
+    {
+      "path": "dozer-sql/src/product/set/set_processor.rs",
+      "gitBlob": "529b7fe065ab5f760265ff7d5357d322e2d72c70",
+      "mode": "100644",
+      "bytes": 7501,
+      "sha256": "bde1ae3552786759d41f86bdac6e7a030969efd41e12be82310a5a655320d5d9"
+    },
+    {
+      "path": "dozer-sql/src/product/table/factory.rs",
+      "gitBlob": "793a0a7941f670ee28d58c57b8987309a50cd0e0",
+      "mode": "100644",
+      "bytes": 1808,
+      "sha256": "17baeb1041d4a2389a72b58f06c820955a64bf17354d15f83e694a33e238a643"
+    },
+    {
+      "path": "dozer-sql/src/product/table/mod.rs",
+      "gitBlob": "467cebdda331987daabf2c380ec32fedc3705a9e",
+      "mode": "100644",
+      "bytes": 32,
+      "sha256": "4ab7f66264450e21b0990cf39e8ac2df4e2b91e4773d7ce43fd90654c745ce42"
+    },
+    {
+      "path": "dozer-sql/src/product/table/processor.rs",
+      "gitBlob": "0e0eeb1a686d73e99407f8e078d2062a32aebed1",
+      "mode": "100644",
+      "bytes": 754,
+      "sha256": "7da8015820823340946317154f5d6d1358abf3c75fcbbf5dc414131689d5a646"
+    },
+    {
+      "path": "dozer-sql/src/projection/factory.rs",
+      "gitBlob": "ea835febb948e3bf95e024e514c4d6cef24f7a62",
+      "mode": "100644",
+      "bytes": 5343,
+      "sha256": "72ef2a03659e06d5dc74a33e8ad8c49c2bcdce4aa357e4fbe1964b31d71551bf"
+    },
+    {
+      "path": "dozer-sql/src/projection/mod.rs",
+      "gitBlob": "9a12ba12cc9d4383521ab626ad719741872923ed",
+      "mode": "100644",
+      "bytes": 36,
+      "sha256": "14b53658f4a40e9d6e55936404aa731bb404bdf22b949cd86e979514ad0a2914"
+    },
+    {
+      "path": "dozer-sql/src/projection/processor.rs",
+      "gitBlob": "b83b131285619005bafd12aa8c01f36b01f16a40",
+      "mode": "100644",
+      "bytes": 3260,
+      "sha256": "08518b5478c642618644b231d3c2f0e17c206cfe14f72dc1dcee03d4894dee8e"
+    },
+    {
+      "path": "dozer-sql/src/selection/dynamic/mod.rs",
+      "gitBlob": "913ab0250969ea8818e2caa9868f05aca819c863",
+      "mode": "100644",
+      "bytes": 3489,
+      "sha256": "472f56c8ad08409bab3ffb5d17595245db6f26198a4cb5142b6ec30ac5e45310"
+    },
+    {
+      "path": "dozer-sql/src/selection/dynamic/plan.rs",
+      "gitBlob": "9674a8ba2eb6ac6d39dc727518850cfc792b15fb",
+      "mode": "100644",
+      "bytes": 23932,
+      "sha256": "05800452154c00526d3b2ec533366f67fd3cbd280b03bc035110f7f441ccc981"
+    },
+    {
+      "path": "dozer-sql/src/selection/dynamic/processor.rs",
+      "gitBlob": "e0efae214ad6e63465d9279275c02ab97bccc6e2",
+      "mode": "100644",
+      "bytes": 10123,
+      "sha256": "75299784be8117d9eff40ebb3143d0476c0a0451f17466408bd5d57c811003ad"
+    },
+    {
+      "path": "dozer-sql/src/selection/dynamic/tests.rs",
+      "gitBlob": "224217dc029c739f80f577ef7d6f28efb86ec597",
+      "mode": "100644",
+      "bytes": 24688,
+      "sha256": "71d0e3953dc5a13bf2f07f9857ed3cc39e2d0f0eec1297e1300b2863c0be2ddf"
+    },
+    {
+      "path": "dozer-sql/src/selection/factory.rs",
+      "gitBlob": "a5da7107919c955d2e17efcc9055ca863a473d57",
+      "mode": "100644",
+      "bytes": 2942,
+      "sha256": "0ab5947aa2330d9dcade76ae5bca3d7a106745dfaaeb1e191fe1c413865fe075"
+    },
+    {
+      "path": "dozer-sql/src/selection/mod.rs",
+      "gitBlob": "6240d8318890d9cb2ae247c8da8e407a781ec4e6",
+      "mode": "100644",
+      "bytes": 60,
+      "sha256": "ea5b717c9f0d9687bcd0f374e6a81fcd29eff94dabfc24d601ca79451ff65ae3"
+    },
+    {
+      "path": "dozer-sql/src/selection/processor.rs",
+      "gitBlob": "8881286e862e7e30416db27bd81baf5d58fc4377",
+      "mode": "100644",
+      "bytes": 3930,
+      "sha256": "304bc5ea968526e11a331e0dc56f1e295bd8fcfde3ef792310586c69773b210e"
+    },
+    {
+      "path": "dozer-sql/src/table_operator/factory.rs",
+      "gitBlob": "d97b32c7e95aaca69b86ccf128bac1cdc5e38b1a",
+      "mode": "100644",
+      "bytes": 11378,
+      "sha256": "8fbb49e292d5ef71ebffd0fd4593182fb77707a97c980fe8cec2fc6c309c1c25"
+    },
+    {
+      "path": "dozer-sql/src/table_operator/lifetime.rs",
+      "gitBlob": "69dc50c6d7ee3838570cead66456aee3f6a47878",
+      "mode": "100644",
+      "bytes": 2631,
+      "sha256": "a48ba1549bc230ed5e25f514979f586ab6a042154f622695b5d8a73599742bb2"
+    },
+    {
+      "path": "dozer-sql/src/table_operator/mod.rs",
+      "gitBlob": "ebe1dab8425fc80a5e65c2fbc2f6d6bc5dd07127",
+      "mode": "100644",
+      "bytes": 78,
+      "sha256": "f2f96f6a305a396d460cdca2031d119596bb02f9aa611dae22090831eb0b3d23"
+    },
+    {
+      "path": "dozer-sql/src/table_operator/operator.rs",
+      "gitBlob": "383088f0613285625f8e4583c3f54f6ae4dcbf88",
+      "mode": "100644",
+      "bytes": 600,
+      "sha256": "db4f12034aba1224ef6d0411e408b6879c041fa9e01843e63d12b10c80250152"
+    },
+    {
+      "path": "dozer-sql/src/table_operator/processor.rs",
+      "gitBlob": "c2f41f936c3a44a6bef97118177dd76512e8cec4",
+      "mode": "100644",
+      "bytes": 3525,
+      "sha256": "9f97ca5631157a940443b427cdb9948346c8ca9ac9af91c6e080144d9b8d10a2"
+    },
+    {
+      "path": "dozer-sql/src/table_operator/tests/mod.rs",
+      "gitBlob": "5d901dee2c701833779bd438ba8415e3e001b5b2",
+      "mode": "100644",
+      "bytes": 32,
+      "sha256": "48000a5e12a079de745ebbdd8d3500b6a1dfcec8d7f68c67e3c121a059e8e447"
+    },
+    {
+      "path": "dozer-sql/src/table_operator/tests/operator_test.rs",
+      "gitBlob": "d360a46c28dcd10184a2600bbf2fe31aa2619660",
+      "mode": "100644",
+      "bytes": 1721,
+      "sha256": "8548a74169824dccda008b053613dbe72fee05444485942c869376ff9c9e1f72"
+    },
+    {
+      "path": "dozer-sql/src/tests/builder_test.rs",
+      "gitBlob": "4d2b398255ecad7a70fdf5662cf395ec670e8f6e",
+      "mode": "100644",
+      "bytes": 7760,
+      "sha256": "0a896842504cfdd60d95cd220b0a16ffdb634f218c524a7610ea938a8d627fea"
+    },
+    {
+      "path": "dozer-sql/src/tests/mod.rs",
+      "gitBlob": "0ed1750729b7eba7eb4156048c0b13a5f3680807",
+      "mode": "100644",
+      "bytes": 33,
+      "sha256": "67d95873b3e207fdcdd52fa7954134b4993309d6e02f81abc0ecfc942f98819e"
+    },
+    {
+      "path": "dozer-sql/src/tests/utils.rs",
+      "gitBlob": "8e327c08897afc364cfcc4c75af8d3f9208411d0",
+      "mode": "100644",
+      "bytes": 1075,
+      "sha256": "3c93d83212e7fd018e5264825b20798c5a973e413a7d822a46d93b468507d658"
+    },
+    {
+      "path": "dozer-sql/src/utils/mod.rs",
+      "gitBlob": "488633d492c0416f95521be1ac7f43795ffbfe85",
+      "mode": "100644",
+      "bytes": 30,
+      "sha256": "59f181916e917424c9e532ca36e577f2800ddea368b1a4d9170d34d324f01d7b"
+    },
+    {
+      "path": "dozer-sql/src/utils/record_hashtable_key.rs",
+      "gitBlob": "d7ac04a3ed52db17e8d720e4a1b196fc828b346c",
+      "mode": "100644",
+      "bytes": 913,
+      "sha256": "b35c5e3609e4b9f7bf45b78f984bca80843e247a12429f51fb9c2c645dc0c4f4"
+    },
+    {
+      "path": "dozer-sql/src/window/builder.rs",
+      "gitBlob": "65b233caab1aee9d134edb42182ed0e2ffd51419",
+      "mode": "100644",
+      "bytes": 9551,
+      "sha256": "1e39b846e64426df6b76776cb42600c129fa0564f542f37f34393d0260ecca58"
+    },
+    {
+      "path": "dozer-sql/src/window/factory.rs",
+      "gitBlob": "2a371e8812510753ac30a7f637a0fc74419df003",
+      "mode": "100644",
+      "bytes": 2672,
+      "sha256": "262cd0920c7dbb4db60dbbe27e44e8838dea63ae61181e31ee0aabeec7fee255"
+    },
+    {
+      "path": "dozer-sql/src/window/mod.rs",
+      "gitBlob": "027acee6f7e27c3baef76a99368577eec834d3b0",
+      "mode": "100644",
+      "bytes": 92,
+      "sha256": "dbf61bb358ba507aec85376db1d860cd042ef834da5a144dce0b942aa75db305"
+    },
+    {
+      "path": "dozer-sql/src/window/operator.rs",
+      "gitBlob": "9cfde1c12c006c03e4c54d396341764a566f71cc",
+      "mode": "100644",
+      "bytes": 3588,
+      "sha256": "1a539aa8ac765da476911614802c7afc8926bad0664f34d42d881e74c62024e7"
+    },
+    {
+      "path": "dozer-sql/src/window/processor.rs",
+      "gitBlob": "671317877a32f6839aa75c4acc587fb8080644d6",
+      "mode": "100644",
+      "bytes": 2710,
+      "sha256": "5c26d2af25236cc7de5781c8c26d30806c3828c1637f6d3f4aa36c3f91c7f631"
+    },
+    {
+      "path": "dozer-sql/src/window/tests/mod.rs",
+      "gitBlob": "5d901dee2c701833779bd438ba8415e3e001b5b2",
+      "mode": "100644",
+      "bytes": 32,
+      "sha256": "48000a5e12a079de745ebbdd8d3500b6a1dfcec8d7f68c67e3c121a059e8e447"
+    },
+    {
+      "path": "dozer-sql/src/window/tests/operator_test.rs",
+      "gitBlob": "9497ea226f44a0c0d9777c83a72b6f14a26616de",
+      "mode": "100644",
+      "bytes": 3985,
+      "sha256": "cd861160dfaefbe628b75550906cefb7136745e1172f3830f07279fb49b0247d"
+    },
+    {
+      "path": "dozer-sql/tests/DYNAMIC_IN.md",
+      "gitBlob": "28bf3a7da1582ba92986f069c4f826a00d2d82eb",
+      "mode": "100644",
+      "bytes": 3301,
+      "sha256": "89ccca080d67c323a69fa705fd57ab2568fa3644ffd898930b36b7849f404aa8"
+    },
+    {
+      "path": "dozer-sql/tests/dynamic_in.rs",
+      "gitBlob": "deb2d65640bae2888a081bd377193489a5b96173",
+      "mode": "100644",
+      "bytes": 29072,
+      "sha256": "bfb2a1a186dbab15bbedfca7481f2c7ced3513c09502bbf2b7f4961f5b020a4d"
+    },
+    {
+      "path": "dozer-sql/tests/support/dynamic_in.rs",
+      "gitBlob": "fc25a76feab856a04a15aea477882dcb82537f41",
+      "mode": "100644",
+      "bytes": 12154,
+      "sha256": "602a8e1e83efd0ee0df196d3a6584f09bc8680805c90df7773b08421039b799b"
+    },
+    {
+      "path": "dozer-tests/Cargo.toml",
+      "gitBlob": "d37ff2facea228195ba2bdfd6eb12da70b14cf1b",
+      "mode": "100644",
+      "bytes": 1122,
+      "sha256": "f0c6412aa8d327e61ef263ed854e9253ae13189c2f23f8c01f0091470209b210"
+    },
+    {
+      "path": "dozer-tests/README.md",
+      "gitBlob": "e78e68406bfb576782e2b947895d9eb265907344",
+      "mode": "100644",
+      "bytes": 4529,
+      "sha256": "9cde41f958adef849de269e8fbd37ed2fcf553f7d4486b55e8f263d331c28656"
+    },
+    {
+      "path": "dozer-tests/python_udf/python_udf.py",
+      "gitBlob": "ca35cdf2ce6a98816fab37da4123cce4f5d7e4a8",
+      "mode": "100644",
+      "bytes": 97,
+      "sha256": "a8b98114fab04f0c883b904d37f9116fbf0c7973e12fa4167e0511d3932dba1f"
+    },
+    {
+      "path": "dozer-tests/python_udf/virtualenv.sh",
+      "gitBlob": "c6371097af105fd7b1d1c9bcd6415ce6f22b8310",
+      "mode": "100644",
+      "bytes": 254,
+      "sha256": "747c059fdd4ab0ce4d02f6a1b01a3cf0fb2aaf5623a4e4eac844a88e284c3e8e"
+    },
+    {
+      "path": "dozer-tests/src/lib.rs",
+      "gitBlob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "mode": "100644",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/README.md",
+      "gitBlob": "b001e8ba4034a15194fd47bb5ebf07ab0ab75f13",
+      "mode": "100644",
+      "bytes": 1868,
+      "sha256": "0ff3f87cbc5bc55ace9617a8b87365adf3328075924e923777b5997145e58c64"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/arg.rs",
+      "gitBlob": "d09d01ad724aae6570387c9e63a927f3f6f9e097",
+      "mode": "100644",
+      "bytes": 632,
+      "sha256": "0b424315572fb57d572f79afa416ae4070cdbd55ea9ad46c4d46d1a53cddcc72"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/error.rs",
+      "gitBlob": "447b7661ca71b801434962479e2217350071648f",
+      "mode": "100644",
+      "bytes": 787,
+      "sha256": "ef01db92db0975d0e16a5248ddee549f7f5faad72ca0662b0bbcd47d163a140d"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/account.test",
+      "gitBlob": "abbb3966def1d9de8609396518ff75eeeb94e8c2",
+      "mode": "100644",
+      "bytes": 9075,
+      "sha256": "a2455d61e55045336c71eaa08be8e8e86fca8b33847aeb5891771373108cd84f"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/agg.test",
+      "gitBlob": "96f4eade4dc9caabe42cbd07b8a52c0b2f502469",
+      "mode": "100644",
+      "bytes": 8449,
+      "sha256": "d8bffc9b7d9a75a47b9830ce35e55a52a8ce246bd568eb317912abf1e7632565"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/aggr_append_only.test",
+      "gitBlob": "3f5e8b6aca97774aa7136a396e6ca297933248b4",
+      "mode": "100644",
+      "bytes": 3403,
+      "sha256": "1eca8409c562c7f2837a45b0486e596120475fcba18034c5e4328011d6b7400a"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/aggregations.test",
+      "gitBlob": "77f78b81c9c05baef846f949cf440232e1659c90",
+      "mode": "100644",
+      "bytes": 5453,
+      "sha256": "58124d303c9ad2ce0b1babf2b74d17acea2265ea5631cceeffffb016e595fcee"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/complex.test",
+      "gitBlob": "491d300700ef70be2adaac0419a67b9a917d5076",
+      "mode": "100644",
+      "bytes": 10696,
+      "sha256": "f2b171961a661379eb35adb1071491c6b05fecfb3d9c45e40f67f12d6d54d2c2"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/example.test",
+      "gitBlob": "bf4d6251e9805840fe00b380bed6b52084c65f01",
+      "mode": "100644",
+      "bytes": 491,
+      "sha256": "1d47cf210cac0ec70fdbf78e04b2c5b01f53b5e31d96a00f945ff03c7e4d1f38"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/functions.test",
+      "gitBlob": "bd3bd9343e6b333e6305412d3ba6cbd9ef1837d8",
+      "mode": "100644",
+      "bytes": 2634,
+      "sha256": "a95e9066b65c874eddceb65e883c40f2dc84401e2f1125b40dd182110d45ae45"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/join.test",
+      "gitBlob": "8119b4fb97e48c8a44962b7fb735750ca6a319a6",
+      "mode": "100644",
+      "bytes": 10943,
+      "sha256": "6ae41646c0d5cf16015e40270283441f90932d8f9e7575f02a0829d7c4def622"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/nested.test",
+      "gitBlob": "dcb1be5b8973a4eda3da4b9101586c1dcfcfea1c",
+      "mode": "100644",
+      "bytes": 3563,
+      "sha256": "6edbf2936edcbfa2f9213bad6b53424546a740448b8290eb9bab5cdc91953814"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/py_udf.test",
+      "gitBlob": "adaba0efd83096906601864bcc72a2ea8a781bae",
+      "mode": "100644",
+      "bytes": 191,
+      "sha256": "e2ae525978931c982b7d69a53316e94c7b6cf07bcb41c40279530e703b317a68"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/simple.test",
+      "gitBlob": "f14bc7b0c30912eee323763bff2555a7271823ca",
+      "mode": "100644",
+      "bytes": 5732,
+      "sha256": "f6ffae692709cc360db47456755575b40a062439c6a4353e092df7890b072051"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/full/union.test",
+      "gitBlob": "20ddbc2c818712ebaf14b81b3163dc07276340c2",
+      "mode": "100644",
+      "bytes": 3879,
+      "sha256": "7d30bd33624d0471b54438b160ff0641e0dfb10bf6b55930827250137bb1e9db"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/helper/mapper.rs",
+      "gitBlob": "0d241dc331e6a171b38eb015cf86936569322dd2",
+      "mode": "100644",
+      "bytes": 8833,
+      "sha256": "e1be98c5ce25301167d5160778ee08a3b08582a94b95167818f1a51ac3d4c4c7"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/helper/mod.rs",
+      "gitBlob": "d58b85ac049944ed566fd8432c3b07dbaec781a3",
+      "mode": "100644",
+      "bytes": 50,
+      "sha256": "82f6afb958d3ed145004565b736fd4d949d098472cfa2b0ce12ceebb8774d73e"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/helper/pipeline.rs",
+      "gitBlob": "434b6ae1c3b78cb7e6c030835e84a0dbd6c88944",
+      "mode": "100644",
+      "bytes": 12185,
+      "sha256": "e4d72f42eff2981549378ee61ccd83766eb5fc7bfb68fe8eaf20d4060293941f"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/helper/schema.rs",
+      "gitBlob": "87d640d938c86e5a864596608d1de1f76309e483",
+      "mode": "100644",
+      "bytes": 1434,
+      "sha256": "8725bad3af894d81f428e7131e9328344d590e097b58efd103669025f2609814"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/logic_test.rs",
+      "gitBlob": "cf22b9eeed75786d580291dda10a388db37f6b95",
+      "mode": "100644",
+      "bytes": 7069,
+      "sha256": "4244969d23dee40406699c40fc5d736a3bbf95bfe306b28efa1386c8a8c913a6"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/account.test",
+      "gitBlob": "4ff3ecc093b2f7a27ba415ae7eef48e83f25e7f7",
+      "mode": "100644",
+      "bytes": 8879,
+      "sha256": "cc8a2a4053a97f9ff64eb82b0caddafb36ced0345b84c512858af1f14478df24"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/agg.test",
+      "gitBlob": "74b37acaecc4094a81adbd844a711912820e486a",
+      "mode": "100644",
+      "bytes": 8311,
+      "sha256": "df20b577b8845524d46195d8f9fb3c2beac01420dec2128c4d1c3d20b9040044"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/aggregations.test",
+      "gitBlob": "c5522f7d0f4424e69de033b1cbb1f21c87504f16",
+      "mode": "100644",
+      "bytes": 4509,
+      "sha256": "73cb174e12886a63b601f354efcb327829cbaa2f8c902c283761114b2286cf17"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/complex.test",
+      "gitBlob": "aaac1b1f4f38096d5792aaf5dae9cd402cbfd500",
+      "mode": "100644",
+      "bytes": 10249,
+      "sha256": "8bf89656abff0d179aadbdeb2f00d8b43351a0cea4aa21ece5f455e8c1560c24"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/example.test",
+      "gitBlob": "7b80ea5414dd6b4fcad8d3b4b0e06cb49983f4a9",
+      "mode": "100644",
+      "bytes": 444,
+      "sha256": "c81e13b1c909bb8f94780d9518c1d395744242ac2d9667b1684be4519b7f8167"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/functions.test",
+      "gitBlob": "02c0137d8f2b2029d066f01e49e5b51cff2e2ada",
+      "mode": "100644",
+      "bytes": 2619,
+      "sha256": "0903368901774d3cae0718707b221a4b7820fcc0c146ac3881c2ab15bcc7a496"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/join.test",
+      "gitBlob": "8bf7054993eebcd29bfa73e20da8a27e5db7d616",
+      "mode": "100644",
+      "bytes": 9757,
+      "sha256": "a8819f23958c889e4b55fad79adc52362677e685fd85262aab47b735711a3898"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/nested.test",
+      "gitBlob": "40363bb468cb9b336964afaf82fcaf3308d84dc4",
+      "mode": "100644",
+      "bytes": 3023,
+      "sha256": "c2c1f9e82bd88c90408b3fa29e94ac55c0af29faba3c1870fcf36bdb0a93b27f"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/simple.test",
+      "gitBlob": "c2ad37378fd37b21e76a6d270e74e13067d39eea",
+      "mode": "100644",
+      "bytes": 3486,
+      "sha256": "3f016876f10bcb23493d64ad2e2810a3353fb4a63139f0263270d365ea6a5c09"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/prototype/union.test",
+      "gitBlob": "a7b77ef212f51a6baf3cfdf113d7f728b80f82f4",
+      "mode": "100644",
+      "bytes": 3735,
+      "sha256": "942f5c29567430617d949abe6f2002004acb89a08fc90fd8898181bcef7179f8"
+    },
+    {
+      "path": "dozer-tests/src/sql_tests/validator.rs",
+      "gitBlob": "5003f0d94c82ae20d32a53c8ad8d1f13fa921ac0",
+      "mode": "100644",
+      "bytes": 2456,
+      "sha256": "3a62f18ea223072621db8a92dea57ee7f34d44bcaffc934c70e184047c4021ed"
+    },
+    {
+      "path": "dozer-tracing/Cargo.toml",
+      "gitBlob": "dde8078f09e773c0cae92778c352bbc7b7429b52",
+      "mode": "100644",
+      "bytes": 1022,
+      "sha256": "4eebe2bc081b7a084dd0398147ae310eadfb8773255071c7d07949c08bcb966c"
+    },
+    {
+      "path": "dozer-tracing/src/constants.rs",
+      "gitBlob": "0b572a372fb83ba5bfe6b837bd620c187da29126",
+      "mode": "100644",
+      "bytes": 909,
+      "sha256": "7af566097526b123d01bc1c8efbe5f48e7afde5e62c7a0823631fe260f111f88"
+    },
+    {
+      "path": "dozer-tracing/src/context.rs",
+      "gitBlob": "90ba643c11481750e6a7873d02bca20d3dc040ea",
+      "mode": "100644",
+      "bytes": 2276,
+      "sha256": "7ad1ce0a26fe67b001340224cb0f25c4783518acceadf9ba85ed61c16ddc1ab2"
+    },
+    {
+      "path": "dozer-tracing/src/lib.rs",
+      "gitBlob": "4c4b5e28bc7934914cfb8b3219888f5ded83a21d",
+      "mode": "100644",
+      "bytes": 1109,
+      "sha256": "bb0f2def066436918b8a4e0492c3a76aaa6d1a7955033568e896ab169550fd1b"
+    },
+    {
+      "path": "dozer-tracing/src/prometheus_server.rs",
+      "gitBlob": "cf857b36a857655ff4e51e9453b94f47d1031742",
+      "mode": "100644",
+      "bytes": 1583,
+      "sha256": "833e351b4a884085a05477f27d50f587f3e949688a1125a2c33d1de805fb1c3a"
+    },
+    {
+      "path": "dozer-tracing/src/telemetry.rs",
+      "gitBlob": "19e42b2d81b4bfca1ade508b973a03d4929f7361",
+      "mode": "100644",
+      "bytes": 5927,
+      "sha256": "347a017252ba9157f412fc9f5e1907bee24b874296c157ab418cb1b76abbebd0"
+    },
+    {
+      "path": "dozer-types/Cargo.toml",
+      "gitBlob": "8d0882aa761c5b0bad835c6ffc9ffcd3ceb3c66e",
+      "mode": "100644",
+      "bytes": 1766,
+      "sha256": "05003565a1afc1cc73d0642057a96045debbabf6bb0d8613c09ebc070052d8bd"
+    },
+    {
+      "path": "dozer-types/build.rs",
+      "gitBlob": "2170654c86357b902c1373f9eb30c71d5851ac87",
+      "mode": "100644",
+      "bytes": 2304,
+      "sha256": "dbb59757b23882a5ff0e03576abdfd80ab6a917c639bbdf394e3c2e77fa5953b"
+    },
+    {
+      "path": "dozer-types/protos/api_explorer.proto",
+      "gitBlob": "b339971642b5060f35c38ddf9753f5bd4052af13",
+      "mode": "100644",
+      "bytes": 388,
+      "sha256": "9d220d8ea742d257f555436bb29f2d486eee0387d14e703ce939eb7888ecd682"
+    },
+    {
+      "path": "dozer-types/protos/app_ui.proto",
+      "gitBlob": "c99b637eca2ca9de9bd62f56d8e6656de3b4fd45",
+      "mode": "100644",
+      "bytes": 1205,
+      "sha256": "53bd71e2e8f62730bd4cf29364fc8e1cffa2318c140c895b6d92dcbbecf6aa73"
+    },
+    {
+      "path": "dozer-types/protos/auth.proto",
+      "gitBlob": "ec459f00c498dce211e47c230369773096f88992",
+      "mode": "100644",
+      "bytes": 629,
+      "sha256": "b267535b3f033218a658ca5fa1eea9b026df4ce881bbc6bf0a17215f71bb4c0a"
+    },
+    {
+      "path": "dozer-types/protos/common.proto",
+      "gitBlob": "71039ceeee5c58f1619e0271ac5d77360b823c8a",
+      "mode": "100644",
+      "bytes": 2806,
+      "sha256": "af13c8ed94e42d7021d39e679ca931f452d30af23bbcbd407dbacfa387233ffd"
+    },
+    {
+      "path": "dozer-types/protos/contract.proto",
+      "gitBlob": "87f8bc29460ce007a56a5da552e3e52ad3bea978",
+      "mode": "100644",
+      "bytes": 936,
+      "sha256": "ef00d5bcd629bd2c7bb7fdde2151980d067fa95ba2553bd316346ebc4e803531"
+    },
+    {
+      "path": "dozer-types/protos/films.proto",
+      "gitBlob": "690482c1f797123efdb09bbfee1ac12f7c884b02",
+      "mode": "100644",
+      "bytes": 2568,
+      "sha256": "62c5757c8d8a453380bfcdb1fdf8f48b994f3ee9a5ac977aac03d1fa946b9b7c"
+    },
+    {
+      "path": "dozer-types/protos/health.proto",
+      "gitBlob": "90325a44a66edbcc3c79788fd1717aea45d43be1",
+      "mode": "100644",
+      "bytes": 929,
+      "sha256": "46fc78aac50f6512bcd1320816c5145da5603d06af172974228ed721ae00f819"
+    },
+    {
+      "path": "dozer-types/protos/ingest.proto",
+      "gitBlob": "5050a213ddb22057cf4ab32fa28f8fa0c08fd7ff",
+      "mode": "100644",
+      "bytes": 1214,
+      "sha256": "dde415b7b26247b0e0109bf5bc075d144febb4bd6aa2307ca81060713966b87b"
+    },
+    {
+      "path": "dozer-types/protos/internal.proto",
+      "gitBlob": "336799ae1258fdaba7581594357c0dbd2e7846d3",
+      "mode": "100644",
+      "bytes": 1696,
+      "sha256": "0af6ae7cc804d1397b17eb8614db3d2744a3a561f81cd7ac071dd04da5dc79d8"
+    },
+    {
+      "path": "dozer-types/protos/telemetry.proto",
+      "gitBlob": "ce8291d5c3a6d661a889ef0bfed5b12b42ed8773",
+      "mode": "100644",
+      "bytes": 411,
+      "sha256": "6fea07e71054cdf7eb13787e8f8661a251b9819c0366abb89524d9dc869acdaa"
+    },
+    {
+      "path": "dozer-types/protos/types.proto",
+      "gitBlob": "e0871db06084c3455c59655e05c4065b299187c3",
+      "mode": "100644",
+      "bytes": 3933,
+      "sha256": "181d286377e02cf9bf8926fb72ffae00402d1a4a1d647e3f51abc81b8c852bb0"
+    },
+    {
+      "path": "dozer-types/src/arrow_types/errors.rs",
+      "gitBlob": "93fd3741d1b1a8eea64b5e5e77e69894fcdee0d6",
+      "mode": "100644",
+      "bytes": 1055,
+      "sha256": "bb475ca6091f9d78e7d66121d2ab7c5f1151cf588b77546ed4a7119c5771c1b4"
+    },
+    {
+      "path": "dozer-types/src/arrow_types/from_arrow.rs",
+      "gitBlob": "b76943a5a9838f125cddd2bc1067b814b3e308e9",
+      "mode": "100644",
+      "bytes": 12764,
+      "sha256": "d0c7ff47d07fb8d8760ae6f5771c8375e6cacb08e60770d03a25a5f3ea7485b7"
+    },
+    {
+      "path": "dozer-types/src/arrow_types/mod.rs",
+      "gitBlob": "4a5b97a0765c2b739f9e79915f51217020b84cb2",
+      "mode": "100644",
+      "bytes": 79,
+      "sha256": "6b00f22bfb79c27b376bc2964b3adf9735f54131d8f9fcd725b7ecb59b5c31d6"
+    },
+    {
+      "path": "dozer-types/src/arrow_types/tests.rs",
+      "gitBlob": "3724cc2cdec45347c737b03e4089834eec9d078f",
+      "mode": "100644",
+      "bytes": 4556,
+      "sha256": "2fa20b31d6116bcc8004250fca36d3cb4dc6f7b3700c58aee821dc3c6e4e829d"
+    },
+    {
+      "path": "dozer-types/src/arrow_types/to_arrow.rs",
+      "gitBlob": "877174ceb394487d2df714fdb9c4896960ff5943",
+      "mode": "100644",
+      "bytes": 7780,
+      "sha256": "b9ffa72594fbacbc0af547fb352992d21c82dae215e6e5b08475910ae5766d9f"
+    },
+    {
+      "path": "dozer-types/src/borrow/mod.rs",
+      "gitBlob": "86191ba28674c503abf98a8f48beb517af42301b",
+      "mode": "100644",
+      "bytes": 2566,
+      "sha256": "01749faa197531e3644c42583b0b4030cd286ee4bfbc1e726ca3ba3fced2dc44"
+    },
+    {
+      "path": "dozer-types/src/constants.rs",
+      "gitBlob": "4b71181d76aadb84ad8a7e93447c9ad1c6d477bc",
+      "mode": "100644",
+      "bytes": 482,
+      "sha256": "b8472002e4c43389a4aae06c59badf4cedcba98836e4c6ab765343700971059f"
+    },
+    {
+      "path": "dozer-types/src/epoch.rs",
+      "gitBlob": "f2fc2da674d7741b9a8e69bcdaaff0782c04b583",
+      "mode": "100644",
+      "bytes": 2047,
+      "sha256": "c8083e37c7f9f74354f65be47a5fd750b876330629003dd6557deebe702eedbb"
+    },
+    {
+      "path": "dozer-types/src/errors.rs",
+      "gitBlob": "e508eb61288cec47a56d796c1ecf00d3f3c6d9c9",
+      "mode": "100644",
+      "bytes": 33,
+      "sha256": "7708c63a09e04f318d5c0ed55cdd54786fef09ca2f8f966782cb405bdaf58187"
+    },
+    {
+      "path": "dozer-types/src/errors/internal.rs",
+      "gitBlob": "7b71946457db8081d6e7762488d3387af1165141",
+      "mode": "100644",
+      "bytes": 74,
+      "sha256": "cb76a449ebf1cf78c94451826e178b05093fdae76d60cd36c2340e50fecdaedd"
+    },
+    {
+      "path": "dozer-types/src/errors/types.rs",
+      "gitBlob": "26f6e01b82283c0eda1d4c551048fa2f28c7a907",
+      "mode": "100644",
+      "bytes": 2450,
+      "sha256": "6b3784c415b28615418d24e79c376f1573f4e43b41c12702250e71e87652bf66"
+    },
+    {
+      "path": "dozer-types/src/event.rs",
+      "gitBlob": "e6e513ba5710aad716b3988b2aa5122cf5a4706a",
+      "mode": "100644",
+      "bytes": 653,
+      "sha256": "152f312b066728c2c4ef4cd2f70e5320bc84d9a7b0e62b39f20aa064c5aca523"
+    },
+    {
+      "path": "dozer-types/src/field_type.rs",
+      "gitBlob": "1f3e7edc2e501f92c91e62ffee820a8ca114f355",
+      "mode": "100644",
+      "bytes": 2716,
+      "sha256": "043e654aebd4295b5f6874fb9211471d1b3a6a870d9979bff573d20b1576936c"
+    },
+    {
+      "path": "dozer-types/src/grpc_types.rs",
+      "gitBlob": "9d402e0554ebd3b1e181e76ebd48ed3ddbe65129",
+      "mode": "100644",
+      "bytes": 6788,
+      "sha256": "e639927b2fc4264a853abecc0fb14e63dd4c5e49dedd19d9e6778e2649183bb7"
+    },
+    {
+      "path": "dozer-types/src/helper.rs",
+      "gitBlob": "7c96e1f6550ef0dda77412211188c59ddaa155b2",
+      "mode": "100644",
+      "bytes": 18926,
+      "sha256": "d977da2a49427e9e4219a8c7011f1b1114a3b8e9e0ce402e8920c56ba316c05a"
+    },
+    {
+      "path": "dozer-types/src/json_types.rs",
+      "gitBlob": "96ce0cf640e98e039a7337557b85499d674a1130",
+      "mode": "100644",
+      "bytes": 14554,
+      "sha256": "ecd4b9b021576b98276bd478fd6f4e7913aaaeebfbc98bb0b8b3061d3160c309"
+    },
+    {
+      "path": "dozer-types/src/lib.rs",
+      "gitBlob": "c3d3aa69ca3d1994965ae7ca165426fcbe003a0d",
+      "mode": "100644",
+      "bytes": 859,
+      "sha256": "3e4cbfac34cce9abe1fcf55f03abbe151b9e86443ff50f541acb1900af4431ab"
+    },
+    {
+      "path": "dozer-types/src/models/api_config.rs",
+      "gitBlob": "94caf5e5f55a271d9d04777e5855cfb277f45cea",
+      "mode": "100644",
+      "bytes": 3127,
+      "sha256": "8bbcaf353b025d4c809255b7d8029a6029b614f7bbd2ce035e2ac377e3be64a8"
+    },
+    {
+      "path": "dozer-types/src/models/api_security.rs",
+      "gitBlob": "5fffc5d5ddad4fc336c059ab35d35daae5788d6f",
+      "mode": "100644",
+      "bytes": 296,
+      "sha256": "f3bf69eea51e5a45cc09a8acbdfa795d547c300d9eb5e21096b87a1a46d43d06"
+    },
+    {
+      "path": "dozer-types/src/models/app_config.rs",
+      "gitBlob": "03d155beaae18c1c6a951f4dd18df4ccecae966b",
+      "mode": "100644",
+      "bytes": 837,
+      "sha256": "84cb8d9f60d2cc0f2722ad846bf6178f3e63f53f7fdd858dae51c3b586ffcf6a"
+    },
+    {
+      "path": "dozer-types/src/models/config.rs",
+      "gitBlob": "3d8f98175864468cc6ba4f111aad55bf0008f84b",
+      "mode": "100644",
+      "bytes": 2920,
+      "sha256": "5a7404404a21fd46d7248ba7db803764444b58bb914b13a20fa47f9d1103471b"
+    },
+    {
+      "path": "dozer-types/src/models/connection.rs",
+      "gitBlob": "3e2c232895573a67c06d4f92325aef3c9b27576c",
+      "mode": "100644",
+      "bytes": 10541,
+      "sha256": "a1ba2c830814534a1f38990d7bc7bf24694967489313f0093d1bdbd5fd90bf65"
+    },
+    {
+      "path": "dozer-types/src/models/flags.rs",
+      "gitBlob": "2817b5cbcecfe2a3aafc2f13a34c756d6d98d0ae",
+      "mode": "100644",
+      "bytes": 2104,
+      "sha256": "0b2f92953d2b594103a816b5c049f45cade92769086de7579cf8071abbb61357"
+    },
+    {
+      "path": "dozer-types/src/models/ingestion_types.rs",
+      "gitBlob": "24832547e3d1a473dbf029ce4aebf528ec191466",
+      "mode": "100644",
+      "bytes": 17815,
+      "sha256": "c990fae4e4ee9dc6fe5c372ccfa1594bc824204893f22e18f9cb75266db6199a"
+    },
+    {
+      "path": "dozer-types/src/models/json_schema_helper.rs",
+      "gitBlob": "d3fddfea2f6212698632be6e7ceb9f3374f300c7",
+      "mode": "100644",
+      "bytes": 1750,
+      "sha256": "77331bff5b103699eb85d5a82b63319ecaf4d4e071d4fabfa7acadc55feda310"
+    },
+    {
+      "path": "dozer-types/src/models/lambda_config.rs",
+      "gitBlob": "6e0c3784430709d7ff29ea4490833dd92f14a100",
+      "mode": "100644",
+      "bytes": 417,
+      "sha256": "f9754715f4474fb2e51eb2d99d6d8f941350f069ae33b32d118fa29a898edc69"
+    },
+    {
+      "path": "dozer-types/src/models/mod.rs",
+      "gitBlob": "188074ed5b44160e50ac74bbef8eb7f1145c4016",
+      "mode": "100644",
+      "bytes": 431,
+      "sha256": "2ea2dad63a5fbd87b8ef246638eb2c372073fce56716744dd12c7c6fa5897edc"
+    },
+    {
+      "path": "dozer-types/src/models/sink.rs",
+      "gitBlob": "ac86af10bb0f9ef9a8c844aee79a42e6ed64b904",
+      "mode": "100644",
+      "bytes": 8471,
+      "sha256": "ef582371b31064610f65ed349a575542b2b2ba9b738b7070f587a38b2e57a1f7"
+    },
+    {
+      "path": "dozer-types/src/models/sink_config.rs",
+      "gitBlob": "fbbea728d09d8b80f00ca92c5b203f0f6f917f79",
+      "mode": "100644",
+      "bytes": 2880,
+      "sha256": "6bff2586b65870c295a6ea860ae06a37210a14ac1d23dd11593b57e56e22b977"
+    },
+    {
+      "path": "dozer-types/src/models/source.rs",
+      "gitBlob": "8f0c449ec7e7691901b969a0d06bf5140d458512",
+      "mode": "100644",
+      "bytes": 1257,
+      "sha256": "559648ec4eedd99c7774542595643adf8919c476088360b7aadce43b7eb07ef8"
+    },
+    {
+      "path": "dozer-types/src/models/telemetry.rs",
+      "gitBlob": "6763b8c3857eb87e9c6d7c02301ea224abc22dea",
+      "mode": "100644",
+      "bytes": 1604,
+      "sha256": "2d48d976e7568d93397fc0cff7777a5d9654bacab7f89706923c0c0d25f400d3"
+    },
+    {
+      "path": "dozer-types/src/models/udf_config.rs",
+      "gitBlob": "512fba3a576ff43fbae93edd5897b87d8d9c54f9",
+      "mode": "100644",
+      "bytes": 905,
+      "sha256": "b2f0f45c74884db83265e258e01403d2232d0c65fd42a067732f271441a4b2a6"
+    },
+    {
+      "path": "dozer-types/src/node.rs",
+      "gitBlob": "b5b5562ae5f92bc3c114680d3688110ff1f8fcdc",
+      "mode": "100644",
+      "bytes": 3987,
+      "sha256": "2cb9b01ad7b95aad0433e0b91ec797735f3a8509c8ec7983967b3cf5c684dfd3"
+    },
+    {
+      "path": "dozer-types/src/tests/api_config_yaml_deserialize.rs",
+      "gitBlob": "e64be614fec6b822231e5cfa7b619edfc5a71b6d",
+      "mode": "100644",
+      "bytes": 3861,
+      "sha256": "d24e42d6e0dcd998bcf0c01a07ce5f0aa6508c87c8ee3e2cf1fc1c4f8864768c"
+    },
+    {
+      "path": "dozer-types/src/tests/dozer_yaml_deserialize.rs",
+      "gitBlob": "929fd8ed7cfbe1cf48a0c05c10716d349312c74d",
+      "mode": "100644",
+      "bytes": 4060,
+      "sha256": "10082480977eb9aada7f74e1609628712bee293482e1f7f21442c2cc531fc78f"
+    },
+    {
+      "path": "dozer-types/src/tests/eth_yaml_deserialize.rs",
+      "gitBlob": "1354891d49336fdf71b6f662b3929a44f86d60e7",
+      "mode": "100644",
+      "bytes": 1760,
+      "sha256": "f2c1df7d5e75db3462cbce0296432a6c97869128f87badce1f969546438cd674"
+    },
+    {
+      "path": "dozer-types/src/tests/field_serialize_test.rs",
+      "gitBlob": "3e48751a7dd67c100daf90a3537c034e1a317209",
+      "mode": "100644",
+      "bytes": 1121,
+      "sha256": "c0cca44d3bf2ef58f297da9129bf4cfeb76afeddc6a6b4a69fc113e7ecb5ca18"
+    },
+    {
+      "path": "dozer-types/src/tests/flags_config_yaml_deserialize.rs",
+      "gitBlob": "fa9724a7971d07200063aa24daf529390fe4263a",
+      "mode": "100644",
+      "bytes": 789,
+      "sha256": "297692de7154fa817f9f8a98da4a4366519875725f86a07fd4e50c136f90e0f3"
+    },
+    {
+      "path": "dozer-types/src/tests/mod.rs",
+      "gitBlob": "99dca538eb513324cddc96a8c5203c293abb85c9",
+      "mode": "100644",
+      "bytes": 243,
+      "sha256": "daac29414cea029ad7049225a9fc67b6db1132a3bf1c0a6b3273670340115270"
+    },
+    {
+      "path": "dozer-types/src/tests/postgres_yaml_deserialize.rs",
+      "gitBlob": "c92fc55d25c183fb7ac41650e4f4b620086c43e6",
+      "mode": "100644",
+      "bytes": 7395,
+      "sha256": "18bb493d13cd843249c9096a81b685b2750e6b9d498b9d1b2763ed8c5548da94"
+    },
+    {
+      "path": "dozer-types/src/tests/secondary_index_yaml_deserialize.rs",
+      "gitBlob": "9978e8af16cb5b8cac46dc57b57fc6ee8223f9b4",
+      "mode": "100644",
+      "bytes": 1005,
+      "sha256": "a57a2ddb56477a8c614d069025b232b4285f0cbb3121a0a94424fc28e04e4cc1"
+    },
+    {
+      "path": "dozer-types/src/tests/udf_yaml_deserialize.rs",
+      "gitBlob": "6cec087a5b20fcba1f7297a5b9c1d7acd804afaf",
+      "mode": "100644",
+      "bytes": 548,
+      "sha256": "f8fe5d99c59f8814c107c25b74a237af8b5706164c680a7e2d0e6767f10b0535"
+    },
+    {
+      "path": "dozer-types/src/types/field.rs",
+      "gitBlob": "af8d9671ad781296b3afc331f32df21e1b631acf",
+      "mode": "100644",
+      "bytes": 42384,
+      "sha256": "eced7544381f2e458d24da6d762e074cc9934b8be0d0198bb260ba1b5fa15063"
+    },
+    {
+      "path": "dozer-types/src/types/mod.rs",
+      "gitBlob": "31d111d28918e525ab9599c5c67aded178d95b6a",
+      "mode": "100644",
+      "bytes": 15270,
+      "sha256": "b1d5a5c97e9b7d637fcef03daad7d7463821d5510f7f3c96f8d4db0b4742d769"
+    },
+    {
+      "path": "dozer-types/src/types/tests.rs",
+      "gitBlob": "9bd4180637d477138815efcebd673d1c1d6d9108",
+      "mode": "100644",
+      "bytes": 21958,
+      "sha256": "8f5b6c7ff53480a562f7748a0a4ffe5340851f988350a883f977099f62dafc3d"
+    },
+    {
+      "path": "dozer-utils/Cargo.toml",
+      "gitBlob": "e5dc786118606dbf955398da9c31357df8e55cc6",
+      "mode": "100644",
+      "bytes": 252,
+      "sha256": "de15812310ff2e699dfbd3f5bd1722623247bab9c4501b53c964b4e234557d81"
+    },
+    {
+      "path": "dozer-utils/src/cleanup.rs",
+      "gitBlob": "0fa881737594b985a3ece1290ffd21333789c7b3",
+      "mode": "100644",
+      "bytes": 1781,
+      "sha256": "ffafedac2a94ac0d249a7d87aed78f446d904892bf715876285821c2b1e8e619"
+    },
+    {
+      "path": "dozer-utils/src/lib.rs",
+      "gitBlob": "aeb5a084578141fd7a92c39e13c0a6eccc979dc8",
+      "mode": "100644",
+      "bytes": 57,
+      "sha256": "1cba11966fb86c37d8268023b73e3b776efeb3b16d7c068df74d362c43b41138"
+    },
+    {
+      "path": "dozer-utils/src/process.rs",
+      "gitBlob": "8a68642ed7443a9a13a30740a2cfa340e6c7eae4",
+      "mode": "100644",
+      "bytes": 1780,
+      "sha256": "6c3625f5155fb87c060763b0a3d0e970bd139b7ab1afcbd2b9a9057d5ea90c0c"
+    },
+    {
+      "path": "images/dozer_live_screen1.png",
+      "gitBlob": "763a40e3c2102d8139728c7a94de7bac846d7a54",
+      "mode": "100644",
+      "bytes": 364823,
+      "sha256": "6f59eab5a41cb9685cad4666a30b63050fc3957e9e6823477063a05f81339573"
+    },
+    {
+      "path": "images/dozer_live_screen2.png",
+      "gitBlob": "fbd7d0b672c6f8ff1db64459ac13952120e37061",
+      "mode": "100644",
+      "bytes": 250881,
+      "sha256": "2883854f6e927017b96895520a2e52195344365d93de5f7f37e05b72bb6cba9d"
+    },
+    {
+      "path": "images/supported_sources.png",
+      "gitBlob": "e1654f50aa9ae3ed2fd9dc8960aec9fd4afd8cda",
+      "mode": "100644",
+      "bytes": 31633,
+      "sha256": "1f60c8ece50bdd7ab7f2f169e986f779546af3f11b39f4b8d1b12e77a324e677"
+    },
+    {
+      "path": "images/tools.png",
+      "gitBlob": "6f0d1f897c94cdda2d3d7c0f62ceef1ecf146338",
+      "mode": "100644",
+      "bytes": 66448,
+      "sha256": "81be15b1e3f9a6838d9dc8222b6ccdb507907b12d20ac6faf87763bb45566515"
+    },
+    {
+      "path": "json_schemas/connections.json",
+      "gitBlob": "c929085d1a28c832cc686f1f0f5a805ac0cea40c",
+      "mode": "100644",
+      "bytes": 19290,
+      "sha256": "c6065a7b1806de4b02296686f718435aaa4fc002710b1f5adf39563abb4d9bae"
+    },
+    {
+      "path": "json_schemas/dozer.json",
+      "gitBlob": "3bac6f286eb309bb7e4c6878225dc07495b54cdd",
+      "mode": "100644",
+      "bytes": 49512,
+      "sha256": "93c212048592451b7920d1faa3acf6ad5e980641537f47f44b81f3380f1bcbd0"
+    }
+  ]
+}
