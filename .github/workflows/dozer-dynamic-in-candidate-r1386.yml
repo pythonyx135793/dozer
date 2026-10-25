@@ -1,0 +1,31 @@
+name: Dozer dynamic IN candidate R1386
+
+on:
+  push:
+    branches: [codex/dozer1659-candidate-proof-r1386]
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    if: github.repository == 'pythonyx135793/dozer'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout exact proof commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 6
+          persist-credentials: false
+          submodules: false
+          lfs: false
+      - name: Verify pinned source and run isolated ordinary-default candidate
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -B proof/dozer1659-candidate-r1386/candidate.py
+      - name: Export complete candidate evidence through ordinary job logs
+        if: always()
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -B proof/dozer1659-candidate-r1386/log_export.py
