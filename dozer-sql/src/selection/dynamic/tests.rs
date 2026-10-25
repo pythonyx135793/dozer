@@ -443,7 +443,10 @@ fn casts_keep_existing_static_types_and_nullable_value_conversion() {
                 );
             }
         } else {
-            let static_error = expression.get_type(&static_schema).unwrap_err();
+            let static_error = expression
+                .get_type(&static_schema)
+                .err()
+                .expect("Boolean to INT must remain unsupported");
             assert_unsupported_boolean_int_cast(&static_error);
         }
     }
