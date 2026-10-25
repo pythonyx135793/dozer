@@ -463,6 +463,148 @@ fn review_ttl_and_nested_operator_cte_inputs_build_without_external_cte_source()
 }
 
 #[test]
+fn review_window_join_cte_inputs_reach_both_sides_and_chained_joins() {
+    let input = Record::new(vec![
+        Field::Int(1),
+        Field::Timestamp("2026-01-01T00:02:00+00:00".parse().unwrap()),
+    ]);
+    let source_schema = schema(&[("key", FieldType::Int), ("ts", FieldType::Timestamp)]);
+    for (operator, copies) in [
+        ("TUMBLE(c, ts, '5 MINUTES')", 1),
+        ("HOP(c, ts, '5 MINUTES', '10 MINUTES')", 2),
+    ] {
+        for operator_on_left in [true, false] {
+            for chained in [false, true] {
+                let mut from = if operator_on_left {
+                    format!("{operator} w JOIN others o ON w.key = o.key")
+                } else {
+                    format!("others o JOIN {operator} w ON o.key = w.key")
+                };
+                if chained {
+                    from.push_str(" JOIN more x ON o.key = x.key");
+                }
+                let sql = format!("WITH c AS (SELECT key + 10 AS key, ts FROM outer_rows) SELECT w.key FROM {from} WHERE w.key IN (SELECT key FROM members)");
+                println!("Running CTE-backed joined window: {sql}");
+                let mut steps = vec![
+                    step("member before join input", 1, insert(row(11)), vec![]),
+                    step(
+                        "transformed CTE window awaits join",
+                        0,
+                        insert(input.clone()),
+                        vec![],
+                    ),
+                    step(
+                        "other join side",
+                        2,
+                        insert(row(11)),
+                        if chained {
+                            vec![]
+                        } else {
+                            vec![row(11); copies]
+                        },
+                    ),
+                ];
+                if chained {
+                    steps.push(step(
+                        "final chained join side",
+                        3,
+                        insert(row(11)),
+                        vec![row(11); copies],
+                    ));
+                }
+                steps.extend([
+                    step(
+                        "membership retracts joined windows",
+                        1,
+                        delete(row(11)),
+                        vec![],
+                    ),
+                    step(
+                        "membership restores joined windows",
+                        1,
+                        insert(row(11)),
+                        vec![row(11); copies],
+                    ),
+                    step(
+                        "join side deletion retracts windows",
+                        2,
+                        delete(row(11)),
+                        vec![],
+                    ),
+                    step(
+                        "join side restored",
+                        2,
+                        insert(row(11)),
+                        vec![row(11); copies],
+                    ),
+                    step(
+                        "CTE deletion retracts joined windows",
+                        0,
+                        delete(input.clone()),
+                        vec![],
+                    ),
+                ]);
+                run(
+                    &sql,
+                    vec![
+                        ("outer_rows".into(), source_schema.clone()),
+                        ("members".into(), schema(&[("key", FieldType::Int)])),
+                        ("others".into(), schema(&[("key", FieldType::Int)])),
+                        ("more".into(), schema(&[("key", FieldType::Int)])),
+                        // The CTE must win over this unrelated physical source.
+                        ("c".into(), source_schema.clone()),
+                    ],
+                    steps,
+                    true,
+                    false,
+                )
+                .unwrap_or_else(|error| panic!("{sql}: {error}"));
+            }
+        }
+    }
+}
+
+#[test]
+fn review_nested_operator_join_cte_inputs_build_on_both_sides() {
+    for operator in [
+        "TTL(c, ts, '1 HOUR')",
+        "TUMBLE(TTL(c, ts, '1 HOUR'), ts, '5 MINUTES')",
+        "TTL(HOP(c, ts, '5 MINUTES', '10 MINUTES'), ts, '1 HOUR')",
+    ] {
+        for operator_on_left in [true, false] {
+            for chained in [false, true] {
+                let mut from = if operator_on_left {
+                    format!("{operator} w JOIN others o ON w.key = o.key")
+                } else {
+                    format!("others o JOIN {operator} w ON o.key = w.key")
+                };
+                if chained {
+                    from.push_str(" JOIN more x ON o.key = x.key");
+                }
+                let sql = format!("WITH c AS (SELECT key, ts FROM outer_rows) SELECT w.key FROM {from} WHERE w.key IN (SELECT key FROM members)");
+                println!("Building CTE-backed joined operator: {sql}");
+                run(
+                    &sql,
+                    vec![
+                        (
+                            "outer_rows".into(),
+                            schema(&[("key", FieldType::Int), ("ts", FieldType::Timestamp)]),
+                        ),
+                        ("members".into(), schema(&[("key", FieldType::Int)])),
+                        ("others".into(), schema(&[("key", FieldType::Int)])),
+                        ("more".into(), schema(&[("key", FieldType::Int)])),
+                    ],
+                    vec![],
+                    false,
+                    false,
+                )
+                .unwrap_or_else(|error| panic!("{sql}: {error}"));
+            }
+        }
+    }
+}
+
+#[test]
 fn review_nested_distinct_preserves_multiplicity_before_aggregation() {
     for inner in [
         "SELECT DISTINCT key FROM members",
