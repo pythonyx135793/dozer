@@ -1,0 +1,31 @@
+name: Dozer dynamic IN dependency audit R1337
+
+on:
+  push:
+    branches: [codex/dozer1659-fetch-proof-r1337]
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-only:
+    if: github.repository == 'pythonyx135793/dozer'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact proof commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+          submodules: false
+          lfs: false
+      - name: Fetch locked dependencies and export audit sources only
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -B proof/dozer1659-fetch-r1337/fetch.py
+      - name: Export complete audit evidence through ordinary job logs
+        if: always()
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 -B proof/dozer1659-fetch-r1337/log_export.py
