@@ -221,6 +221,16 @@ fn compound_multiple_and_nested_expressions() {
         step("case becomes true", 1, insert(pair(1, 0)), vec![row(1)]),
         step("case becomes false", 1, delete(pair(1, 0)), vec![]),
     ], true, false).unwrap();
+    let null_member = Record::new(vec![Field::Null, Field::Int(0)]);
+    run("SELECT key FROM outer_rows WHERE CAST(key IN (SELECT key FROM members) AS STRING) = 'TRUE'", tables(), vec![
+        step("cast starts false with empty membership", 0, insert(pair(1, 0)), vec![]),
+        step("cast handles unknown membership", 1, insert(null_member.clone()), vec![]),
+        step("cast selects a true match", 1, insert(pair(1, 0)), vec![row(1)]),
+        step("cast retracts when match becomes unknown", 1, delete(pair(1, 0)), vec![]),
+        step("cast returns to empty false membership", 1, delete(null_member), vec![]),
+        step("cast selects restored membership", 1, insert(pair(1, 0)), vec![row(1)]),
+        step("cast forwards outer removal", 0, delete(pair(1, 0)), vec![]),
+    ], true, false).unwrap();
 }
 
 #[test]

@@ -11,6 +11,7 @@ use dozer_sql_expression::sqlparser::{
     dialect::DozerDialect,
     parser::Parser,
 };
+use dozer_sql_expression::{builder::ExpressionBuilder, error::Error as ExpressionError};
 use dozer_types::{
     node::OpIdentifier,
     types::{
@@ -366,7 +367,7 @@ fn compound_three_valued_predicates_preserve_unknown() {
         "NOT (value IN (SELECT value FROM members) OR value = 2)",
         "(value IN (SELECT value FROM members)) IS TRUE",
         "CASE WHEN value IN (SELECT value FROM members) THEN 1 ELSE 0 END = 1",
-        "CAST(value IN (SELECT value FROM members) AS INT) = 1",
+        "CAST(value IN (SELECT value FROM members) AS STRING) = 'TRUE'",
         "value IN (SELECT value FROM members) AND value = NULL",
     ] {
         let mut p = processor(predicate);
@@ -381,6 +382,112 @@ fn compound_three_valued_predicates_preserve_unknown() {
     assert_eq!(
         send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))),
         vec![insert(row(1))]
+    );
+}
+
+#[test]
+fn supported_cast_tracks_false_unknown_and_true_membership() {
+    let mut p = processor("CAST(value IN (SELECT value FROM members) AS STRING) = 'TRUE'");
+    assert!(send(&mut *p, DEFAULT_PORT_HANDLE, insert(row(1))).is_empty());
+    assert!(send(&mut *p, 1, insert(null())).is_empty());
+    assert_eq!(send(&mut *p, 1, insert(row(1))), vec![insert(row(1))]);
+    assert_eq!(send(&mut *p, 1, delete(row(1))), vec![delete(row(1))]);
+    assert!(send(&mut *p, 1, delete(null())).is_empty());
+    assert_eq!(send(&mut *p, 1, insert(row(1))), vec![insert(row(1))]);
+    assert_eq!(
+        send(&mut *p, DEFAULT_PORT_HANDLE, delete(row(1))),
+        vec![delete(row(1))]
+    );
+}
+
+#[test]
+fn casts_keep_existing_static_types_and_nullable_value_conversion() {
+    let factory = factory("CAST(value IN (SELECT value FROM members) AS INT) = 1");
+    let static_schema = schema(FieldType::Boolean);
+    for target in ["STRING", "INT"] {
+        let sql = format!(
+            "SELECT value FROM outer_rows WHERE CAST(value AS {target}) = {}",
+            if target == "STRING" { "'TRUE'" } else { "1" }
+        );
+        let Statement::Query(query) = Parser::parse_sql(&DozerDialect {}, &sql).unwrap().remove(0)
+        else {
+            panic!()
+        };
+        let SetExpr::Select(select) = *query.body else {
+            panic!()
+        };
+        let mut expression = factory
+            .runtime
+            .block_on(ExpressionBuilder::new(1, factory.runtime.clone()).build(
+                false,
+                &select.selection.unwrap(),
+                &static_schema,
+                &[],
+            ))
+            .unwrap();
+        if target == "STRING" {
+            assert_eq!(
+                expression.get_type(&static_schema).unwrap().return_type,
+                FieldType::Boolean
+            );
+            for (value, expected) in [
+                (Field::Boolean(false), false),
+                (Field::Null, false),
+                (Field::Boolean(true), true),
+            ] {
+                assert_eq!(
+                    expression
+                        .evaluate(&Record::new(vec![value]), &static_schema)
+                        .unwrap(),
+                    Field::Boolean(expected)
+                );
+            }
+        } else {
+            let static_error = expression.get_type(&static_schema).unwrap_err();
+            assert_unsupported_boolean_int_cast(&static_error);
+        }
+    }
+    let inputs = [
+        (DEFAULT_PORT_HANDLE, schema(FieldType::Int)),
+        (1, schema(FieldType::Int)),
+    ]
+    .into_iter()
+    .collect();
+    let error = factory
+        .runtime
+        .block_on(factory.build(inputs, HashMap::new(), EventHub::new(1)))
+        .err()
+        .unwrap();
+    let Some(PipelineError::Expression(error)) = error.downcast_ref::<PipelineError>() else {
+        panic!("wrong error: {error:?}")
+    };
+    assert_unsupported_boolean_int_cast(error);
+}
+
+fn assert_unsupported_boolean_int_cast(error: &ExpressionError) {
+    let ExpressionError::InvalidFunctionArgumentType {
+        function_name,
+        argument_index,
+        expected,
+        actual,
+    } = error
+    else {
+        panic!("wrong error: {error:?}")
+    };
+    assert_eq!(function_name, "CAST AS INT");
+    assert_eq!(*argument_index, 0);
+    assert_eq!(*actual, FieldType::Boolean);
+    assert_eq!(
+        expected,
+        &vec![
+            FieldType::Int,
+            FieldType::Int8,
+            FieldType::String,
+            FieldType::UInt,
+            FieldType::I128,
+            FieldType::U128,
+            FieldType::Json
+        ]
     );
 }
 
