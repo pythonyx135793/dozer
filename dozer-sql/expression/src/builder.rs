@@ -554,6 +554,8 @@ impl ExpressionBuilder {
                     }
                 }
 
+                UdfType::Wasm(_) => Err(Error::WasmNotEnabled),
+
                 UdfType::JavaScript(config) => {
                     #[cfg(feature = "javascript")]
                     {

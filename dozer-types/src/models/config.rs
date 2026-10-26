@@ -62,8 +62,13 @@ pub struct Config {
     /// Instrument using Dozer
     pub telemetry: TelemetryConfig,
 
-    /// UDF specific configuration (eg. !Onnx)
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    /// UDF configurations: the tagged list or `wasm: {function_name: module_path}`.
+    #[serde(
+        default,
+        skip_serializing_if = "Vec::is_empty",
+        deserialize_with = "crate::models::udf_config::deserialize_udf_configs"
+    )]
+    #[schemars(schema_with = "crate::models::udf_config::udf_configs_schema")]
     pub udfs: Vec<UdfConfig>,
 
     /// Lambda functions.
