@@ -1,0 +1,18 @@
+{
+  "application_commit": "75bbd9bda0f34d2a486012436262a7e94228d505",
+  "branch": "codex/dozer1653-config-proof-r2276",
+  "rust_version": "1.77.2",
+  "target": "x86_64-unknown-linux-gnu",
+  "rust_manifest_url": "https://static.rust-lang.org/dist/channel-rust-1.77.2.toml",
+  "rust_manifest_sha256": "ed07e41edcba852ae034cd1fb29c9c62445c07cd9e12a61ae02a0027da80ded5",
+  "protoc": {
+    "version": "25.3",
+    "purpose": "Exact official protoc for audited local proto generation in isolated baseline",
+    "url": "https://github.com/protocolbuffers/protobuf/releases/download/v25.3/protoc-25.3-linux-x86_64.zip",
+    "bytes": 3105560,
+    "sha256": "f853e691868d0557425ea290bf7ba6384eef2fa9b04c323afab49a770ba9da80",
+    "official_asset_id": 151795851,
+    "official_api_digest": null,
+    "digest_provenance": "single local download of exact official release asset; hash computed on F"
+  }
+}
