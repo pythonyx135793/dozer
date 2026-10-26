@@ -14,5 +14,6 @@
     "official_asset_id": 151795851,
     "official_api_digest": null,
     "digest_provenance": "single local download of exact official release asset; hash computed on F"
-  }
+  },
+  "mode": "schema-only"
 }

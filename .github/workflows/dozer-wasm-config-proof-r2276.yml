@@ -1,4 +1,4 @@
-name: WASM UDF configuration preparation
+name: WASM configuration schema follow-up
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
           persist-credentials: false
           submodules: false
           lfs: false
-      - name: Test the real configuration crate and generate its schema
+      - name: Generate the schema for previously tested configuration source
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: python3 -B proof/dozer1653-config-r2276/validate.py

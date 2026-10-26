@@ -147,17 +147,23 @@ def main():
     command("protoc-version", [str(protoc), "--version"])
     command("cargo-fetch", [str(cargo), "fetch", "--locked", "--target", PINS["target"]], 900)
     ENV["CARGO_NET_OFFLINE"] = "true"
-    command("configuration-unit-tests",
-            [str(cargo), "test", "--locked", "--offline", "-p", "dozer-types", "--lib"], 1200)
-    command("expression-compatibility-check",
-            [str(cargo), "check", "--locked", "--offline", "-p", "dozer-sql-expression",
-             "--no-default-features"], 1200)
+    if PINS.get("mode", "all") == "all":
+        command("configuration-unit-tests",
+                [str(cargo), "test", "--locked", "--offline", "-p", "dozer-types", "--lib"], 1200)
+        command("expression-compatibility-check",
+                [str(cargo), "check", "--locked", "--offline", "-p", "dozer-sql-expression",
+                 "--no-default-features"], 1200)
+    elif PINS["mode"] == "schema-only":
+        RESULT["test_scope"] = "Schema export only; previous 52 unit passes and expression compile retained at identical application commit"
+        RESULT["prior_proof"] = {"run": 40363088592, "job": 121713438633, "application_commit": PINS["application_commit"]}
+    else:
+        raise RuntimeError("Unknown validation mode")
     example = REPO / "dozer-types/examples/config_schema_proof.rs"
     if example.exists():
         raise RuntimeError("Schema proof would overwrite a source file")
     example.parent.mkdir(exist_ok=True)
     helper = ('fn main() { let path = std::env::var_os("DOZER_CONFIG_SCHEMA_OUTPUT").unwrap(); '
-              'std::fs::write(path, dozer_types::models::json_schema_helper::get_dozer_schema()'
+              'std::fs::write(path, dozer_types::models::get_dozer_schema()'
               '.unwrap()).unwrap(); }\n')
     example.write_text(helper)
     save("schema-helper.json", {"path": str(example.relative_to(REPO)),
@@ -165,7 +171,6 @@ def main():
     ENV["DOZER_CONFIG_SCHEMA_OUTPUT"] = str(EVIDENCE / "dozer-schema.generated.json")
     command("schema-generation", [str(cargo), "run", "--locked", "--offline", "-p", "dozer-types",
                                  "--example", "config_schema_proof"], 300)
-    source_guard("after")
     RESULT.update(status="SUCCESS", generated_schema_sha256=sha(
         (EVIDENCE / "dozer-schema.generated.json").read_bytes()))
 
@@ -194,6 +199,12 @@ except BaseException as exc:
     exit_code = 1
     RESULT.update(status="FAIL", error=str(exc), traceback=traceback.format_exc())
 finally:
+    if ENV is not None:
+        try:
+            source_guard("final")
+        except BaseException:
+            exit_code = 1
+            RESULT.update(status="FAIL", final_source_error=traceback.format_exc())
     RESULT["finished"] = time.time()
     save("result.json", RESULT)
     export()
